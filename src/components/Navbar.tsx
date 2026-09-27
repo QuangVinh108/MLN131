@@ -70,7 +70,7 @@ export const Navbar: React.FC = () => {
           gap: '1.5rem'
         }}
       >
-        {/* Brand / Logo on far left */}
+        {/* Brand / Logo on left */}
         <div
           onClick={() => scrollTo('hero')}
           style={{
@@ -78,7 +78,8 @@ export const Navbar: React.FC = () => {
             alignItems: 'center',
             gap: '0.75rem',
             cursor: 'pointer',
-            flexShrink: 0
+            flexShrink: 0,
+            flex: 1
           }}
         >
           <div
@@ -117,18 +118,18 @@ export const Navbar: React.FC = () => {
           </div>
         </div>
 
-        {/* Desktop Navigation Links - Centered & stretched across available width */}
+        {/* Desktop Navigation Links - Hugs items snugly with NO excess empty space */}
         <nav
           style={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            gap: '0.4rem',
-            flex: 1,
+            gap: '0.25rem',
             background: 'rgba(255, 255, 255, 0.03)',
-            padding: '0.35rem 0.8rem',
+            padding: '0.3rem 0.45rem',
             borderRadius: '999px',
-            border: '1px solid rgba(217, 179, 107, 0.15)'
+            border: '1px solid rgba(217, 179, 107, 0.16)',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+            flexShrink: 0
           }}
           className="desktop-nav"
         >
@@ -142,13 +143,14 @@ export const Navbar: React.FC = () => {
                   background: isActive ? 'linear-gradient(135deg, rgba(217, 179, 107, 0.28), rgba(200, 151, 63, 0.18))' : 'transparent',
                   color: isActive ? '#f4e6c3' : '#b8b0a0',
                   border: isActive ? '1px solid rgba(217, 179, 107, 0.5)' : '1px solid transparent',
-                  padding: '0.42rem 0.85rem',
+                  padding: '0.42rem 0.82rem',
                   borderRadius: '999px',
-                  fontSize: '0.8rem',
+                  fontSize: '0.78rem',
                   fontWeight: isActive ? 700 : 500,
                   textTransform: 'uppercase',
                   letterSpacing: '0.04em',
-                  transition: 'all 0.25s ease'
+                  transition: 'all 0.25s ease',
+                  whiteSpace: 'nowrap'
                 }}
                 onMouseEnter={e => {
                   if (!isActive) e.currentTarget.style.color = '#f3ede0';
@@ -163,20 +165,22 @@ export const Navbar: React.FC = () => {
           })}
         </nav>
 
-        {/* Mobile menu toggle button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="mobile-nav-toggle"
-          style={{
-            padding: '0.5rem',
-            borderRadius: '8px',
-            background: 'rgba(255, 255, 255, 0.05)',
-            color: '#f4e6c3',
-            border: '1px solid rgba(217, 179, 107, 0.2)'
-          }}
-        >
-          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        {/* Right slot: balances left brand to center nav, holds mobile menu button */}
+        <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="mobile-nav-toggle"
+            style={{
+              padding: '0.5rem',
+              borderRadius: '8px',
+              background: 'rgba(255, 255, 255, 0.05)',
+              color: '#f4e6c3',
+              border: '1px solid rgba(217, 179, 107, 0.2)'
+            }}
+          >
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer Menu */}

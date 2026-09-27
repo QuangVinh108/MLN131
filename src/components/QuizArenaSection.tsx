@@ -1,51 +1,72 @@
 import React, { useState } from 'react';
 import { QUIZ_QUESTIONS, QuizQuestion } from '../data/presentationData';
-import { Trophy, HelpCircle, CheckCircle, XCircle, RotateCcw, ArrowRight, BookOpen, Sparkles } from 'lucide-react';
+import { CheckCircle2, XCircle, RotateCcw, ArrowRight, ArrowLeft, Send, Check, AlertTriangle } from 'lucide-react';
 import confetti from 'canvas-confetti';
+
+const QUESTIONS: QuizQuestion[] = QUIZ_QUESTIONS.slice(0, 5);
 
 export const QuizArenaSection: React.FC = () => {
   const [currentIdx, setCurrentIdx] = useState<number>(0);
-  const [selectedOption, setSelectedOption] = useState<number | null>(null);
-  const [isAnswered, setIsAnswered] = useState<boolean>(false);
-  const [score, setScore] = useState<number>(0);
-  const [showResult, setShowResult] = useState<boolean>(false);
+  const [userAnswers, setUserAnswers] = useState<(number | null)[]>(new Array(QUESTIONS.length).fill(null));
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [validationError, setValidationError] = useState<string | null>(null);
 
-  const question: QuizQuestion = QUIZ_QUESTIONS[currentIdx];
+  const question: QuizQuestion = QUESTIONS[currentIdx];
+  const answeredCount = userAnswers.filter(ans => ans !== null).length;
+
+  const unansweredIndices = userAnswers
+    .map((ans, idx) => (ans === null ? idx + 1 : null))
+    .filter((val): val is number => val !== null);
 
   const handleSelectOption = (idx: number) => {
-    if (isAnswered) return;
+    if (isSubmitted) return;
+    setUserAnswers(prev => {
+      const next = [...prev];
+      next[currentIdx] = idx;
+      return next;
+    });
 
-    setSelectedOption(idx);
-    setIsAnswered(true);
-
-    if (idx === question.correctAnswer) {
-      setScore(prev => prev + 1);
+    // Clear validation error if all questions are now filled or as user answers
+    if (validationError) {
+      setValidationError(null);
     }
   };
 
   const handleNext = () => {
-    if (currentIdx < QUIZ_QUESTIONS.length - 1) {
+    if (currentIdx < QUESTIONS.length - 1) {
       setCurrentIdx(prev => prev + 1);
-      setSelectedOption(null);
-      setIsAnswered(false);
-    } else {
-      setShowResult(true);
-      if (score >= 6) {
-        confetti({
-          particleCount: 120,
-          spread: 80,
-          origin: { y: 0.6 }
-        });
-      }
     }
+  };
+
+  const handlePrev = () => {
+    if (currentIdx > 0) {
+      setCurrentIdx(prev => prev - 1);
+    }
+  };
+
+  const handleSubmit = () => {
+    // Check if user has answered all 5 questions
+    if (unansweredIndices.length > 0) {
+      setValidationError(
+        `Bạn chưa chọn đủ 5 câu hỏi! Còn thiếu: Câu ${unansweredIndices.join(', ')}. Vui lòng hoàn thành để nộp bài.`
+      );
+      return;
+    }
+
+    setValidationError(null);
+    setIsSubmitted(true);
+    confetti({
+      particleCount: 100,
+      spread: 75,
+      origin: { y: 0.6 }
+    });
   };
 
   const handleRestart = () => {
     setCurrentIdx(0);
-    setSelectedOption(null);
-    setIsAnswered(false);
-    setScore(0);
-    setShowResult(false);
+    setUserAnswers(new Array(QUESTIONS.length).fill(null));
+    setIsSubmitted(false);
+    setValidationError(null);
   };
 
   return (
@@ -91,7 +112,7 @@ export const QuizArenaSection: React.FC = () => {
             lineHeight: 1.6
           }}
         >
-          Củng cố kiến thức trọng tâm với 8 câu hỏi bám sát ngân hàng đề thi và phản biện giảng đường.
+          Củng cố kiến thức trọng tâm với 5 câu hỏi bám sát ngân hàng đề thi và phản biện giảng đường.
         </p>
       </div>
 
@@ -106,37 +127,97 @@ export const QuizArenaSection: React.FC = () => {
           overflow: 'hidden'
         }}
       >
-        {!showResult ? (
+        {!isSubmitted ? (
           <div>
-            {/* Top Status Bar */}
+            {/* Top Status Bar: Question indicator & Quick Jump Palette */}
             <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '1rem',
                 marginBottom: '1.8rem',
                 borderBottom: '1px solid rgba(217, 179, 107, 0.15)',
-                paddingBottom: '1rem'
+                paddingBottom: '1.2rem'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <span
                   style={{
                     background: 'linear-gradient(135deg, #d9b36b, #b88628)',
                     color: '#121017',
                     fontWeight: 800,
-                    fontSize: '0.82rem',
-                    padding: '0.25rem 0.75rem',
-                    borderRadius: '999px'
+                    fontSize: '0.85rem',
+                    padding: '0.3rem 0.85rem',
+                    borderRadius: '999px',
+                    letterSpacing: '0.04em'
                   }}
                 >
-                  CÂU {currentIdx + 1} / {QUIZ_QUESTIONS.length}
+                  CÂU {currentIdx + 1} / {QUESTIONS.length}
+                </span>
+                <span style={{ fontSize: '0.86rem', color: '#b8b0a0' }}>
+                  Đã chọn: <strong style={{ color: answeredCount === QUESTIONS.length ? '#34d399' : '#d9b36b' }}>{answeredCount}</strong>/{QUESTIONS.length}
                 </span>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#e6c98c', fontWeight: 700, fontSize: '0.95rem' }}>
-                <Trophy size={18} color="#d9b36b" />
-                <span>Điểm: {score}</span>
+              {/* Question Quick Jump Bar */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                {QUESTIONS.map((_, i) => {
+                  const isCurrent = i === currentIdx;
+                  const hasAnswered = userAnswers[i] !== null;
+                  const isMissingAlert = validationError !== null && !hasAnswered;
+
+                  let btnBorder = '1px solid rgba(255, 255, 255, 0.12)';
+                  let btnBg = 'rgba(255, 255, 255, 0.03)';
+                  let btnColor = '#7a7368';
+                  let btnShadow = 'none';
+
+                  if (isCurrent) {
+                    btnBorder = '2px solid #d9b36b';
+                    btnBg = 'linear-gradient(135deg, #d9b36b, #b88628)';
+                    btnColor = '#121017';
+                    btnShadow = '0 0 15px rgba(217, 179, 107, 0.5)';
+                  } else if (isMissingAlert) {
+                    btnBorder = '2px solid #ef4444';
+                    btnBg = 'rgba(239, 68, 68, 0.2)';
+                    btnColor = '#ff9a8d';
+                    btnShadow = '0 0 10px rgba(239, 68, 68, 0.4)';
+                  } else if (hasAnswered) {
+                    btnBorder = '1.5px solid rgba(217, 179, 107, 0.5)';
+                    btnBg = 'rgba(217, 179, 107, 0.18)';
+                    btnColor = '#f4e6c3';
+                  }
+
+                  return (
+                    <button
+                      key={i}
+                      onClick={() => {
+                        setCurrentIdx(i);
+                        if (validationError) setValidationError(null);
+                      }}
+                      style={{
+                        width: '36px',
+                        height: '36px',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '0.86rem',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        border: btnBorder,
+                        background: btnBg,
+                        color: btnColor,
+                        boxShadow: btnShadow
+                      }}
+                      title={`Chuyển đến Câu ${i + 1}`}
+                    >
+                      {i + 1}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
@@ -154,7 +235,7 @@ export const QuizArenaSection: React.FC = () => {
               {question.question}
             </h3>
 
-            {/* Options List */}
+            {/* Options List with re-selectable choices */}
             <div
               style={{
                 display: 'flex',
@@ -164,161 +245,382 @@ export const QuizArenaSection: React.FC = () => {
               }}
             >
               {question.options.map((opt, idx) => {
-                const isSelected = selectedOption === idx;
-                const isCorrect = idx === question.correctAnswer;
+                const isSelected = userAnswers[currentIdx] === idx;
 
-                let borderStyle = '1px solid rgba(217, 179, 107, 0.2)';
-                let bgStyle = 'rgba(255, 255, 255, 0.02)';
-                let textColor = '#ded6c5';
-
-                if (isAnswered) {
-                  if (isCorrect) {
-                    borderStyle = '2px solid #34d399';
-                    bgStyle = 'rgba(52, 211, 153, 0.15)';
-                    textColor = '#ffffff';
-                  } else if (isSelected && !isCorrect) {
-                    borderStyle = '2px solid #b5403a';
-                    bgStyle = 'rgba(181, 64, 58, 0.2)';
-                    textColor = '#ff9a8d';
-                  }
-                } else if (isSelected) {
-                  borderStyle = '2px solid #d9b36b';
-                  bgStyle = 'rgba(217, 179, 107, 0.15)';
-                }
+                const borderStyle = isSelected
+                  ? '2px solid #d9b36b'
+                  : '1px solid rgba(217, 179, 107, 0.2)';
+                const bgStyle = isSelected
+                  ? 'rgba(217, 179, 107, 0.15)'
+                  : 'rgba(255, 255, 255, 0.02)';
+                const textColor = isSelected ? '#ffffff' : '#ded6c5';
 
                 return (
                   <button
                     key={idx}
                     onClick={() => handleSelectOption(idx)}
-                    disabled={isAnswered}
                     style={{
-                      padding: '1.1rem 1.4rem',
+                      padding: '1.15rem 1.4rem',
                       borderRadius: '12px',
                       textAlign: 'left',
                       border: borderStyle,
                       background: bgStyle,
                       color: textColor,
-                      fontSize: '0.96rem',
-                      fontWeight: isSelected || (isAnswered && isCorrect) ? 600 : 400,
+                      fontSize: '0.98rem',
+                      fontWeight: isSelected ? 600 : 400,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      cursor: isAnswered ? 'default' : 'pointer',
-                      transition: 'all 0.2s ease'
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                      boxShadow: isSelected ? '0 4px 15px rgba(217, 179, 107, 0.18)' : 'none'
                     }}
                   >
-                    <span>{opt}</span>
-                    {isAnswered && isCorrect && <CheckCircle size={20} color="#34d399" />}
-                    {isAnswered && isSelected && !isCorrect && <XCircle size={20} color="#b5403a" />}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                      <div
+                        style={{
+                          width: '20px',
+                          height: '20px',
+                          borderRadius: '50%',
+                          border: isSelected ? '2px solid #d9b36b' : '1.5px solid rgba(217, 179, 107, 0.4)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          background: isSelected ? '#d9b36b' : 'transparent',
+                          flexShrink: 0
+                        }}
+                      >
+                        {isSelected && <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#121017' }} />}
+                      </div>
+                      <span>{opt}</span>
+                    </div>
+
+                    {isSelected && (
+                      <span
+                        style={{
+                          fontSize: '0.78rem',
+                          color: '#d9b36b',
+                          background: 'rgba(217, 179, 107, 0.12)',
+                          padding: '0.2rem 0.6rem',
+                          borderRadius: '999px',
+                          border: '1px solid rgba(217, 179, 107, 0.3)'
+                        }}
+                      >
+                        Đã chọn
+                      </span>
+                    )}
                   </button>
                 );
               })}
             </div>
 
-            {/* Explanation Box when Answered */}
-            {isAnswered && (
+            {/* Validation Warning Alert when attempting to submit with incomplete answers */}
+            {validationError && (
               <div
                 style={{
-                  background: 'rgba(18, 16, 23, 0.95)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: '1rem',
+                  background: 'rgba(239, 68, 68, 0.12)',
+                  border: '1.5px solid rgba(239, 68, 68, 0.5)',
                   borderRadius: '12px',
-                  padding: '1.4rem 1.6rem',
-                  border: '1px solid rgba(217, 179, 107, 0.3)',
-                  marginBottom: '2rem',
-                  animation: 'fadeIn 0.3s ease'
+                  padding: '1rem 1.4rem',
+                  marginBottom: '1.5rem',
+                  color: '#fca5a5',
+                  fontSize: '0.92rem',
+                  boxShadow: '0 4px 20px rgba(239, 68, 68, 0.2)'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                  <BookOpen size={18} color="#d9b36b" />
-                  <span className="eyebrow" style={{ color: '#d9b36b' }}>
-                    GIẢI THÍCH KHOA HỌC & TRÍCH DẪN
-                  </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <AlertTriangle size={22} color="#ef4444" style={{ flexShrink: 0 }} />
+                  <span style={{ lineHeight: 1.5 }}>{validationError}</span>
                 </div>
-                <p style={{ fontSize: '0.92rem', color: '#ded6c5', lineHeight: 1.6 }}>
-                  {question.explanation}
-                </p>
+
+                {unansweredIndices.length > 0 && (
+                  <button
+                    onClick={() => {
+                      setCurrentIdx(unansweredIndices[0] - 1);
+                      setValidationError(null);
+                    }}
+                    style={{
+                      background: 'linear-gradient(135deg, #ef4444, #dc2626)',
+                      border: 'none',
+                      color: '#ffffff',
+                      borderRadius: '999px',
+                      padding: '0.45rem 1rem',
+                      fontSize: '0.84rem',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      whiteSpace: 'nowrap',
+                      boxShadow: '0 2px 10px rgba(239, 68, 68, 0.35)'
+                    }}
+                  >
+                    Làm Câu {unansweredIndices[0]}
+                  </button>
+                )}
               </div>
             )}
 
-            {/* Next Button */}
-            {isAnswered && (
-              <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            {/* Bottom Controls: Prev, Next, Submit */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                borderTop: '1px solid rgba(217, 179, 107, 0.15)',
+                paddingTop: '1.5rem'
+              }}
+            >
+              {/* Previous Button */}
+              <button
+                onClick={handlePrev}
+                disabled={currentIdx === 0}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '0.8rem 1.4rem',
+                  borderRadius: '999px',
+                  background: currentIdx === 0 ? 'rgba(255, 255, 255, 0.02)' : 'rgba(255, 255, 255, 0.06)',
+                  color: currentIdx === 0 ? '#635d55' : '#ded6c5',
+                  border: currentIdx === 0 ? '1px solid rgba(255, 255, 255, 0.05)' : '1px solid rgba(217, 179, 107, 0.25)',
+                  cursor: currentIdx === 0 ? 'not-allowed' : 'pointer',
+                  fontWeight: 600,
+                  fontSize: '0.92rem',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                <ArrowLeft size={18} />
+                <span>Câu trước</span>
+              </button>
+
+              {/* Next / Submit Button */}
+              {currentIdx < QUESTIONS.length - 1 ? (
                 <button
                   onClick={handleNext}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.5rem',
-                    padding: '0.85rem 1.8rem',
+                    padding: '0.8rem 1.6rem',
                     borderRadius: '999px',
                     background: 'linear-gradient(135deg, #d9b36b, #c8973f)',
                     color: '#121017',
                     fontWeight: 700,
-                    fontSize: '0.95rem',
-                    boxShadow: '0 4px 20px rgba(217, 179, 107, 0.35)',
-                    cursor: 'pointer'
+                    fontSize: '0.92rem',
+                    boxShadow: '0 4px 15px rgba(217, 179, 107, 0.35)',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
                   }}
                 >
-                  <span>{currentIdx < QUIZ_QUESTIONS.length - 1 ? 'Câu tiếp theo' : 'Xem kết quả'}</span>
+                  <span>Câu tiếp theo</span>
                   <ArrowRight size={18} />
                 </button>
-              </div>
-            )}
+              ) : (
+                <button
+                  onClick={handleSubmit}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.6rem',
+                    padding: '0.85rem 2rem',
+                    borderRadius: '999px',
+                    background: answeredCount === QUESTIONS.length
+                      ? 'linear-gradient(135deg, #34d399, #10b981)'
+                      : 'linear-gradient(135deg, #eab308, #ca8a04)',
+                    color: answeredCount === QUESTIONS.length ? '#062b1e' : '#1a1402',
+                    fontWeight: 800,
+                    fontSize: '0.96rem',
+                    boxShadow: answeredCount === QUESTIONS.length
+                      ? '0 6px 20px rgba(52, 211, 153, 0.4)'
+                      : '0 4px 15px rgba(234, 179, 8, 0.3)',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <Send size={18} />
+                  <span>Hoàn thành & Nộp bài</span>
+                </button>
+              )}
+            </div>
           </div>
         ) : (
-          /* Result Summary Screen */
-          <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
-            <div
-              style={{
-                width: '84px',
-                height: '84px',
-                borderRadius: '50%',
-                background: score >= 6 ? 'linear-gradient(135deg, #d9b36b, #c8973f)' : 'rgba(255, 255, 255, 0.1)',
-                color: score >= 6 ? '#121017' : '#e6c98c',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                margin: '0 auto 1.5rem auto',
-                boxShadow: score >= 6 ? '0 0 40px rgba(217, 179, 107, 0.6)' : 'none'
-              }}
-            >
-              <Trophy size={42} />
+          /* Result & Comprehensive Review Screen (NO Score Display) */
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+              <div
+                style={{
+                  width: '76px',
+                  height: '76px',
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #34d399, #10b981)',
+                  color: '#062b1e',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 1.2rem auto',
+                  boxShadow: '0 0 35px rgba(52, 211, 153, 0.45)'
+                }}
+              >
+                <Check size={40} strokeWidth={3} />
+              </div>
+
+              <h3 className="display" style={{ fontSize: '2rem', fontWeight: 800, color: '#fbf5e6', marginBottom: '0.6rem' }}>
+                Đã Hoàn Thành 5 Câu Hỏi Ôn Tập!
+              </h3>
+
+              <p style={{ maxWidth: '640px', margin: '0 auto', color: '#ded6c5', fontSize: '0.98rem', lineHeight: 1.6 }}>
+                Xem lại toàn bộ kết quả lựa chọn của bạn và phần giải thích khoa học chi tiết cho từng câu dưới đây:
+              </p>
             </div>
 
-            <h3 className="display" style={{ fontSize: '2rem', fontWeight: 800, color: '#fbf5e6', marginBottom: '0.5rem' }}>
-              {score >= 7 ? 'Xuất Sắc! Điểm Tuyệt Đối' : score >= 5 ? 'Làm Tốt Lắm!' : 'Cố Lên Nhé! Hãy Ôn Lại'}
-            </h3>
+            {/* Questions Review List */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.8rem', marginBottom: '2.5rem' }}>
+              {QUESTIONS.map((q, qIdx) => {
+                const userChoice = userAnswers[qIdx];
+                const isCorrect = userChoice === q.correctAnswer;
 
-            <p style={{ fontSize: '1.2rem', color: '#ded6c5', marginBottom: '1.5rem' }}>
-              Bạn đã trả lời đúng <strong style={{ color: '#d9b36b', fontSize: '1.5rem' }}>{score}</strong> / {QUIZ_QUESTIONS.length} câu hỏi.
-            </p>
+                return (
+                  <div
+                    key={q.id}
+                    style={{
+                      background: 'rgba(18, 16, 23, 0.85)',
+                      borderRadius: '14px',
+                      padding: '1.6rem 1.8rem',
+                      border: isCorrect ? '1px solid rgba(52, 211, 153, 0.35)' : '1px solid rgba(217, 179, 107, 0.25)'
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem' }}>
+                      <span
+                        style={{
+                          fontSize: '0.82rem',
+                          fontWeight: 700,
+                          color: '#d9b36b',
+                          background: 'rgba(217, 179, 107, 0.12)',
+                          padding: '0.2rem 0.7rem',
+                          borderRadius: '999px'
+                        }}
+                      >
+                        CÂU {qIdx + 1}
+                      </span>
 
-            <p style={{ maxWidth: '540px', margin: '0 auto 2.5rem auto', color: '#b8b0a0', fontSize: '0.92rem', lineHeight: 1.6 }}>
-              {score >= 6
-                ? 'Bạn đã nắm rất vững kiến thức về Cơ cấu xã hội - giai cấp và 3 nội dung Liên minh!'
-                : 'Hãy xem lại các nội dung trên trang này để củng cố kiến thức nhé!'}
-            </p>
+                      {userChoice !== null ? (
+                        isCorrect ? (
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#34d399', fontSize: '0.88rem', fontWeight: 600 }}>
+                            <CheckCircle2 size={18} /> Chính xác
+                          </span>
+                        ) : (
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#ff9a8d', fontSize: '0.88rem', fontWeight: 600 }}>
+                            <XCircle size={18} /> Chưa chính xác
+                          </span>
+                        )
+                      ) : (
+                        <span style={{ color: '#8a8377', fontSize: '0.85rem' }}>Chưa chọn đáp án</span>
+                      )}
+                    </div>
 
-            <button
-              onClick={handleRestart}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.55rem',
-                padding: '0.85rem 2rem',
-                borderRadius: '999px',
-                background: 'linear-gradient(135deg, #d9b36b, #c8973f)',
-                color: '#121017',
-                fontWeight: 700,
-                fontSize: '0.95rem',
-                cursor: 'pointer'
-              }}
-            >
-              <RotateCcw size={18} />
-              <span>Làm lại từ đầu</span>
-            </button>
+                    <h4 style={{ fontSize: '1.05rem', color: '#fbf5e6', lineHeight: 1.5, marginBottom: '1.2rem', fontWeight: 600 }}>
+                      {q.question}
+                    </h4>
+
+                    {/* Options status */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', marginBottom: '1.2rem' }}>
+                      {q.options.map((opt, optIdx) => {
+                        const isUserAnswer = userChoice === optIdx;
+                        const isCorrectOption = optIdx === q.correctAnswer;
+
+                        let optBg = 'rgba(255, 255, 255, 0.02)';
+                        let optBorder = '1px solid rgba(255, 255, 255, 0.06)';
+                        let optColor = '#b8b0a0';
+
+                        if (isCorrectOption) {
+                          optBg = 'rgba(52, 211, 153, 0.12)';
+                          optBorder = '1px solid rgba(52, 211, 153, 0.4)';
+                          optColor = '#ffffff';
+                        } else if (isUserAnswer && !isCorrectOption) {
+                          optBg = 'rgba(181, 64, 58, 0.15)';
+                          optBorder = '1px solid rgba(181, 64, 58, 0.4)';
+                          optColor = '#ff9a8d';
+                        }
+
+                        return (
+                          <div
+                            key={optIdx}
+                            style={{
+                              padding: '0.8rem 1.1rem',
+                              borderRadius: '8px',
+                              background: optBg,
+                              border: optBorder,
+                              color: optColor,
+                              fontSize: '0.92rem',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'space-between'
+                            }}
+                          >
+                            <span>{opt}</span>
+                            {isCorrectOption && (
+                              <span style={{ fontSize: '0.78rem', color: '#34d399', fontWeight: 700 }}>
+                                (Đáp án đúng)
+                              </span>
+                            )}
+                            {isUserAnswer && !isCorrectOption && (
+                              <span style={{ fontSize: '0.78rem', color: '#ff9a8d', fontWeight: 600 }}>
+                                (Lựa chọn của bạn)
+                              </span>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Explanation */}
+                    <div
+                      style={{
+                        background: 'rgba(217, 179, 107, 0.06)',
+                        borderRadius: '8px',
+                        padding: '0.9rem 1.2rem',
+                        borderLeft: '3px solid #d9b36b',
+                        fontSize: '0.88rem',
+                        color: '#ded6c5',
+                        lineHeight: 1.55
+                      }}
+                    >
+                      <strong style={{ color: '#f4e6c3' }}>Giải thích:</strong> {q.explanation}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Restart Button */}
+            <div style={{ textAlign: 'center' }}>
+              <button
+                onClick={handleRestart}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.55rem',
+                  padding: '0.85rem 2.2rem',
+                  borderRadius: '999px',
+                  background: 'linear-gradient(135deg, #d9b36b, #c8973f)',
+                  color: '#121017',
+                  fontWeight: 700,
+                  fontSize: '0.96rem',
+                  boxShadow: '0 4px 20px rgba(217, 179, 107, 0.35)',
+                  cursor: 'pointer'
+                }}
+              >
+                <RotateCcw size={18} />
+                <span>Làm lại bài trắc nghiệm</span>
+              </button>
+            </div>
           </div>
         )}
       </div>
     </section>
   );
 };
+
+export default QuizArenaSection;

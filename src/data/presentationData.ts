@@ -810,9 +810,9 @@ export const PRESENTATION_SLIDES: Slide[] = [
     speaker: 'Phạm Minh D',
     speakerRole: 'Điều hành Minigame',
     duration: '3 phút',
-    script: 'Để buổi thuyết trình thêm phần sôi nổi, nhóm em xin kính mời Thầy Cô và các bạn sinh viên cùng tham gia Minigame Trắc nghiệm ngắn gồm 8 câu hỏi bám sát kiến thức cốt lõi. Các bạn có thể trực tiếp chọn đáp án trên màn hình và xem ngay giải thích học thuật nhé!',
+    script: 'Để buổi thuyết trình thêm phần sôi nổi, nhóm em xin kính mời Thầy Cô và các bạn sinh viên cùng tham gia Minigame Trắc nghiệm ngắn gồm 5 câu hỏi bám sát kiến thức cốt lõi. Các bạn có thể trực tiếp chọn đáp án trên màn hình và xem ngay giải thích học thuật nhé!',
     keyPoints: [
-      '8 câu hỏi trắc nghiệm sát với đề thi kết thúc học phần MLN131.',
+      '5 câu hỏi trắc nghiệm sát với đề thi kết thúc học phần MLN131.',
       'Tích hợp chấm điểm tức thì, hiệu ứng âm thanh và giải thích khoa học.',
       'Tạo không khí tương tác sôi nổi giữa người thuyết trình và người nghe.'
     ]
