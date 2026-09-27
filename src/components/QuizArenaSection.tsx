@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { QUIZ_QUESTIONS, QuizQuestion } from '../data/presentationData';
 import { CheckCircle2, XCircle, RotateCcw, ArrowRight, ArrowLeft, Send, Check, AlertTriangle } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { useTheme } from '../context/ThemeContext';
 
 const QUESTIONS: QuizQuestion[] = QUIZ_QUESTIONS.slice(0, 5);
 
@@ -10,6 +11,7 @@ export const QuizArenaSection: React.FC = () => {
   const [userAnswers, setUserAnswers] = useState<(number | null)[]>(new Array(QUESTIONS.length).fill(null));
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [validationError, setValidationError] = useState<string | null>(null);
+  const { isLight } = useTheme();
 
   const question: QuizQuestion = QUESTIONS[currentIdx];
   const answeredCount = userAnswers.filter(ans => ans !== null).length;
@@ -97,7 +99,8 @@ export const QuizArenaSection: React.FC = () => {
             fontSize: 'clamp(2rem, 3.8vw, 2.9rem)',
             fontWeight: 700,
             marginBottom: '1rem',
-            lineHeight: 1.25
+            lineHeight: 1.25,
+            color: isLight ? '#0f172a' : '#fbf5e6'
           }}
         >
           Đấu Trường Trắc Nghiệm <span className="text-gold-grad">MLN131</span>
@@ -106,7 +109,7 @@ export const QuizArenaSection: React.FC = () => {
         <p
           style={{
             fontSize: '1.05rem',
-            color: '#b8b0a0',
+            color: isLight ? '#475569' : '#b8b0a0',
             maxWidth: '720px',
             margin: '0 auto',
             lineHeight: 1.6
@@ -121,8 +124,11 @@ export const QuizArenaSection: React.FC = () => {
         className="glass-card"
         style={{
           padding: 'clamp(1.8rem, 4vw, 3rem)',
-          border: '1.5px solid rgba(217, 179, 107, 0.35)',
-          boxShadow: '0 25px 80px -30px rgba(0,0,0,0.95), 0 0 45px -15px rgba(217, 179, 107, 0.25)',
+          border: isLight ? '1.5px solid rgba(217, 179, 107, 0.35)' : '1.5px solid rgba(217, 179, 107, 0.35)',
+          background: isLight ? '#ffffff' : undefined,
+          boxShadow: isLight
+            ? '0 10px 30px -5px rgba(0,0,0,0.06), 0 0 25px -10px rgba(217, 179, 107, 0.2)'
+            : '0 25px 80px -30px rgba(0,0,0,0.95), 0 0 45px -15px rgba(217, 179, 107, 0.25)',
           position: 'relative',
           overflow: 'hidden'
         }}
@@ -138,7 +144,7 @@ export const QuizArenaSection: React.FC = () => {
                 flexWrap: 'wrap',
                 gap: '1rem',
                 marginBottom: '1.8rem',
-                borderBottom: '1px solid rgba(217, 179, 107, 0.15)',
+                borderBottom: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.15)',
                 paddingBottom: '1.2rem'
               }}
             >
@@ -156,8 +162,8 @@ export const QuizArenaSection: React.FC = () => {
                 >
                   CÂU {currentIdx + 1} / {QUESTIONS.length}
                 </span>
-                <span style={{ fontSize: '0.86rem', color: '#b8b0a0' }}>
-                  Đã chọn: <strong style={{ color: answeredCount === QUESTIONS.length ? '#34d399' : '#d9b36b' }}>{answeredCount}</strong>/{QUESTIONS.length}
+                <span style={{ fontSize: '0.86rem', color: isLight ? '#64748b' : '#b8b0a0' }}>
+                  Đã chọn: <strong style={{ color: answeredCount === QUESTIONS.length ? '#10b981' : (isLight ? '#b45309' : '#d9b36b') }}>{answeredCount}</strong>/{QUESTIONS.length}
                 </span>
               </div>
 
@@ -168,25 +174,25 @@ export const QuizArenaSection: React.FC = () => {
                   const hasAnswered = userAnswers[i] !== null;
                   const isMissingAlert = validationError !== null && !hasAnswered;
 
-                  let btnBorder = '1px solid rgba(255, 255, 255, 0.12)';
-                  let btnBg = 'rgba(255, 255, 255, 0.03)';
-                  let btnColor = '#7a7368';
+                  let btnBorder = isLight ? '1.5px solid #cbd5e1' : '1px solid rgba(255, 255, 255, 0.12)';
+                  let btnBg = isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.03)';
+                  let btnColor = isLight ? '#64748b' : '#7a7368';
                   let btnShadow = 'none';
 
                   if (isCurrent) {
-                    btnBorder = '2px solid #d9b36b';
+                    btnBorder = isLight ? '2px solid #ca8a04' : '2px solid #d9b36b';
                     btnBg = 'linear-gradient(135deg, #d9b36b, #b88628)';
                     btnColor = '#121017';
-                    btnShadow = '0 0 15px rgba(217, 179, 107, 0.5)';
+                    btnShadow = isLight ? '0 2px 10px rgba(202, 138, 4, 0.35)' : '0 0 15px rgba(217, 179, 107, 0.5)';
                   } else if (isMissingAlert) {
                     btnBorder = '2px solid #ef4444';
-                    btnBg = 'rgba(239, 68, 68, 0.2)';
-                    btnColor = '#ff9a8d';
-                    btnShadow = '0 0 10px rgba(239, 68, 68, 0.4)';
+                    btnBg = isLight ? 'rgba(239, 68, 68, 0.15)' : 'rgba(239, 68, 68, 0.2)';
+                    btnColor = isLight ? '#b91c1c' : '#ff9a8d';
+                    btnShadow = '0 0 10px rgba(239, 68, 68, 0.3)';
                   } else if (hasAnswered) {
-                    btnBorder = '1.5px solid rgba(217, 179, 107, 0.5)';
-                    btnBg = 'rgba(217, 179, 107, 0.18)';
-                    btnColor = '#f4e6c3';
+                    btnBorder = isLight ? '1.5px solid #ca8a04' : '1.5px solid rgba(217, 179, 107, 0.5)';
+                    btnBg = isLight ? 'rgba(254, 240, 138, 0.35)' : 'rgba(217, 179, 107, 0.18)';
+                    btnColor = isLight ? '#854d0e' : '#f4e6c3';
                   }
 
                   return (
@@ -227,7 +233,7 @@ export const QuizArenaSection: React.FC = () => {
               style={{
                 fontSize: 'clamp(1.25rem, 2.5vw, 1.55rem)',
                 fontWeight: 700,
-                color: '#fbf5e6',
+                color: isLight ? '#0f172a' : '#fbf5e6',
                 lineHeight: 1.45,
                 marginBottom: '2rem'
               }}
@@ -248,12 +254,14 @@ export const QuizArenaSection: React.FC = () => {
                 const isSelected = userAnswers[currentIdx] === idx;
 
                 const borderStyle = isSelected
-                  ? '2px solid #d9b36b'
-                  : '1px solid rgba(217, 179, 107, 0.2)';
+                  ? (isLight ? '2px solid #ca8a04' : '2px solid #d9b36b')
+                  : (isLight ? '1px solid #cbd5e1' : '1px solid rgba(217, 179, 107, 0.2)');
                 const bgStyle = isSelected
-                  ? 'rgba(217, 179, 107, 0.15)'
-                  : 'rgba(255, 255, 255, 0.02)';
-                const textColor = isSelected ? '#ffffff' : '#ded6c5';
+                  ? (isLight ? 'rgba(254, 240, 138, 0.25)' : 'rgba(217, 179, 107, 0.15)')
+                  : (isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.02)');
+                const textColor = isSelected
+                  ? (isLight ? '#854d0e' : '#ffffff')
+                  : (isLight ? '#1e293b' : '#ded6c5');
 
                 return (
                   <button
@@ -267,13 +275,15 @@ export const QuizArenaSection: React.FC = () => {
                       background: bgStyle,
                       color: textColor,
                       fontSize: '0.98rem',
-                      fontWeight: isSelected ? 600 : 400,
+                      fontWeight: isSelected ? 700 : 400,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
                       cursor: 'pointer',
                       transition: 'all 0.2s ease',
-                      boxShadow: isSelected ? '0 4px 15px rgba(217, 179, 107, 0.18)' : 'none'
+                      boxShadow: isSelected
+                        ? (isLight ? '0 2px 10px rgba(202, 138, 4, 0.15)' : '0 4px 15px rgba(217, 179, 107, 0.18)')
+                        : 'none'
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
@@ -282,15 +292,17 @@ export const QuizArenaSection: React.FC = () => {
                           width: '20px',
                           height: '20px',
                           borderRadius: '50%',
-                          border: isSelected ? '2px solid #d9b36b' : '1.5px solid rgba(217, 179, 107, 0.4)',
+                          border: isSelected
+                            ? (isLight ? '2px solid #ca8a04' : '2px solid #d9b36b')
+                            : (isLight ? '1.5px solid #94a3b8' : '1.5px solid rgba(217, 179, 107, 0.4)'),
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          background: isSelected ? '#d9b36b' : 'transparent',
+                          background: isSelected ? (isLight ? '#ca8a04' : '#d9b36b') : 'transparent',
                           flexShrink: 0
                         }}
                       >
-                        {isSelected && <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#121017' }} />}
+                        {isSelected && <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: isLight ? '#ffffff' : '#121017' }} />}
                       </div>
                       <span>{opt}</span>
                     </div>
@@ -299,11 +311,11 @@ export const QuizArenaSection: React.FC = () => {
                       <span
                         style={{
                           fontSize: '0.78rem',
-                          color: '#d9b36b',
-                          background: 'rgba(217, 179, 107, 0.12)',
+                          color: isLight ? '#854d0e' : '#d9b36b',
+                          background: isLight ? 'rgba(217, 179, 107, 0.2)' : 'rgba(217, 179, 107, 0.12)',
                           padding: '0.2rem 0.6rem',
                           borderRadius: '999px',
-                          border: '1px solid rgba(217, 179, 107, 0.3)'
+                          border: isLight ? '1px solid rgba(202, 138, 4, 0.35)' : '1px solid rgba(217, 179, 107, 0.3)'
                         }}
                       >
                         Đã chọn
@@ -322,19 +334,19 @@ export const QuizArenaSection: React.FC = () => {
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   gap: '1rem',
-                  background: 'rgba(239, 68, 68, 0.12)',
-                  border: '1.5px solid rgba(239, 68, 68, 0.5)',
+                  background: isLight ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.12)',
+                  border: isLight ? '1.5px solid #ef4444' : '1.5px solid rgba(239, 68, 68, 0.5)',
                   borderRadius: '12px',
                   padding: '1rem 1.4rem',
                   marginBottom: '1.5rem',
-                  color: '#fca5a5',
+                  color: isLight ? '#b91c1c' : '#fca5a5',
                   fontSize: '0.92rem',
-                  boxShadow: '0 4px 20px rgba(239, 68, 68, 0.2)'
+                  boxShadow: '0 4px 20px rgba(239, 68, 68, 0.15)'
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                   <AlertTriangle size={22} color="#ef4444" style={{ flexShrink: 0 }} />
-                  <span style={{ lineHeight: 1.5 }}>{validationError}</span>
+                  <span style={{ lineHeight: 1.5, fontWeight: 500 }}>{validationError}</span>
                 </div>
 
                 {unansweredIndices.length > 0 && (
@@ -368,7 +380,7 @@ export const QuizArenaSection: React.FC = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                borderTop: '1px solid rgba(217, 179, 107, 0.15)',
+                borderTop: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.15)',
                 paddingTop: '1.5rem'
               }}
             >
@@ -382,9 +394,15 @@ export const QuizArenaSection: React.FC = () => {
                   gap: '0.5rem',
                   padding: '0.8rem 1.4rem',
                   borderRadius: '999px',
-                  background: currentIdx === 0 ? 'rgba(255, 255, 255, 0.02)' : 'rgba(255, 255, 255, 0.06)',
-                  color: currentIdx === 0 ? '#635d55' : '#ded6c5',
-                  border: currentIdx === 0 ? '1px solid rgba(255, 255, 255, 0.05)' : '1px solid rgba(217, 179, 107, 0.25)',
+                  background: currentIdx === 0
+                    ? (isLight ? '#f1f5f9' : 'rgba(255, 255, 255, 0.02)')
+                    : (isLight ? '#ffffff' : 'rgba(255, 255, 255, 0.06)'),
+                  color: currentIdx === 0
+                    ? (isLight ? '#94a3b8' : '#635d55')
+                    : (isLight ? '#334155' : '#ded6c5'),
+                  border: currentIdx === 0
+                    ? (isLight ? '1px solid #e2e8f0' : '1px solid rgba(255, 255, 255, 0.05)')
+                    : (isLight ? '1px solid #cbd5e1' : '1px solid rgba(217, 179, 107, 0.25)'),
                   cursor: currentIdx === 0 ? 'not-allowed' : 'pointer',
                   fontWeight: 600,
                   fontSize: '0.92rem',
@@ -427,13 +445,13 @@ export const QuizArenaSection: React.FC = () => {
                     padding: '0.85rem 2rem',
                     borderRadius: '999px',
                     background: answeredCount === QUESTIONS.length
-                      ? 'linear-gradient(135deg, #34d399, #10b981)'
+                      ? 'linear-gradient(135deg, #10b981, #059669)'
                       : 'linear-gradient(135deg, #eab308, #ca8a04)',
-                    color: answeredCount === QUESTIONS.length ? '#062b1e' : '#1a1402',
+                    color: answeredCount === QUESTIONS.length ? '#ffffff' : '#1a1402',
                     fontWeight: 800,
                     fontSize: '0.96rem',
                     boxShadow: answeredCount === QUESTIONS.length
-                      ? '0 6px 20px rgba(52, 211, 153, 0.4)'
+                      ? '0 6px 20px rgba(16, 185, 129, 0.4)'
                       : '0 4px 15px rgba(234, 179, 8, 0.3)',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease'
@@ -454,23 +472,23 @@ export const QuizArenaSection: React.FC = () => {
                   width: '76px',
                   height: '76px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #34d399, #10b981)',
-                  color: '#062b1e',
+                  background: 'linear-gradient(135deg, #10b981, #059669)',
+                  color: '#ffffff',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   margin: '0 auto 1.2rem auto',
-                  boxShadow: '0 0 35px rgba(52, 211, 153, 0.45)'
+                  boxShadow: '0 0 35px rgba(16, 185, 129, 0.45)'
                 }}
               >
                 <Check size={40} strokeWidth={3} />
               </div>
 
-              <h3 className="display" style={{ fontSize: '2rem', fontWeight: 800, color: '#fbf5e6', marginBottom: '0.6rem' }}>
+              <h3 className="display" style={{ fontSize: '2rem', fontWeight: 800, color: isLight ? '#0f172a' : '#fbf5e6', marginBottom: '0.6rem' }}>
                 Đã Hoàn Thành 5 Câu Hỏi Ôn Tập!
               </h3>
 
-              <p style={{ maxWidth: '640px', margin: '0 auto', color: '#ded6c5', fontSize: '0.98rem', lineHeight: 1.6 }}>
+              <p style={{ maxWidth: '640px', margin: '0 auto', color: isLight ? '#475569' : '#ded6c5', fontSize: '0.98rem', lineHeight: 1.6 }}>
                 Xem lại toàn bộ kết quả lựa chọn của bạn và phần giải thích khoa học chi tiết cho từng câu dưới đây:
               </p>
             </div>
@@ -485,10 +503,12 @@ export const QuizArenaSection: React.FC = () => {
                   <div
                     key={q.id}
                     style={{
-                      background: 'rgba(18, 16, 23, 0.85)',
+                      background: isLight ? '#f8fafc' : 'rgba(18, 16, 23, 0.85)',
                       borderRadius: '14px',
                       padding: '1.6rem 1.8rem',
-                      border: isCorrect ? '1px solid rgba(52, 211, 153, 0.35)' : '1px solid rgba(217, 179, 107, 0.25)'
+                      border: isCorrect
+                        ? (isLight ? '1.5px solid #10b981' : '1px solid rgba(52, 211, 153, 0.35)')
+                        : (isLight ? '1.5px solid #ef4444' : '1px solid rgba(217, 179, 107, 0.25)')
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem' }}>
@@ -496,8 +516,8 @@ export const QuizArenaSection: React.FC = () => {
                         style={{
                           fontSize: '0.82rem',
                           fontWeight: 700,
-                          color: '#d9b36b',
-                          background: 'rgba(217, 179, 107, 0.12)',
+                          color: isLight ? '#854d0e' : '#d9b36b',
+                          background: isLight ? 'rgba(217, 179, 107, 0.2)' : 'rgba(217, 179, 107, 0.12)',
                           padding: '0.2rem 0.7rem',
                           borderRadius: '999px'
                         }}
@@ -507,11 +527,11 @@ export const QuizArenaSection: React.FC = () => {
 
                       {userChoice !== null ? (
                         isCorrect ? (
-                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#34d399', fontSize: '0.88rem', fontWeight: 600 }}>
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: isLight ? '#059669' : '#34d399', fontSize: '0.88rem', fontWeight: 600 }}>
                             <CheckCircle2 size={18} /> Chính xác
                           </span>
                         ) : (
-                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#ff9a8d', fontSize: '0.88rem', fontWeight: 600 }}>
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: isLight ? '#dc2626' : '#ff9a8d', fontSize: '0.88rem', fontWeight: 600 }}>
                             <XCircle size={18} /> Chưa chính xác
                           </span>
                         )
@@ -520,7 +540,7 @@ export const QuizArenaSection: React.FC = () => {
                       )}
                     </div>
 
-                    <h4 style={{ fontSize: '1.05rem', color: '#fbf5e6', lineHeight: 1.5, marginBottom: '1.2rem', fontWeight: 600 }}>
+                    <h4 style={{ fontSize: '1.05rem', color: isLight ? '#0f172a' : '#fbf5e6', lineHeight: 1.5, marginBottom: '1.2rem', fontWeight: 700 }}>
                       {q.question}
                     </h4>
 
@@ -530,18 +550,18 @@ export const QuizArenaSection: React.FC = () => {
                         const isUserAnswer = userChoice === optIdx;
                         const isCorrectOption = optIdx === q.correctAnswer;
 
-                        let optBg = 'rgba(255, 255, 255, 0.02)';
-                        let optBorder = '1px solid rgba(255, 255, 255, 0.06)';
-                        let optColor = '#b8b0a0';
+                        let optBg = isLight ? '#ffffff' : 'rgba(255, 255, 255, 0.02)';
+                        let optBorder = isLight ? '1px solid #e2e8f0' : '1px solid rgba(255, 255, 255, 0.06)';
+                        let optColor = isLight ? '#475569' : '#b8b0a0';
 
                         if (isCorrectOption) {
-                          optBg = 'rgba(52, 211, 153, 0.12)';
-                          optBorder = '1px solid rgba(52, 211, 153, 0.4)';
-                          optColor = '#ffffff';
+                          optBg = isLight ? 'rgba(16, 185, 129, 0.15)' : 'rgba(52, 211, 153, 0.12)';
+                          optBorder = isLight ? '1.5px solid #10b981' : '1px solid rgba(52, 211, 153, 0.4)';
+                          optColor = isLight ? '#065f46' : '#ffffff';
                         } else if (isUserAnswer && !isCorrectOption) {
-                          optBg = 'rgba(181, 64, 58, 0.15)';
-                          optBorder = '1px solid rgba(181, 64, 58, 0.4)';
-                          optColor = '#ff9a8d';
+                          optBg = isLight ? 'rgba(239, 68, 68, 0.12)' : 'rgba(181, 64, 58, 0.15)';
+                          optBorder = isLight ? '1.5px solid #ef4444' : '1px solid rgba(181, 64, 58, 0.4)';
+                          optColor = isLight ? '#b91c1c' : '#ff9a8d';
                         }
 
                         return (
@@ -556,17 +576,18 @@ export const QuizArenaSection: React.FC = () => {
                               fontSize: '0.92rem',
                               display: 'flex',
                               alignItems: 'center',
-                              justifyContent: 'space-between'
+                              justifyContent: 'space-between',
+                              fontWeight: isCorrectOption || isUserAnswer ? 600 : 400
                             }}
                           >
                             <span>{opt}</span>
                             {isCorrectOption && (
-                              <span style={{ fontSize: '0.78rem', color: '#34d399', fontWeight: 700 }}>
+                              <span style={{ fontSize: '0.78rem', color: isLight ? '#059669' : '#34d399', fontWeight: 700 }}>
                                 (Đáp án đúng)
                               </span>
                             )}
                             {isUserAnswer && !isCorrectOption && (
-                              <span style={{ fontSize: '0.78rem', color: '#ff9a8d', fontWeight: 600 }}>
+                              <span style={{ fontSize: '0.78rem', color: isLight ? '#dc2626' : '#ff9a8d', fontWeight: 600 }}>
                                 (Lựa chọn của bạn)
                               </span>
                             )}
@@ -578,16 +599,16 @@ export const QuizArenaSection: React.FC = () => {
                     {/* Explanation */}
                     <div
                       style={{
-                        background: 'rgba(217, 179, 107, 0.06)',
+                        background: isLight ? 'rgba(217, 179, 107, 0.12)' : 'rgba(217, 179, 107, 0.06)',
                         borderRadius: '8px',
                         padding: '0.9rem 1.2rem',
                         borderLeft: '3px solid #d9b36b',
                         fontSize: '0.88rem',
-                        color: '#ded6c5',
+                        color: isLight ? '#334155' : '#ded6c5',
                         lineHeight: 1.55
                       }}
                     >
-                      <strong style={{ color: '#f4e6c3' }}>Giải thích:</strong> {q.explanation}
+                      <strong style={{ color: isLight ? '#854d0e' : '#f4e6c3' }}>Giải thích:</strong> {q.explanation}
                     </div>
                   </div>
                 );

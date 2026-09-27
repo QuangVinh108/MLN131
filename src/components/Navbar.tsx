@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { NAV_ITEMS, PRESENTATION_CONFIG } from '../data/presentationData';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 export const Navbar: React.FC = () => {
+  const { isLight, toggleTheme } = useTheme();
   const [activeSection, setActiveSection] = useState('hero');
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -51,13 +53,29 @@ export const Navbar: React.FC = () => {
         width: '100%',
         zIndex: 50,
         transition: 'all 0.3s ease',
-        background: scrolled
-          ? 'linear-gradient(180deg, rgba(14, 12, 19, 0.96) 0%, rgba(18, 16, 23, 0.94) 100%)'
-          : 'linear-gradient(180deg, rgba(14, 12, 19, 0.85) 0%, rgba(18, 16, 23, 0.4) 100%)',
+        background: isLight
+          ? scrolled
+            ? 'linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%)'
+            : 'linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.8) 100%)'
+          : scrolled
+            ? 'linear-gradient(180deg, rgba(14, 12, 19, 0.96) 0%, rgba(18, 16, 23, 0.94) 100%)'
+            : 'linear-gradient(180deg, rgba(14, 12, 19, 0.85) 0%, rgba(18, 16, 23, 0.4) 100%)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
-        borderBottom: scrolled ? '1px solid rgba(217, 179, 107, 0.22)' : '1px solid rgba(217, 179, 107, 0.1)',
-        boxShadow: scrolled ? '0 10px 30px -10px rgba(0,0,0,0.8)' : 'none'
+        borderBottom: isLight
+          ? scrolled
+            ? '1px solid rgba(217, 179, 107, 0.35)'
+            : '1px solid rgba(217, 179, 107, 0.2)'
+          : scrolled
+            ? '1px solid rgba(217, 179, 107, 0.22)'
+            : '1px solid rgba(217, 179, 107, 0.1)',
+        boxShadow: isLight
+          ? scrolled
+            ? '0 6px 25px rgba(0,0,0,0.06)'
+            : 'none'
+          : scrolled
+            ? '0 10px 30px -10px rgba(0,0,0,0.8)'
+            : 'none'
       }}
     >
       <div
@@ -92,7 +110,7 @@ export const Navbar: React.FC = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 0 15px rgba(217, 179, 107, 0.3)'
+              boxShadow: isLight ? '0 2px 10px rgba(181, 64, 58, 0.25)' : '0 0 15px rgba(217, 179, 107, 0.3)'
             }}
           >
             {/* Hammer, Gear & Lotus Emblem */}
@@ -112,8 +130,10 @@ export const Navbar: React.FC = () => {
               }}
             >
               <span className="text-gold-grad">{PRESENTATION_CONFIG.subjectCode}</span>
-              <span style={{ color: '#f3ede0', margin: '0 0.35rem', opacity: 0.6 }}>×</span>
-              <span style={{ color: '#f3ede0', fontWeight: 600, fontSize: '0.95rem' }}>LIÊN MINH GIAI CẤP</span>
+              <span style={{ color: isLight ? '#64748b' : '#f3ede0', margin: '0 0.35rem', opacity: 0.6 }}>×</span>
+              <span style={{ color: isLight ? '#0f172a' : '#f3ede0', fontWeight: 600, fontSize: '0.95rem' }}>
+                LIÊN MINH GIAI CẤP
+              </span>
             </div>
           </div>
         </div>
@@ -124,11 +144,11 @@ export const Navbar: React.FC = () => {
             display: 'flex',
             alignItems: 'center',
             gap: '0.25rem',
-            background: 'rgba(255, 255, 255, 0.03)',
+            background: isLight ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.03)',
             padding: '0.3rem 0.45rem',
             borderRadius: '999px',
-            border: '1px solid rgba(217, 179, 107, 0.16)',
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+            border: isLight ? '1px solid rgba(180, 83, 9, 0.22)' : '1px solid rgba(217, 179, 107, 0.16)',
+            boxShadow: isLight ? '0 2px 10px rgba(0, 0, 0, 0.04)' : '0 4px 20px rgba(0, 0, 0, 0.3)',
             flexShrink: 0
           }}
           className="desktop-nav"
@@ -140,9 +160,21 @@ export const Navbar: React.FC = () => {
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
                 style={{
-                  background: isActive ? 'linear-gradient(135deg, rgba(217, 179, 107, 0.28), rgba(200, 151, 63, 0.18))' : 'transparent',
-                  color: isActive ? '#f4e6c3' : '#b8b0a0',
-                  border: isActive ? '1px solid rgba(217, 179, 107, 0.5)' : '1px solid transparent',
+                  background: isActive
+                    ? isLight
+                      ? 'linear-gradient(135deg, #c8973f, #a87a2c)'
+                      : 'linear-gradient(135deg, rgba(217, 179, 107, 0.28), rgba(200, 151, 63, 0.18))'
+                    : 'transparent',
+                  color: isActive
+                    ? '#ffffff'
+                    : isLight
+                      ? '#475569'
+                      : '#b8b0a0',
+                  border: isActive
+                    ? isLight
+                      ? '1px solid #a87a2c'
+                      : '1px solid rgba(217, 179, 107, 0.5)'
+                    : '1px solid transparent',
                   padding: '0.42rem 0.82rem',
                   borderRadius: '999px',
                   fontSize: '0.78rem',
@@ -153,10 +185,16 @@ export const Navbar: React.FC = () => {
                   whiteSpace: 'nowrap'
                 }}
                 onMouseEnter={e => {
-                  if (!isActive) e.currentTarget.style.color = '#f3ede0';
+                  if (!isActive) {
+                    e.currentTarget.style.color = isLight ? '#b45309' : '#f3ede0';
+                    if (isLight) e.currentTarget.style.background = 'rgba(180, 83, 9, 0.06)';
+                  }
                 }}
                 onMouseLeave={e => {
-                  if (!isActive) e.currentTarget.style.color = '#b8b0a0';
+                  if (!isActive) {
+                    e.currentTarget.style.color = isLight ? '#475569' : '#b8b0a0';
+                    if (isLight) e.currentTarget.style.background = 'transparent';
+                  }
                 }}
               >
                 {item.label}
@@ -165,17 +203,57 @@ export const Navbar: React.FC = () => {
           })}
         </nav>
 
-        {/* Right slot: balances left brand to center nav, holds mobile menu button */}
-        <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+        {/* Right slot: balances left brand to center nav, holds theme toggle & mobile menu button */}
+        <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '0.75rem' }}>
+          {/* Theme Toggle Button */}
+          <button
+            type="button"
+            onClick={toggleTheme}
+            title={isLight ? 'Chuyển sang giao diện Tối' : 'Chuyển sang giao diện Sáng'}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.45rem',
+              padding: '0.42rem 0.85rem',
+              borderRadius: '999px',
+              background: isLight ? 'rgba(180, 83, 9, 0.08)' : 'rgba(255, 255, 255, 0.08)',
+              border: isLight ? '1px solid rgba(180, 83, 9, 0.3)' : '1px solid rgba(217, 179, 107, 0.35)',
+              color: isLight ? '#92400e' : '#f4e6c3',
+              fontSize: '0.8rem',
+              fontWeight: 700,
+              cursor: 'pointer',
+              boxShadow: isLight ? '0 2px 8px rgba(180, 83, 9, 0.1)' : '0 2px 8px rgba(0, 0, 0, 0.3)',
+              transition: 'all 0.25s ease'
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateY(-1px)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
+          >
+            {isLight ? (
+              <>
+                <Sun size={16} color="#d97706" />
+                <span style={{ letterSpacing: '0.02em' }}>Sáng</span>
+              </>
+            ) : (
+              <>
+                <Moon size={16} color="#deb65d" />
+                <span style={{ letterSpacing: '0.02em' }}>Tối</span>
+              </>
+            )}
+          </button>
+
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="mobile-nav-toggle"
             style={{
               padding: '0.5rem',
               borderRadius: '8px',
-              background: 'rgba(255, 255, 255, 0.05)',
-              color: '#f4e6c3',
-              border: '1px solid rgba(217, 179, 107, 0.2)'
+              background: isLight ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)',
+              color: isLight ? '#0f172a' : '#f4e6c3',
+              border: isLight ? '1px solid rgba(180, 83, 9, 0.25)' : '1px solid rgba(217, 179, 107, 0.2)'
             }}
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -187,8 +265,8 @@ export const Navbar: React.FC = () => {
       {mobileMenuOpen && (
         <div
           style={{
-            background: 'rgba(18, 16, 23, 0.98)',
-            borderBottom: '1px solid rgba(217, 179, 107, 0.2)',
+            background: isLight ? 'rgba(255, 255, 255, 0.98)' : 'rgba(18, 16, 23, 0.98)',
+            borderBottom: isLight ? '1px solid rgba(180, 83, 9, 0.25)' : '1px solid rgba(217, 179, 107, 0.2)',
             padding: '1rem 1.5rem',
             display: 'flex',
             flexDirection: 'column',
@@ -203,8 +281,18 @@ export const Navbar: React.FC = () => {
                 textAlign: 'left',
                 padding: '0.65rem 1rem',
                 borderRadius: '8px',
-                background: activeSection === item.id ? 'rgba(217, 179, 107, 0.15)' : 'transparent',
-                color: activeSection === item.id ? '#f4e6c3' : '#b8b0a0',
+                background: activeSection === item.id
+                  ? isLight
+                    ? 'rgba(180, 83, 9, 0.12)'
+                    : 'rgba(217, 179, 107, 0.15)'
+                  : 'transparent',
+                color: activeSection === item.id
+                  ? isLight
+                    ? '#92400e'
+                    : '#f4e6c3'
+                  : isLight
+                    ? '#475569'
+                    : '#b8b0a0',
                 fontWeight: 600,
                 fontSize: '0.9rem'
               }}

@@ -1,11 +1,14 @@
 import React from 'react';
 import { HelpCircle, Sparkles, Users, ShieldCheck, BookOpen } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 interface HeroSectionProps {
   onScrollToQuiz: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
+  const { isLight } = useTheme();
+
   const scrollToOverview = () => {
     const overviewEl = document.getElementById('tong-quan');
     overviewEl?.scrollIntoView({ behavior: 'smooth' });
@@ -35,7 +38,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
           transform: 'translateX(-50%)',
           width: '720px',
           height: '420px',
-          background: 'radial-gradient(ellipse, rgba(217, 179, 107, 0.16) 0%, rgba(181, 64, 58, 0.08) 45%, transparent 70%)',
+          background: isLight
+            ? 'radial-gradient(ellipse, rgba(217, 179, 107, 0.22) 0%, rgba(181, 64, 58, 0.08) 50%, transparent 70%)'
+            : 'radial-gradient(ellipse, rgba(217, 179, 107, 0.16) 0%, rgba(181, 64, 58, 0.08) 45%, transparent 70%)',
           filter: 'blur(70px)',
           pointerEvents: 'none',
           zIndex: 0
@@ -51,7 +56,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
           transform: 'translate(-50%, -50%)',
           width: '680px',
           height: '680px',
-          border: '1px solid rgba(217, 179, 107, 0.08)',
+          border: isLight ? '1px solid rgba(180, 83, 9, 0.12)' : '1px solid rgba(217, 179, 107, 0.08)',
           borderRadius: '50%',
           pointerEvents: 'none',
           zIndex: 0
@@ -65,7 +70,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
           transform: 'translate(-50%, -50%)',
           width: '540px',
           height: '540px',
-          border: '1px dashed rgba(217, 179, 107, 0.06)',
+          border: isLight ? '1px dashed rgba(180, 83, 9, 0.15)' : '1px dashed rgba(217, 179, 107, 0.06)',
           borderRadius: '50%',
           pointerEvents: 'none',
           zIndex: 0
@@ -89,10 +94,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
             gap: '0.6rem',
             padding: '0.45rem 1.2rem',
             borderRadius: '999px',
-            background: 'linear-gradient(135deg, rgba(217, 179, 107, 0.12), rgba(200, 151, 63, 0.06))',
-            border: '1px solid rgba(217, 179, 107, 0.3)',
+            background: isLight
+              ? 'rgba(217, 179, 107, 0.18)'
+              : 'linear-gradient(135deg, rgba(217, 179, 107, 0.12), rgba(200, 151, 63, 0.06))',
+            border: isLight ? '1px solid rgba(180, 83, 9, 0.35)' : '1px solid rgba(217, 179, 107, 0.3)',
             marginBottom: '2rem',
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)'
+            boxShadow: isLight ? '0 2px 10px rgba(180, 83, 9, 0.08)' : '0 4px 20px rgba(0, 0, 0, 0.4)'
           }}
         >
           <span
@@ -109,7 +116,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
             className="eyebrow"
             style={{
               fontSize: '0.78rem',
-              color: '#e6c98c',
+              color: isLight ? '#92400e' : '#e6c98c',
               letterSpacing: '0.22em'
             }}
           >
@@ -126,12 +133,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
             lineHeight: 1.15,
             marginBottom: '2.5rem',
             letterSpacing: '-0.01em',
-            textShadow: '0 2px 25px rgba(0, 0, 0, 0.7)'
+            textShadow: isLight ? 'none' : '0 2px 25px rgba(0, 0, 0, 0.7)'
           }}
         >
           <span className="text-gold-grad">Cơ Cấu Xã Hội - Giai Cấp</span>
           <br />
-          <span style={{ color: '#f3ede0', fontWeight: 600, fontSize: '0.9em' }}>
+          <span style={{ color: isLight ? '#0f172a' : '#f3ede0', fontWeight: 600, fontSize: '0.9em' }}>
             & Liên Minh Giai Cấp, Tầng Lớp
           </span>
         </h1>
@@ -158,10 +165,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
               borderRadius: '999px',
               fontSize: '1rem',
               fontWeight: 700,
-              background: 'linear-gradient(135deg, #f4e6c3 0%, #d9b36b 50%, #b88628 100%)',
+              background: 'linear-gradient(135deg, #deb65d 0%, #c8973f 50%, #b8860b 100%)',
               color: '#121017',
-              boxShadow: '0 8px 30px rgba(217, 179, 107, 0.45)',
-              border: '1px solid rgba(255, 255, 255, 0.5)',
+              boxShadow: isLight ? '0 6px 20px rgba(180, 83, 9, 0.35)' : '0 8px 30px rgba(217, 179, 107, 0.45)',
+              border: 'none',
               transform: 'translateY(0)',
               transition: 'all 0.3s ease',
               cursor: 'pointer'
@@ -172,7 +179,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
             }}
             onMouseLeave={e => {
               e.currentTarget.style.transform = 'translateY(0) scale(1)';
-              e.currentTarget.style.boxShadow = '0 8px 30px rgba(217, 179, 107, 0.45)';
+              e.currentTarget.style.boxShadow = isLight ? '0 6px 20px rgba(180, 83, 9, 0.35)' : '0 8px 30px rgba(217, 179, 107, 0.45)';
             }}
           >
             <HelpCircle size={18} color="#121017" />
@@ -191,21 +198,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
               borderRadius: '999px',
               fontSize: '0.98rem',
               fontWeight: 600,
-              color: '#f4e6c3',
-              border: '1px solid rgba(217, 179, 107, 0.35)',
+              color: isLight ? '#0f172a' : '#f4e6c3',
+              border: isLight ? '1px solid rgba(180, 83, 9, 0.35)' : '1px solid rgba(217, 179, 107, 0.35)',
               transition: 'all 0.3s ease',
               cursor: 'pointer'
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.borderColor = 'rgba(217, 179, 107, 0.7)';
-              e.currentTarget.style.background = 'rgba(217, 179, 107, 0.12)';
+              e.currentTarget.style.borderColor = isLight ? '#b45309' : 'rgba(217, 179, 107, 0.7)';
+              e.currentTarget.style.background = isLight ? 'rgba(180, 83, 9, 0.08)' : 'rgba(217, 179, 107, 0.12)';
             }}
             onMouseLeave={e => {
-              e.currentTarget.style.borderColor = 'rgba(217, 179, 107, 0.35)';
-              e.currentTarget.style.background = 'transparent';
+              e.currentTarget.style.borderColor = isLight ? 'rgba(180, 83, 9, 0.35)' : 'rgba(217, 179, 107, 0.35)';
+              e.currentTarget.style.background = isLight ? 'rgba(255, 255, 255, 0.9)' : 'transparent';
             }}
           >
-            <BookOpen size={18} color="#e6c98c" />
+            <BookOpen size={18} color={isLight ? '#b45309' : '#e6c98c'} />
             <span>Nội dung chi tiết</span>
           </button>
         </div>
@@ -234,21 +241,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
               style={{
                 padding: '0.65rem',
                 borderRadius: '10px',
-                background: 'rgba(181, 64, 58, 0.2)',
-                border: '1px solid rgba(181, 64, 58, 0.35)',
-                color: '#ff9a8d'
+                background: isLight ? 'rgba(181, 64, 58, 0.12)' : 'rgba(181, 64, 58, 0.2)',
+                border: isLight ? '1px solid rgba(181, 64, 58, 0.3)' : '1px solid rgba(181, 64, 58, 0.35)',
+                color: isLight ? '#b5403a' : '#ff9a8d'
               }}
             >
               <Users size={22} />
             </div>
             <div>
-              <div style={{ fontSize: '0.78rem', color: '#b8b0a0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <div style={{ fontSize: '0.78rem', color: isLight ? '#64748b' : '#b8b0a0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 Cơ Cấu Giai Tầng
               </div>
-              <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#f4e6c3', margin: '0.2rem 0' }}>
+              <div style={{ fontSize: '1.1rem', fontWeight: 700, color: isLight ? '#0f172a' : '#f4e6c3', margin: '0.2rem 0' }}>
                 5 Giai Tầng Cốt Lõi
               </div>
-              <div style={{ fontSize: '0.82rem', color: '#b8b0a0' }}>
+              <div style={{ fontSize: '0.82rem', color: isLight ? '#475569' : '#b8b0a0' }}>
                 Công nhân, Nông dân, Trí thức, Doanh nhân, Phụ nữ & Trẻ
               </div>
             </div>
@@ -268,21 +275,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
               style={{
                 padding: '0.65rem',
                 borderRadius: '10px',
-                background: 'rgba(217, 179, 107, 0.2)',
-                border: '1px solid rgba(217, 179, 107, 0.35)',
-                color: '#e6c98c'
+                background: isLight ? 'rgba(180, 83, 9, 0.12)' : 'rgba(217, 179, 107, 0.2)',
+                border: isLight ? '1px solid rgba(180, 83, 9, 0.3)' : '1px solid rgba(217, 179, 107, 0.35)',
+                color: isLight ? '#b45309' : '#e6c98c'
               }}
             >
               <ShieldCheck size={22} />
             </div>
             <div>
-              <div style={{ fontSize: '0.78rem', color: '#b8b0a0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <div style={{ fontSize: '0.78rem', color: isLight ? '#64748b' : '#b8b0a0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 Khối Đại Đoàn Kết
               </div>
-              <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#f4e6c3', margin: '0.2rem 0' }}>
+              <div style={{ fontSize: '1.1rem', fontWeight: 700, color: isLight ? '#0f172a' : '#f4e6c3', margin: '0.2rem 0' }}>
                 3 Trụ Cột Nội Dung
               </div>
-              <div style={{ fontSize: '0.82rem', color: '#b8b0a0' }}>
+              <div style={{ fontSize: '0.82rem', color: isLight ? '#475569' : '#b8b0a0' }}>
                 Kinh tế (Quyết định) · Chính trị · Văn hóa - Xã hội
               </div>
             </div>
@@ -302,21 +309,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
               style={{
                 padding: '0.65rem',
                 borderRadius: '10px',
-                background: 'rgba(52, 211, 153, 0.2)',
-                border: '1px solid rgba(52, 211, 153, 0.35)',
-                color: '#34d399'
+                background: isLight ? 'rgba(5, 150, 105, 0.12)' : 'rgba(52, 211, 153, 0.2)',
+                border: isLight ? '1px solid rgba(5, 150, 105, 0.3)' : '1px solid rgba(52, 211, 153, 0.35)',
+                color: isLight ? '#059669' : '#34d399'
               }}
             >
               <Sparkles size={22} />
             </div>
             <div>
-              <div style={{ fontSize: '0.78rem', color: '#b8b0a0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <div style={{ fontSize: '0.78rem', color: isLight ? '#64748b' : '#b8b0a0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 Thực tiễn sinh động
               </div>
-              <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#f4e6c3', margin: '0.2rem 0' }}>
+              <div style={{ fontSize: '1.1rem', fontWeight: 700, color: isLight ? '#0f172a' : '#f4e6c3', margin: '0.2rem 0' }}>
                 Mô Hình "Liên Kết 4 Nhà"
               </div>
-              <div style={{ fontSize: '0.82rem', color: '#b8b0a0' }}>
+              <div style={{ fontSize: '0.82rem', color: isLight ? '#475569' : '#b8b0a0' }}>
                 Nhà nước · Nhà khoa học · Doanh nghiệp · Nhà nông
               </div>
             </div>

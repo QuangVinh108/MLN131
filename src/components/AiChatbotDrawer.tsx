@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FAQ_DATA, FAQItem } from '../data/presentationData';
-import { Bot, X, Send, Sparkles, MessageSquare, BookOpen, User, HelpCircle } from 'lucide-react';
+import { Bot, X, Send, Sparkles } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 interface AiChatbotDrawerProps {
   isOpen: boolean;
@@ -15,6 +16,7 @@ interface Message {
 }
 
 export const AiChatbotDrawer: React.FC<AiChatbotDrawerProps> = ({ isOpen, onClose }) => {
+  const { isLight } = useTheme();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'm-1',
@@ -78,7 +80,7 @@ Nếu cần thêm chi tiết, bạn có thể tham khảo thêm trong Giáo trì
         position: 'fixed',
         inset: 0,
         zIndex: 2000,
-        background: 'rgba(0, 0, 0, 0.75)',
+        background: 'rgba(0, 0, 0, 0.65)',
         backdropFilter: 'blur(8px)',
         display: 'flex',
         justifyContent: 'flex-end'
@@ -90,11 +92,11 @@ Nếu cần thêm chi tiết, bạn có thể tham khảo thêm trong Giáo trì
           width: '100%',
           maxWidth: '480px',
           height: '100%',
-          background: '#121017',
-          borderLeft: '1px solid rgba(217, 179, 107, 0.3)',
+          background: isLight ? '#ffffff' : '#121017',
+          borderLeft: isLight ? '1px solid #cbd5e1' : '1px solid rgba(217, 179, 107, 0.3)',
           display: 'flex',
           flexDirection: 'column',
-          boxShadow: '-10px 0 40px rgba(0, 0, 0, 0.8)',
+          boxShadow: isLight ? '-5px 0 30px rgba(0, 0, 0, 0.15)' : '-10px 0 40px rgba(0, 0, 0, 0.8)',
           animation: 'slideInRight 0.3s ease'
         }}
         onClick={e => e.stopPropagation()}
@@ -103,11 +105,13 @@ Nếu cần thêm chi tiết, bạn có thể tham khảo thêm trong Giáo trì
         <div
           style={{
             padding: '1.2rem 1.5rem',
-            borderBottom: '1px solid rgba(217, 179, 107, 0.2)',
+            borderBottom: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.2)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            background: 'linear-gradient(180deg, rgba(181, 64, 58, 0.25) 0%, rgba(18, 16, 23, 0.95) 100%)'
+            background: isLight
+              ? 'linear-gradient(180deg, rgba(181, 64, 58, 0.12) 0%, #ffffff 100%)'
+              : 'linear-gradient(180deg, rgba(181, 64, 58, 0.25) 0%, rgba(18, 16, 23, 0.95) 100%)'
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
@@ -121,17 +125,17 @@ Nếu cần thêm chi tiết, bạn có thể tham khảo thêm trong Giáo trì
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 15px rgba(181, 64, 58, 0.4)'
+                boxShadow: '0 0 15px rgba(181, 64, 58, 0.3)'
               }}
             >
               <Bot size={22} color="#ffffff" />
             </div>
             <div>
-              <div style={{ fontSize: '1.05rem', fontWeight: 700, color: '#fbf5e6' }}>
+              <div style={{ fontSize: '1.05rem', fontWeight: 700, color: isLight ? '#0f172a' : '#fbf5e6' }}>
                 Trợ Lý AI MLN131
               </div>
-              <div style={{ fontSize: '0.72rem', color: '#e6c98c', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                <Sparkles size={12} color="#d9b36b" />
+              <div style={{ fontSize: '0.72rem', color: isLight ? '#b45309' : '#e6c98c', display: 'flex', alignItems: 'center', gap: '0.3rem', fontWeight: 600 }}>
+                <Sparkles size={12} color={isLight ? '#b45309' : '#d9b36b'} />
                 <span>Kho tri thức Giáo trình Chuẩn</span>
               </div>
             </div>
@@ -142,9 +146,9 @@ Nếu cần thêm chi tiết, bạn có thể tham khảo thêm trong Giáo trì
             style={{
               padding: '0.45rem',
               borderRadius: '8px',
-              background: 'rgba(255, 255, 255, 0.05)',
-              color: '#b8b0a0',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              background: isLight ? '#f1f5f9' : 'rgba(255, 255, 255, 0.05)',
+              color: isLight ? '#475569' : '#b8b0a0',
+              border: isLight ? '1px solid #cbd5e1' : '1px solid rgba(255, 255, 255, 0.1)',
               cursor: 'pointer'
             }}
           >
@@ -156,8 +160,8 @@ Nếu cần thêm chi tiết, bạn có thể tham khảo thêm trong Giáo trì
         <div
           style={{
             padding: '0.8rem 1.2rem',
-            borderBottom: '1px solid rgba(217, 179, 107, 0.12)',
-            background: 'rgba(255, 255, 255, 0.02)',
+            borderBottom: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.12)',
+            background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.02)',
             overflowX: 'auto',
             display: 'flex',
             gap: '0.5rem',
@@ -171,13 +175,15 @@ Nếu cần thêm chi tiết, bạn có thể tham khảo thêm trong Giáo trì
               style={{
                 padding: '0.35rem 0.75rem',
                 borderRadius: '999px',
-                background: 'rgba(217, 179, 107, 0.1)',
-                border: '1px solid rgba(217, 179, 107, 0.25)',
-                color: '#f4e6c3',
+                background: isLight ? '#ffffff' : 'rgba(217, 179, 107, 0.1)',
+                border: isLight ? '1px solid #cbd5e1' : '1px solid rgba(217, 179, 107, 0.25)',
+                color: isLight ? '#334155' : '#f4e6c3',
                 fontSize: '0.75rem',
+                fontWeight: isLight ? 500 : 400,
                 whiteSpace: 'nowrap',
                 cursor: 'pointer',
-                transition: 'all 0.2s ease'
+                transition: 'all 0.2s ease',
+                boxShadow: isLight ? '0 1px 3px rgba(0,0,0,0.05)' : 'none'
               }}
             >
               💬 {faq.question.slice(0, 32)}...
@@ -193,7 +199,8 @@ Nếu cần thêm chi tiết, bạn có thể tham khảo thêm trong Giáo trì
             overflowY: 'auto',
             display: 'flex',
             flexDirection: 'column',
-            gap: '1rem'
+            gap: '1rem',
+            background: isLight ? '#fafafa' : 'transparent'
           }}
         >
           {messages.map(msg => (
@@ -213,26 +220,27 @@ Nếu cần thêm chi tiết, bạn có thể tham khảo thêm trong Giáo trì
                   borderRadius: msg.sender === 'user' ? '14px 14px 2px 14px' : '14px 14px 14px 2px',
                   background: msg.sender === 'user'
                     ? 'linear-gradient(135deg, #b5403a, #8e2b26)'
-                    : 'rgba(32, 28, 43, 0.9)',
-                  color: '#f3ede0',
+                    : (isLight ? '#ffffff' : 'rgba(32, 28, 43, 0.9)'),
+                  color: msg.sender === 'user' ? '#ffffff' : (isLight ? '#0f172a' : '#f3ede0'),
                   fontSize: '0.9rem',
                   lineHeight: 1.6,
                   border: msg.sender === 'user'
                     ? '1px solid rgba(255, 154, 141, 0.3)'
-                    : '1px solid rgba(217, 179, 107, 0.2)',
+                    : (isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.2)'),
+                  boxShadow: isLight ? '0 2px 8px rgba(0,0,0,0.04)' : 'none',
                   whiteSpace: 'pre-line'
                 }}
               >
                 {msg.text}
               </div>
-              <span style={{ fontSize: '0.68rem', color: '#888', marginTop: '0.25rem', padding: '0 0.4rem' }}>
+              <span style={{ fontSize: '0.68rem', color: isLight ? '#94a3b8' : '#888', marginTop: '0.25rem', padding: '0 0.4rem' }}>
                 {msg.timestamp}
               </span>
             </div>
           ))}
 
           {isTyping && (
-            <div style={{ display: 'flex', gap: '0.4rem', padding: '0.5rem 0.8rem', color: '#d9b36b', fontSize: '0.82rem' }}>
+            <div style={{ display: 'flex', gap: '0.4rem', padding: '0.5rem 0.8rem', color: isLight ? '#ca8a04' : '#d9b36b', fontSize: '0.82rem' }}>
               <Sparkles size={14} className="animate-spin" />
               <span>AI đang tra cứu giáo trình và phản biện...</span>
             </div>
@@ -243,8 +251,8 @@ Nếu cần thêm chi tiết, bạn có thể tham khảo thêm trong Giáo trì
         <div
           style={{
             padding: '1rem 1.2rem',
-            borderTop: '1px solid rgba(217, 179, 107, 0.2)',
-            background: 'rgba(18, 16, 23, 0.98)',
+            borderTop: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.2)',
+            background: isLight ? '#ffffff' : 'rgba(18, 16, 23, 0.98)',
             display: 'flex',
             gap: '0.6rem'
           }}
@@ -259,9 +267,9 @@ Nếu cần thêm chi tiết, bạn có thể tham khảo thêm trong Giáo trì
               flex: 1,
               padding: '0.75rem 1rem',
               borderRadius: '999px',
-              background: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid rgba(217, 179, 107, 0.3)',
-              color: '#f3ede0',
+              background: isLight ? '#f1f5f9' : 'rgba(255, 255, 255, 0.05)',
+              border: isLight ? '1px solid #cbd5e1' : '1px solid rgba(217, 179, 107, 0.3)',
+              color: isLight ? '#0f172a' : '#f3ede0',
               fontSize: '0.88rem',
               outline: 'none'
             }}

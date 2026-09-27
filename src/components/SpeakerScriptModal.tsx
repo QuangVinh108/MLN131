@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PRESENTATION_SLIDES, PRESENTATION_CONFIG } from '../data/presentationData';
-import { X, Copy, Check, Printer, FileText, User, Clock } from 'lucide-react';
+import { X, Copy, Check, FileText, User, Clock } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 interface SpeakerScriptModalProps {
   isOpen: boolean;
@@ -9,6 +10,7 @@ interface SpeakerScriptModalProps {
 
 export const SpeakerScriptModal: React.FC<SpeakerScriptModalProps> = ({ isOpen, onClose }) => {
   const [copied, setCopied] = useState<boolean>(false);
+  const { isLight } = useTheme();
 
   if (!isOpen) return null;
 
@@ -33,8 +35,8 @@ ${s.script}
         position: 'fixed',
         inset: 0,
         zIndex: 2000,
-        background: 'rgba(0, 0, 0, 0.85)',
-        backdropFilter: 'blur(12px)',
+        background: 'rgba(0, 0, 0, 0.65)',
+        backdropFilter: 'blur(10px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -47,12 +49,12 @@ ${s.script}
           width: '100%',
           maxWidth: '880px',
           maxHeight: '90vh',
-          background: '#14121a',
+          background: isLight ? '#ffffff' : '#14121a',
           borderRadius: '16px',
-          border: '1.5px solid rgba(217, 179, 107, 0.35)',
+          border: isLight ? '1.5px solid rgba(217, 179, 107, 0.35)' : '1.5px solid rgba(217, 179, 107, 0.35)',
           display: 'flex',
           flexDirection: 'column',
-          boxShadow: '0 25px 80px rgba(0, 0, 0, 0.95)',
+          boxShadow: isLight ? '0 20px 50px rgba(0, 0, 0, 0.2)' : '0 25px 80px rgba(0, 0, 0, 0.95)',
           overflow: 'hidden'
         }}
         onClick={e => e.stopPropagation()}
@@ -61,20 +63,22 @@ ${s.script}
         <div
           style={{
             padding: '1.2rem 1.8rem',
-            borderBottom: '1px solid rgba(217, 179, 107, 0.2)',
+            borderBottom: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.2)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            background: 'linear-gradient(180deg, rgba(217, 179, 107, 0.1) 0%, rgba(20, 18, 27, 0.9) 100%)'
+            background: isLight
+              ? 'linear-gradient(180deg, rgba(217, 179, 107, 0.15) 0%, #ffffff 100%)'
+              : 'linear-gradient(180deg, rgba(217, 179, 107, 0.1) 0%, rgba(20, 18, 27, 0.9) 100%)'
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-            <FileText size={22} color="#d9b36b" />
+            <FileText size={22} color={isLight ? '#ca8a04' : '#d9b36b'} />
             <div>
-              <h3 className="display" style={{ fontSize: '1.35rem', fontWeight: 700, color: '#fbf5e6' }}>
+              <h3 className="display" style={{ fontSize: '1.35rem', fontWeight: 700, color: isLight ? '#0f172a' : '#fbf5e6' }}>
                 Toàn Văn Kịch Bản Lời Thoại Thuyết Trình
               </h3>
-              <div style={{ fontSize: '0.76rem', color: '#b8b0a0' }}>
+              <div style={{ fontSize: '0.76rem', color: isLight ? '#64748b' : '#b8b0a0' }}>
                 Học phần {PRESENTATION_CONFIG.subjectCode} · Phân chia theo 12 Slide chi tiết
               </div>
             </div>
@@ -89,15 +93,15 @@ ${s.script}
                 gap: '0.4rem',
                 padding: '0.45rem 0.9rem',
                 borderRadius: '8px',
-                background: 'rgba(217, 179, 107, 0.15)',
-                color: '#f4e6c3',
-                border: '1px solid rgba(217, 179, 107, 0.3)',
+                background: isLight ? 'rgba(217, 179, 107, 0.25)' : 'rgba(217, 179, 107, 0.15)',
+                color: isLight ? '#854d0e' : '#f4e6c3',
+                border: isLight ? '1px solid #ca8a04' : '1px solid rgba(217, 179, 107, 0.3)',
                 fontSize: '0.82rem',
                 fontWeight: 600,
                 cursor: 'pointer'
               }}
             >
-              {copied ? <Check size={15} color="#34d399" /> : <Copy size={15} />}
+              {copied ? <Check size={15} color="#10b981" /> : <Copy size={15} />}
               <span>{copied ? 'Đã sao chép!' : 'Sao chép toàn bộ'}</span>
             </button>
 
@@ -106,9 +110,9 @@ ${s.script}
               style={{
                 padding: '0.45rem',
                 borderRadius: '8px',
-                background: 'rgba(255, 255, 255, 0.05)',
-                color: '#b8b0a0',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
+                background: isLight ? '#f1f5f9' : 'rgba(255, 255, 255, 0.05)',
+                color: isLight ? '#475569' : '#b8b0a0',
+                border: isLight ? '1px solid #cbd5e1' : '1px solid rgba(255, 255, 255, 0.1)',
                 cursor: 'pointer'
               }}
             >
@@ -124,10 +128,10 @@ ${s.script}
               <div
                 key={s.id}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.02)',
+                  background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.02)',
                   borderRadius: '12px',
                   padding: '1.4rem 1.6rem',
-                  border: '1px solid rgba(217, 179, 107, 0.16)'
+                  border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.16)'
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem', flexWrap: 'wrap', gap: '0.5rem' }}>
@@ -144,11 +148,11 @@ ${s.script}
                     >
                       SLIDE {s.slideNumber}
                     </span>
-                    <strong style={{ color: '#fbf5e6', fontSize: '1rem' }}>{s.title}</strong>
+                    <strong style={{ color: isLight ? '#0f172a' : '#fbf5e6', fontSize: '1rem' }}>{s.title}</strong>
                   </div>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.78rem', color: '#b8b0a0' }}>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', color: '#e6c98c' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.78rem', color: isLight ? '#64748b' : '#b8b0a0' }}>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', color: isLight ? '#b45309' : '#e6c98c', fontWeight: 600 }}>
                       <User size={13} /> {s.speaker}
                     </span>
                     <span>•</span>
@@ -161,11 +165,12 @@ ${s.script}
                 <div
                   style={{
                     fontSize: '0.94rem',
-                    color: '#ded6c5',
+                    color: isLight ? '#1e293b' : '#ded6c5',
                     lineHeight: 1.75,
-                    background: 'rgba(18, 16, 23, 0.75)',
+                    background: isLight ? '#ffffff' : 'rgba(18, 16, 23, 0.75)',
                     padding: '1.2rem',
                     borderRadius: '8px',
+                    border: isLight ? '1px solid #e2e8f0' : undefined,
                     borderLeft: '3px solid #d9b36b',
                     whiteSpace: 'pre-line'
                   }}
