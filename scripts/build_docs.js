@@ -204,13 +204,26 @@ async function main() {
     }),
     new Paragraph({
       alignment: AlignmentType.CENTER,
-      spacing: { before: 40, after: 260 },
+      spacing: { before: 40, after: 60 },
       children: [
         new TextRun({
           text: "Chương 5 · Mục III (Từ trang 177 đến trang 187 Giáo trình chuẩn 2021) · Kỳ Fall2026",
           italics: true,
           size: 22,
           color: COLOR_MUTED,
+          font: "Times New Roman"
+        })
+      ]
+    }),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      spacing: { before: 20, after: 200 },
+      children: [
+        new TextRun({
+          text: "Website tương tác trực tuyến: https://mln131-gamma.vercel.app/ (Quét mã QR khám phá trên điện thoại)",
+          bold: true,
+          size: 21,
+          color: COLOR_SECONDARY,
           font: "Times New Roman"
         })
       ]
@@ -460,8 +473,19 @@ async function main() {
     pHeading2("Người 3: Tính tất yếu & Tam giác 3 Nội dung Liên minh (Trang 183 – 187)"),
     pScript("Người 3 (Lê Hoàng C)", "Kính thưa Thầy Cô! Tại sao các giai tầng bắt buộc phải liên minh? Lênin đã chỉ rõ: Nếu không có liên minh công nông và trí thức thì không thể xây dựng thành công chế độ mới. Liên minh tất yếu trên cả 3 góc độ Chính trị, Kinh tế và Xã hội. Khối liên minh vận hành trên 3 trụ cột tam giác: 1) Kinh tế là CƠ BẢN VÀ QUYẾT ĐỊNH NHẤT, vì lợi ích kinh tế là động lực trực tiếp gắn kết lòng người. 2) Chính trị giữ vai trò ĐỊNH HƯỚNG VỮNG CHẮC, giữ vững ngọn cờ lãnh đạo của Đảng và phát huy phương châm: Dân biết, dân bàn, dân làm, dân kiểm tra, dân giám sát, dân thụ hưởng. 3) Văn hóa - Xã hội là THƯỚC ĐO TÍNH ƯU VIỆT, bảo đảm tăng trưởng phải đi đôi với công bằng xã hội, không để ai bị bỏ lại phía sau!"),
 
-    pHeading2("Người 4: Thực tiễn Mô hình 4 Nhà ST25, Minigame & Kết luận"),
-    pScript("Người 4 (Phạm Minh D)", "Kính thưa Thầy Cô và các bạn! Minh chứng sinh động nhất của liên minh chính là mô hình 'Liên kết 4 Nhà' với kỳ tích hạt gạo ST25 hai lần đoạt giải Gạo ngon nhất thế giới: Nhà khoa học lai tạo giống, Nhà nước bảo hộ và quy hoạch, Doanh nghiệp đầu tư chế biến bao tiêu, và Nông dân canh tác công nghệ cao. Bây giờ, em xin kính mời Thầy Cô và cả lớp cùng tham gia 'Đấu trường Trắc nghiệm MLN131' gồm 5 câu hỏi trọng tâm ngay trên màn hình web tương tác! Chúng ta có thể tự do chọn, đổi đáp án và chuyển đổi giữa 5 câu hỏi. Sau khi cả lớp hoàn thành trọn vẹn, nút Nộp bài ở câu cuối sẽ mở ra đáp án đúng và lời giải thích khoa học chi tiết bám sát từng trang giáo trình!... Thay mặt nhóm, chúng em xin chân thành cảm ơn sự lắng nghe và đóng góp quý báu từ Thầy Cô và các bạn!")
+    pHeading2("Người 4: Thực tiễn Mô hình 4 Nhà ST25, Minigame, Quét mã QR & Kết luận"),
+    pScript("Người 4 (Phạm Minh D)", "Kính thưa Thầy Cô và các bạn! Minh chứng sinh động nhất của liên minh chính là mô hình 'Liên kết 4 Nhà' với kỳ tích hạt gạo ST25 hai lần đoạt giải Gạo ngon nhất thế giới: Nhà khoa học lai tạo giống, Nhà nước bảo hộ và quy hoạch, Doanh nghiệp đầu tư chế biến bao tiêu, và Nông dân canh tác công nghệ cao. Bây giờ, em xin kính mời Thầy Cô và cả lớp cùng tham gia 'Đấu trường Trắc nghiệm MLN131' gồm 5 câu hỏi trọng tâm ngay trên màn hình web tương tác! Chúng ta có thể tự do chọn, đổi đáp án và chuyển đổi giữa 5 câu hỏi. Sau khi cả lớp hoàn thành trọn vẹn, nút Nộp bài ở câu cuối sẽ mở ra đáp án đúng và lời giải thích khoa học chi tiết bám sát từng trang giáo trình!... Và để Thầy Cô cùng các bạn có thể tự mình khám phá, làm lại trắc nghiệm bất cứ lúc nào, nhóm em trân trọng kính mời mọi người hướng camera điện thoại lên màn hình quét mã QR để truy cập trực tiếp trang web https://mln131-gamma.vercel.app/! Thay mặt nhóm, chúng em xin chân thành cảm ơn sự lắng nghe và đóng góp quý báu từ Thầy Cô và các bạn!")
+  );
+
+  // PHẦN VII
+  children.push(
+    pHeading1("PHẦN VII: TRẢI NGHIỆM TƯƠNG TÁC QUÉT MÃ QR (https://mln131-gamma.vercel.app/)"),
+    pBody("Nhóm thuyết trình đã triển khai toàn bộ bài báo cáo lên nền tảng Web tương tác công khai, giúp Giảng viên và Sinh viên dễ dàng tiếp cận mọi lúc, mọi nơi:"),
+    pBody("• Địa chỉ truy cập chính thức: https://mln131-gamma.vercel.app/", { bold: true, color: COLOR_SECONDARY }),
+    pBody("• Hướng dẫn quét mã QR: Mở ứng dụng Camera hoặc Zalo trên điện thoại thông minh, quét mã QR tại mục 'Quét mã để khám phá thêm' trên màn hình web hoặc slide báo cáo để mở trang web ngay trên điện thoại.", { bullet: true }),
+    pBody("• Đấu trường trắc nghiệm 5 câu hỏi trọng tâm: Tự do chọn và đổi đáp án, nộp bài nhận giải thích khoa học chi tiết có dẫn chứng trang giáo trình.", { bullet: true }),
+    pBody("• Khám phá trực quan 5 giai tầng: Số liệu thực tế, vai trò lãnh đạo của công nhân, chuyển mình của nông dân 4.0, trí thức và doanh nhân.", { bullet: true }),
+    pBody("• Sơ đồ tương tác Tam giác Liên minh & Mô hình 4 Nhà ST25: Trực quan hóa sinh động, mượt mà trên mọi kích cỡ màn hình di động.", { bullet: true })
   );
 
   const doc = new Document({

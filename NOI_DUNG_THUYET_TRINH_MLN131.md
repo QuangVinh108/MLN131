@@ -6,7 +6,7 @@
 * **Tài liệu nguồn chuẩn:** *Giáo trình Chủ nghĩa Xã hội Khoa học* (Dành cho bậc đại học hệ không chuyên lý luận chính trị, Bộ Giáo dục và Đào tạo, NXB Chính trị quốc gia Sự thật, Hà Nội, 2021)
 * **Học kỳ:** Kỳ Fall2026
 * **Đơn vị thực hiện:** Nhóm Thuyết trình MLN131
-* **Địa chỉ Website tương tác bổ trợ:** `http://localhost:5173/`
+* **Địa chỉ Website tương tác trực tuyến:** `https://mln131-gamma.vercel.app/` *(Hỗ trợ quét mã QR trên điện thoại)*
 
 ---
 
@@ -18,6 +18,7 @@
 4. [PHẦN IV: THỰC TIỄN MÔ HÌNH "LIÊN KẾT 4 NHÀ" VÀ ĐƯỜNG LỐI ĐẢNG QUA CÁC KỲ ĐẠI HỘI](#phần-iv-thực-tiễn-mô-hình-liên-kết-4-nhà-và-đường-lối-đảng-qua-các-kỳ-đại-hội)
 5. [PHẦN V: BỘ CÂU HỎI TRẮC NGHIỆM ÔN TẬP VÀ PHẢN BIỆN GIẢNG ĐƯỜNG (KÈM DẪN CHỨNG TRANG)](#phần-v-bộ-câu-hỏi-trắc-nghiệm-ôn-tập-và-phản-biện-giảng-đường)
 6. [PHẦN VI: KỊCH BẢN PHÂN CÔNG VÀ LỜI THOẠI CHI TIẾT CHO 4 THUYẾT TRÌNH VIÊN](#phần-vi-kịch-bản-phân-công-và-lời-thoại-chi-tiết-cho-4-thuyết-trình-viên)
+7. [PHẦN VII: TRẢI NGHIỆM QUÉT MÃ QR KHÁM PHÁ WEB TƯƠNG TÁC (https://mln131-gamma.vercel.app/)](#phần-vii-trải-nghiệm-quét-mã-qr-khám-phá-web-tương-tác)
 
 ---
 
@@ -453,7 +454,28 @@ Mô hình "Liên kết 4 Nhà" (Nhà nước – Nhà khoa học – Doanh nghi�
 > *Kính thưa Thầy Cô và các bạn sinh viên!*
 > *Cơ cấu xã hội - giai cấp và liên minh giai cấp không phải là những trang sách lý luận khô khan, mà chính là nhịp đập của non sông đất nước, là nền móng để dân tộc Việt Nam tự tin bước vào kỷ nguyên vươn mình của dân tộc. Là những sinh viên thế hệ trẻ, chúng em nguyện ra sức rèn đức luyện tài, làm chủ công nghệ để xứng đáng là lực lượng kế cận tin cậy của khối đại đoàn kết toàn dân tộc.*
 >
+> *(Chuyển sang giao diện Quét mã QR Trải nghiệm thêm trên Web App)*
+>
+> *Và để Thầy Cô cùng toàn thể các bạn có thể tự mình khám phá, làm lại trắc nghiệm và tra cứu tài liệu học tập của nhóm bất kỳ lúc nào, nhóm em trân trọng kính mời mọi người cùng hướng camera điện thoại lên màn hình để quét mã QR truy cập trang web chính thức của nhóm tại địa chỉ: **https://mln131-gamma.vercel.app/**. Hệ thống web đã được tối ưu hóa hiển thị mượt mà trên cả điện thoại di động và máy tính.*
+>
 > *Thay mặt nhóm thuyết trình MLN131, chúng em xin chân thành cảm ơn sự chú ý lắng nghe và đồng hành của Thầy Cô và các bạn. Nhóm chúng em rất mong nhận được những lời nhận xét, góp ý quý báu từ Thầy Cô và câu hỏi thảo luận từ các bạn. Em xin trân trọng cảm ơn!"*
+
+---
+
+## PHẦN VII: TRẢI NGHIỆM QUÉT MÃ QR KHÁM PHÁ WEB TƯƠNG TÁC
+*(Dành cho Giảng viên và Sinh viên trải nghiệm trực tiếp trên thiết bị cá nhân)*
+
+* **Liên kết trực tuyến chính thức:** [https://mln131-gamma.vercel.app/](https://mln131-gamma.vercel.app/)
+* **Hướng dẫn quét mã:**
+  1. Mở ứng dụng **Camera** trên điện thoại thông minh (iOS / Android) hoặc ứng dụng Zalo / Quét QR.
+  2. Hướng ống kính camera vào mã QR hiển thị tại mục *"Quét mã để khám phá thêm"* trên màn hình hoặc trong tài liệu.
+  3. Bấm vào thông báo liên kết xuất hiện trên màn hình để mở ngay phiên bản Web tương tác.
+* **Các tính năng nổi bật trên Web App di động:**
+  * **Đấu trường trắc nghiệm:** Tự do ôn tập 5 câu hỏi trọng tâm, đổi đáp án linh hoạt, nộp bài xem ngay lời giải thích khoa học và số trang giáo trình.
+  * **Khám phá 5 Giai tầng:** Xem biểu đồ, số liệu thực tế cập nhật (17 triệu công nhân, 60% GDP, 53 tỷ USD nông sản...).
+  * **Sơ đồ Tam giác Liên minh:** Tương tác trực quan 3 trụ cột Kinh tế - Chính trị - Văn hóa Xã hội.
+  * **Mô hình Liên kết 4 Nhà:** Trực quan hóa chuỗi giá trị hạt gạo ST25 giữa Nhà nước, Nhà khoa học, Doanh nghiệp và Nhà nông.
+  * **Dòng thời gian Đại hội Đảng:** Tra cứu tiến trình phát triển tư duy lý luận của Đảng từ Đại hội VI (1986) đến Đại hội XIII (2021).
 
 ---
 
@@ -474,6 +496,7 @@ Mô hình "Liên kết 4 Nhà" (Nhà nước – Nhà khoa học – Doanh nghi�
 | **Nội dung Chính trị của Liên minh** | Giữ vững vai trò lãnh đạo của Đảng; xây dựng Nhà nước của dân | **Trang 185** |
 | **Nội dung Văn hóa - Xã hội** | Tăng trưởng gắn với công bằng; không để ai bị bỏ lại phía sau | **Trang 185 – 186** |
 | **Phương châm Đại hội XIII** | Dân biết, dân bàn, dân làm, dân kiểm tra, dân giám sát, dân thụ hưởng | **Văn kiện Đại hội XIII** |
+| **Trải nghiệm Web di động** | Quét mã QR khám phá trực tiếp trên smartphone | **https://mln131-gamma.vercel.app/** |
 
 ---
 *Bản tài liệu học thuật được tổng hợp và chuẩn hóa cho Kỳ Fall2026 · Nhóm Thuyết trình MLN131.*

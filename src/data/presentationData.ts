@@ -120,7 +120,8 @@ export const NAV_ITEMS = [
   { id: 'tam-giac', label: '3 Nội dung' },
   { id: 'so-do-4-nha', label: 'Mô hình 4 Nhà' },
   { id: 'dong-thoi-gian', label: 'Dòng thời gian' },
-  { id: 'quiz', label: 'Trắc nghiệm' }
+  { id: 'quiz', label: 'Trắc nghiệm' },
+  { id: 'quet-ma', label: 'Quét mã' }
 ];
 
 export const CLASS_PILLARS: ClassPillar[] = [
@@ -832,6 +833,23 @@ export const PRESENTATION_SLIDES: Slide[] = [
       'Tổng kết ngắn gọn thông điệp cốt lõi của chuyên đề.',
       'Kêu gọi tinh thần trách nhiệm của sinh viên đối với sự phát triển đất nước.',
       'Mở không gian hỏi đáp tương tác trực tiếp và tra cứu nhanh qua Trợ lý AI.'
+    ]
+  },
+  {
+    id: 'slide-13',
+    sectionId: 'quet-ma',
+    sectionTitle: 'Trải nghiệm thêm',
+    slideNumber: 13,
+    title: 'Quét Mã Để Khám Phá Thêm',
+    subtitle: 'Mở phiên bản web tương tác và tài liệu mở rộng của nhóm trên thiết bị di động',
+    speaker: 'Cả Nhóm Thuyết trình',
+    speakerRole: 'Đại diện Nhóm',
+    duration: '1.5 phút',
+    script: 'Kính mời Thầy Cô và các bạn cùng dùng camera điện thoại quét mã QR trên màn hình hoặc truy cập liên kết https://mln131-gamma.vercel.app/ để tự do trải nghiệm phiên bản web tương tác, làm lại trắc nghiệm và tra cứu tài liệu học tập của nhóm!',
+    keyPoints: [
+      'Quét mã QR bằng camera điện thoại để truy cập tức thì.',
+      'Giao diện web tương tác tối ưu trên cả máy tính và điện thoại.',
+      'Truy cập đầy đủ học liệu, sơ đồ mô hình 4 Nhà và ngân hàng câu hỏi trắc nghiệm.'
     ]
   }
 ];
