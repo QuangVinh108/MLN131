@@ -178,7 +178,7 @@ export const AllianceTriangleSection: React.FC = () => {
             }}
           >
             <Lightbulb size={22} color={activePillar.color} />
-            <span>Nội Dung Trọng Tâm & Nhiệm Vụ Cụ Thể (Giáo trình 2021)</span>
+            <span>Nội Dung Trọng Tâm & Nhiệm Vụ Cụ Thể</span>
           </h4>
           <div
             style={{

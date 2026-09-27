@@ -253,10 +253,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
                 Cơ Cấu Giai Tầng
               </div>
               <div style={{ fontSize: '1.1rem', fontWeight: 700, color: isLight ? '#0f172a' : '#f4e6c3', margin: '0.2rem 0' }}>
-                5 Giai Tầng Cốt Lõi
+                4 Giai Tầng Cốt Lõi
               </div>
               <div style={{ fontSize: '0.82rem', color: isLight ? '#475569' : '#b8b0a0' }}>
-                Công nhân, Nông dân, Trí thức, Doanh nhân, Phụ nữ & Trẻ
+                Công nhân, Nông dân, Trí thức, Doanh nhân
               </div>
             </div>
           </div>

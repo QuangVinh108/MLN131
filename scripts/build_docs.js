@@ -300,13 +300,7 @@ async function main() {
             createBodyCell("Trang 181 – 182", 20, true, true)
           ]
         }),
-        new TableRow({
-          children: [
-            createBodyCell("Phụ nữ & Thế hệ Trẻ (Thanh niên)", 35, false, true),
-            createBodyCell("Bình đẳng giới; rường cột tương lai, lực lượng xung kích trong chuyển đổi số và đổi mới sáng tạo quốc gia.", 45),
-            createBodyCell("Trang 182 – 183", 20, true, true)
-          ]
-        }),
+
         new TableRow({
           children: [
             createBodyCell("Tính tất yếu của khối Liên minh", 35, false, true),
@@ -357,7 +351,7 @@ async function main() {
 
   // PHẦN II
   children.push(
-    pHeading1("PHẦN II: CƠ CẤU VÀ ĐẶC ĐIỂM BIẾN ĐỔI CỦA 5 GIAI TẦNG TRỤ CỘT Ở VIỆT NAM"),
+    pHeading1("PHẦN II: CƠ CẤU VÀ ĐẶC ĐIỂM BIẾN ĐỔI CỦA 4 GIAI CẤP, TẦNG LỚP CỐT LÕI Ở VIỆT NAM (Trang 178 – 182)"),
     pHeading2("1. Giai cấp Công nhân Việt Nam (Trang 178 – 180)"),
     pBody("• Vị thế: Là giai cấp lãnh đạo cách mạng thông qua đội tiền phong là Đảng Cộng sản Việt Nam; lực lượng tiên phong trong sự nghiệp công nghiệp hoá, hiện đại hoá đất nước.", { bullet: true }),
     pBody("• Số liệu thực tiễn: Chiếm hơn 17 triệu lao động xã hội, tạo ra trên 60% tổng sản phẩm quốc nội (GDP) và hơn 70% ngân sách nhà nước.", { bullet: true }),
@@ -382,9 +376,7 @@ async function main() {
     pBody("• Xu hướng: Hình thành các tập đoàn tư nhân đa ngành vươn tầm thế giới (Viettel, Vingroup, Thaco, FPT, Vinamilk, TH True Milk...); doanh nhân trẻ hướng đến Net Zero, ESG và kinh tế tuần hoàn.", { bullet: true }),
     pBody("• Mối quan hệ với công nhân: Quan hệ 'vừa hợp tác, vừa đấu tranh': Hợp tác sản xuất tạo của cải; đấu tranh qua tổ chức Công đoàn để bảo đảm quyền lợi, tiền lương, an toàn lao động.", { bullet: true }),
 
-    pHeading2("5. Tầng lớp Phụ nữ và Thế hệ Trẻ (Trang 182 – 183)"),
-    pBody("• Phụ nữ Việt Nam: Chiếm hơn 50% dân số, phát huy truyền thống 'Anh hùng, bất khuất, trung hậu, đảm đang' và 'Giỏi việc nước, đảm việc nhà'; tỷ lệ nữ Đại biểu Quốc hội khóa XV đạt trên 30% (cao hàng đầu khu vực ASEAN).", { bullet: true }),
-    pBody("• Thế hệ Trẻ (Thanh niên, Sinh viên): Chiếm hơn 22 triệu dân số (lợi thế dân số vàng), là rường cột tương lai, xung kích đi đầu trong học tập, nghiên cứu khoa học, khởi nghiệp và chuyển đổi số quốc gia.", { bullet: true })
+
   );
 
   // PHẦN III
@@ -467,8 +459,8 @@ async function main() {
     pHeading2("Người 1: Khai mạc, Khái niệm & Quy luật biến đổi (Trang 177 – 178)"),
     pScript("Người 1 (Nguyễn Văn A)", "Kính chào Thầy Cô và các bạn! Bác Hồ từng dạy: Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công. Trong thời kỳ quá độ lên CNXH, khối đại đoàn kết ấy được xây dựng trên một nền tảng khoa học vững chắc: Cơ cấu xã hội - giai cấp và liên minh giai cấp, tầng lớp. Hôm nay nhóm em xin trình bày chuyên đề Mục III Chương 5 Giáo trình CNXHKH. Cơ cấu xã hội - giai cấp giữ vị trí trung tâm số một vì gắn liền với quan hệ sản xuất và quyền lực nhà nước. Nước ta có 3 quy luật biến đổi lớn: Thứ nhất là bị quy định bởi kinh tế nhiều thành phần; thứ hai là đa dạng nhưng thống nhất cao độ dưới sự lãnh đạo của Đảng; thứ ba là xu hướng xích lại gần nhau giữa các giai tầng!"),
 
-    pHeading2("Người 2: Chi tiết 5 Giai tầng trụ cột ở Việt Nam (Trang 178 – 183)"),
-    pScript("Người 2 (Trần Thị B)", "Xin cảm ơn bạn A! Kính thưa Thầy Cô, cơ cấu giai tầng nước ta hiện nay quy tụ 5 trụ cột: Thứ nhất, Công nhân là giai cấp lãnh đạo cách mạng qua Đảng, tiên phong CNH-HĐH, chiếm hơn 17 triệu lao động và trên 60% GDP, đang chuyển dịch thành 'công nhân áo trắng' tri thức. Thứ hai, Nông dân chiếm hơn 60% dân số, vị trí chiến lược Tam Nông, nay đã là 'nông dân 4.0' đưa xuất khẩu nông sản vượt 53 tỷ USD. Thứ ba, Trí thức là vốn quý của dân tộc, lực lượng nòng cốt kinh tế tri thức với hơn 6.5 triệu người. Thứ tư, Doanh nhân là lực lượng xung kích phát triển kinh tế thị trường, tạo ra hơn 85% việc làm mới. Và thứ năm là Phụ nữ bình đẳng giỏi việc nước đảm việc nhà, cùng Thế hệ trẻ thanh niên sinh viên xung kích chuyển đổi số quốc gia!"),
+    pHeading2("Người 2: Chi tiết 4 Giai cấp, Tầng lớp cốt lõi ở Việt Nam (Trang 178 – 182)"),
+    pScript("Người 2 (Trần Thị B)", "Xin cảm ơn bạn A! Kính thưa Thầy Cô, cơ cấu giai tầng nước ta hiện nay quy tụ 4 giai cấp, tầng lớp cốt lõi chuẩn theo Giáo trình trang 178 – 182: Thứ nhất, Công nhân là giai cấp lãnh đạo cách mạng qua Đảng, tiên phong CNH-HĐH, chiếm hơn 17 triệu lao động và trên 60% GDP, đang chuyển dịch thành 'công nhân áo trắng' tri thức. Thứ hai, Nông dân chiếm hơn 60% dân số, vị trí chiến lược Tam Nông, nay đã là 'nông dân 4.0' đưa xuất khẩu nông sản vượt 53 tỷ USD. Thứ ba, Trí thức là vốn quý của dân tộc, lực lượng nòng cốt kinh tế tri thức với hơn 6.5 triệu người. Và thứ tư, Doanh nhân là lực lượng xung kích phát triển kinh tế thị trường, tạo ra hơn 85% việc làm mới và trên 50% GDP cho toàn xã hội. Bốn lực lượng này gắn bó mật thiết, tạo nên nền tảng vững chắc cho công cuộc đổi mới đất nước!"),
 
     pHeading2("Người 3: Tính tất yếu & Tam giác 3 Nội dung Liên minh (Trang 183 – 187)"),
     pScript("Người 3 (Lê Hoàng C)", "Kính thưa Thầy Cô! Tại sao các giai tầng bắt buộc phải liên minh? Lênin đã chỉ rõ: Nếu không có liên minh công nông và trí thức thì không thể xây dựng thành công chế độ mới. Liên minh tất yếu trên cả 3 góc độ Chính trị, Kinh tế và Xã hội. Khối liên minh vận hành trên 3 trụ cột tam giác: 1) Kinh tế là CƠ BẢN VÀ QUYẾT ĐỊNH NHẤT, vì lợi ích kinh tế là động lực trực tiếp gắn kết lòng người. 2) Chính trị giữ vai trò ĐỊNH HƯỚNG VỮNG CHẮC, giữ vững ngọn cờ lãnh đạo của Đảng và phát huy phương châm: Dân biết, dân bàn, dân làm, dân kiểm tra, dân giám sát, dân thụ hưởng. 3) Văn hóa - Xã hội là THƯỚC ĐO TÍNH ƯU VIỆT, bảo đảm tăng trưởng phải đi đôi với công bằng xã hội, không để ai bị bỏ lại phía sau!"),
@@ -484,7 +476,7 @@ async function main() {
     pBody("• Địa chỉ truy cập chính thức: https://mln131-gamma.vercel.app/", { bold: true, color: COLOR_SECONDARY }),
     pBody("• Hướng dẫn quét mã QR: Mở ứng dụng Camera hoặc Zalo trên điện thoại thông minh, quét mã QR tại mục 'Quét mã để khám phá thêm' trên màn hình web hoặc slide báo cáo để mở trang web ngay trên điện thoại.", { bullet: true }),
     pBody("• Đấu trường trắc nghiệm 5 câu hỏi trọng tâm: Tự do chọn và đổi đáp án, nộp bài nhận giải thích khoa học chi tiết có dẫn chứng trang giáo trình.", { bullet: true }),
-    pBody("• Khám phá trực quan 5 giai tầng: Số liệu thực tế, vai trò lãnh đạo của công nhân, chuyển mình của nông dân 4.0, trí thức và doanh nhân.", { bullet: true }),
+    pBody("• Khám phá trực quan 4 giai cấp, tầng lớp cốt lõi: Số liệu thực tế, vai trò lãnh đạo của công nhân, chuyển mình của nông dân 4.0, trí thức và doanh nhân.", { bullet: true }),
     pBody("• Sơ đồ tương tác Tam giác Liên minh & Mô hình 4 Nhà ST25: Trực quan hóa sinh động, mượt mà trên mọi kích cỡ màn hình di động.", { bullet: true })
   );
 

@@ -414,7 +414,7 @@ export const OverviewSection: React.FC = () => {
                 Đa dạng, Mở rộng & Hội nhập Số
               </h4>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: '0.88rem', color: isLight ? '#1e293b' : '#ded6c5' }}>
-                <li>✅ Thừa nhận đầy đủ 5 trụ cột: Công nhân, Nông dân, Trí thức, Doanh nhân, Phụ nữ & Thanh niên.</li>
+                <li>✅ Xác định rõ 4 giai cấp, tầng lớp cốt lõi: Công nhân, Nông dân, Trí thức và Doanh nhân.</li>
                 <li>✅ Kinh tế thị trường nhiều thành phần; kinh tế tư nhân là động lực quan trọng của nền kinh tế.</li>
                 <li>✅ Phân phối chủ yếu theo kết quả lao động và mức độ đóng góp vốn, công nghệ.</li>
                 <li>✅ Khơi dậy khát vọng dân tộc, giải phóng tối đa sức sáng tạo của mọi tầng lớp nhân dân.</li>

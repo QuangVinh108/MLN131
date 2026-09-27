@@ -42,7 +42,7 @@ export const ClassPillarsSection: React.FC = () => {
             color: isLight ? '#0f172a' : '#fbf5e6'
           }}
         >
-          5 Trụ Cột <span className="text-gold-grad">Giai Cấp & Tầng Lớp</span> Xã Hội
+          4 Trụ Cột <span className="text-gold-grad">Giai Cấp & Tầng Lớp</span> Cốt Lõi
         </h2>
         <div className="gold-line" style={{ maxWidth: '280px', margin: '0 auto 1.2rem auto' }} />
         <p
@@ -54,12 +54,12 @@ export const ClassPillarsSection: React.FC = () => {
             lineHeight: 1.6
           }}
         >
-          Khám phá chi tiết vị thế lịch sử, số liệu thực tiễn và xu hướng biến đổi của từng giai cấp, tầng lớp
-          trong bối cảnh cuộc Cách mạng công nghiệp lần thứ tư và hội nhập quốc tế.
+          Khám phá chi tiết vị thế lịch sử, số liệu thực tiễn và xu hướng biến đổi của 4 giai cấp, tầng lớp cốt lõi
+          trong thời kỳ quá độ lên CNXH ở Việt Nam.
         </p>
       </div>
 
-      {/* 5 Pillar Navigation Buttons */}
+      {/* 4 Pillar Navigation Buttons */}
       <div
         style={{
           display: 'grid',

@@ -13,7 +13,7 @@
 ## MỤC LỤC TỔNG QUAN
 
 1. [PHẦN I: KHÁI NIỆM VÀ QUY LUẬT BIẾN ĐỔI CƠ CẤU XÃ HỘI - GIAI CẤP (Trang 177 - 178)](#phần-i-khái-niệm-và-quy-luật-biến-đổi-cơ-cấu-xã-hội---giai-cấp)
-2. [PHẦN II: CƠ CẤU VÀ ĐẶC ĐIỂM BIẾN ĐỔI CỦA 5 GIAI TẦNG TRỤ CỘT Ở VIỆT NAM (Trang 178 - 183)](#phần-ii-cơ-cấu-và-đặc-điểm-biến-đổi-của-5-giai-tầng-trụ-cột-ở-việt-nam)
+2. [PHẦN II: CƠ CẤU VÀ ĐẶC ĐIỂM BIẾN ĐỔI CỦA 4 GIAI CẤP, TẦNG LỚP CỐT LÕI Ở VIỆT NAM (Trang 178 - 182)](#phần-ii-cơ-cấu-và-đặc-điểm-biến-đổi-của-4-giai-cấp-tầng-lớp-cốt-lõi-ở-việt-nam)
 3. [PHẦN III: TÍNH TẤT YẾU VÀ 3 NỘI DUNG LIÊN MINH GIAI CẤP, TẦNG LỚP (Trang 183 - 187)](#phần-iii-tính-tất-yếu-và-3-nội-dung-liên-minh-giai-cấp-tầng-lớp)
 4. [PHẦN IV: THỰC TIỄN MÔ HÌNH "LIÊN KẾT 4 NHÀ" VÀ ĐƯỜNG LỐI ĐẢNG QUA CÁC KỲ ĐẠI HỘI](#phần-iv-thực-tiễn-mô-hình-liên-kết-4-nhà-và-đường-lối-đảng-qua-các-kỳ-đại-hội)
 5. [PHẦN V: BỘ CÂU HỎI TRẮC NGHIỆM ÔN TẬP VÀ PHẢN BIỆN GIẢNG ĐƯỜNG (KÈM DẪN CHỨNG TRANG)](#phần-v-bộ-câu-hỏi-trắc-nghiệm-ôn-tập-và-phản-biện-giảng-đường)
@@ -51,8 +51,8 @@ Sự biến đổi của cơ cấu xã hội - giai cấp ở Việt Nam không 
 
 ---
 
-## PHẦN II: CƠ CẤU VÀ ĐẶC ĐIỂM BIẾN ĐỔI CỦA 5 GIAI TẦNG TRỤ CỘT Ở VIỆT NAM
-*(Tham chiếu Giáo trình CNXHKH 2021: Trang 178 – 183)*
+## PHẦN II: CƠ CẤU VÀ ĐẶC ĐIỂM BIẾN ĐỔI CỦA 4 GIAI CẤP, TẦNG LỚP CỐT LÕI Ở VIỆT NAM
+*(Tham chiếu Giáo trình CNXHKH 2021: Trang 178 – 182)*
 
 ```
                             ┌─────────────────────────────────────────┐
@@ -126,14 +126,6 @@ Sự biến đổi của cơ cấu xã hội - giai cấp ở Việt Nam không 
   * Hình thành các tập đoàn kinh tế tư nhân lớn mạnh, có năng lực cạnh tranh quốc tế (Viettel, Vingroup, Thaco, FPT, Vinamilk, TH True Milk...).
   * Thế hệ doanh nhân trẻ năng động, chú trọng chuẩn mực quản trị hiện đại, đạo đức kinh doanh, trách nhiệm xã hội và chuyển đổi xanh (ESG).
 * **Mối quan hệ với công nhân:** Trong KTTT định hướng XHCN ở Việt Nam, mối quan hệ giữa doanh nhân và công nhân là mối quan hệ **vừa hợp tác, vừa đấu tranh**: Hợp tác sản xuất tạo của cải; đấu tranh qua tổ chức Công đoàn để bảo đảm quyền lợi, tiền lương và an toàn lao động chính đáng.
-
-### 5. Tầng lớp Phụ nữ và Thế hệ Trẻ (Thanh niên, Sinh viên) *(Giáo trình, tr. 182 – 183)*
-* **Tầng lớp Phụ nữ:**
-  * Chiếm trên 50% dân số, là lực lượng quan trọng trong mọi lĩnh vực đời sống chính trị, kinh tế, văn hóa.
-  * Phát huy truyền thống *"Anh hùng, bất khuất, trung hậu, đảm đang"* gắn liền với phong trào hiện đại *"Giỏi việc nước, đảm việc nhà"*, khẳng định mạnh mẽ bình đẳng giới (tỷ lệ nữ Đại biểu Quốc hội khóa XV đạt trên 30% - thuộc top đầu khu vực).
-* **Thế hệ Trẻ (Thanh niên, Sinh viên):**
-  * Là **rường cột nước nhà, chủ nhân tương lai của đất nước**, chiếm hơn 22 triệu dân số (lợi thế thời kỳ dân số vàng).
-  * Là lực lượng xung kích đi đầu trong học tập, nghiên cứu khoa học, khởi nghiệp đổi mới sáng tạo, làm chủ không gian số và chuyển giao kỹ năng công nghệ về các vùng miền khó khăn.
 
 ---
 
@@ -378,14 +370,14 @@ Mô hình "Liên kết 4 Nhà" (Nhà nước – Nhà khoa học – Doanh nghi�
 
 ---
 
-### NGƯỜI 2: CHI TIẾT 5 GIAI CẤP, TẦNG LỚP TRỤ CỘT Ở VIỆT NAM
+### NGƯỜI 2: CHI TIẾT 4 GIAI CẤP, TẦNG LỚP CỐT LÕI Ở VIỆT NAM
 * **Phụ trách:** Slide 5 – 8 trên hệ thống Web (Thời lượng: ~5 phút)
-* **Nội dung:** Phân tích đặc điểm, xu hướng, số liệu thực tế của Công nhân, Nông dân, Trí thức, Doanh nhân, Phụ nữ & Thanh niên *(Giáo trình, tr. 178 – 183)*.
+* **Nội dung:** Phân tích đặc điểm, xu hướng, số liệu thực tế của Công nhân, Nông dân, Trí thức và Doanh nhân *(Giáo trình, tr. 178 – 182)*.
 
 #### Lời thoại chi tiết (Người 2):
 > *"Xin cảm ơn bạn Nguyễn Văn A. Kính thưa Thầy Cô và các bạn, em là Trần Thị B!*
 >
-> *Bây giờ, xin mời mọi người cùng quan sát lên màn hình tương tác để cùng khám phá 5 trụ cột giai cấp và tầng lớp rường cột của nước ta hiện nay:*
+> *Bây giờ, xin mời mọi người cùng quan sát lên màn hình tương tác để cùng khám phá 4 trụ cột giai cấp và tầng lớp cốt lõi của nước ta hiện nay theo Giáo trình Chủ nghĩa xã hội khoa học (trang 178 – 182):*
 >
 > *1. Trụ cột đầu tiên - Giai cấp Công nhân (Giáo trình tr. 178): Công nhân là giai cấp lãnh đạo cách mạng thông qua Đảng Cộng sản Việt Nam, là lực lượng tiên phong trong sự nghiệp công nghiệp hóa, hiện đại hóa. Với hơn 17 triệu lao động, đóng góp trên 60% GDP, công nhân Việt Nam ngày nay đang có sự chuyển dịch ngoạn mục: Từ 'công nhân áo xanh' cơ bắp sang 'công nhân áo trắng' có tay nghề cao, làm chủ robot tự động và công nghệ số.*
 >
@@ -395,9 +387,7 @@ Mô hình "Liên kết 4 Nhà" (Nhà nước – Nhà khoa học – Doanh nghi�
 >
 > *4. Trụ cột thứ tư - Đội ngũ Doanh nhân (Giáo trình tr. 181): Đây là tầng lớp phát triển bứt phá trong thời kỳ Đổi mới. Doanh nhân không phải đối tượng bị gạt ra ngoài, mà là lực lượng xung kích kiến tạo trên 50% GDP và hơn 85% việc làm mới. Doanh nhân Việt Nam mang tinh thần dân tộc sâu sắc, phụng sự Tổ quốc và chia sẻ an sinh xã hội.*
 >
-> *5. Cuối cùng là Tầng lớp Phụ nữ và Thế hệ Trẻ (Giáo trình tr. 182): Phụ nữ khẳng định vai trò bình đẳng giới vượt trội, giữ nhiều vị trí lãnh đạo then chốt. Còn thế hệ trẻ, thanh niên, sinh viên như chúng ta hôm nay chính là ngọn lửa xung kích, làm chủ khoa học kỹ thuật và gánh vác tương lai đất nước.*
->
-> *Rõ ràng, 5 giai tầng này không thể đứng riêng lẻ một mình. Vậy điều gì đã gắn kết họ lại thành một khối sức mạnh vô địch? Bạn Lê Hoàng C sẽ trình bày về tính tất yếu và 3 nội dung liên minh!"*
+> *Rõ ràng, 4 giai cấp, tầng lớp này không thể đứng riêng lẻ một mình. Vậy điều gì đã gắn kết họ lại thành một khối sức mạnh vô địch? Bạn Lê Hoàng C sẽ trình bày về tính tất yếu và 3 nội dung liên minh!"*
 
 ---
 
@@ -472,7 +462,7 @@ Mô hình "Liên kết 4 Nhà" (Nhà nước – Nhà khoa học – Doanh nghi�
   3. Bấm vào thông báo liên kết xuất hiện trên màn hình để mở ngay phiên bản Web tương tác.
 * **Các tính năng nổi bật trên Web App di động:**
   * **Đấu trường trắc nghiệm:** Tự do ôn tập 5 câu hỏi trọng tâm, đổi đáp án linh hoạt, nộp bài xem ngay lời giải thích khoa học và số trang giáo trình.
-  * **Khám phá 5 Giai tầng:** Xem biểu đồ, số liệu thực tế cập nhật (17 triệu công nhân, 60% GDP, 53 tỷ USD nông sản...).
+  * **Khám phá 4 Giai tầng cốt lõi:** Xem biểu đồ, số liệu thực tế cập nhật (17 triệu công nhân, 60% GDP, 53 tỷ USD nông sản...).
   * **Sơ đồ Tam giác Liên minh:** Tương tác trực quan 3 trụ cột Kinh tế - Chính trị - Văn hóa Xã hội.
   * **Mô hình Liên kết 4 Nhà:** Trực quan hóa chuỗi giá trị hạt gạo ST25 giữa Nhà nước, Nhà khoa học, Doanh nghiệp và Nhà nông.
   * **Dòng thời gian Đại hội Đảng:** Tra cứu tiến trình phát triển tư duy lý luận của Đảng từ Đại hội VI (1986) đến Đại hội XIII (2021).
@@ -490,7 +480,6 @@ Mô hình "Liên kết 4 Nhà" (Nhà nước – Nhà khoa học – Doanh nghi�
 | **Giai cấp Nông dân** | Vị trí chiến lược Tam nông, đồng minh tự nhiên của công nhân | **Trang 180 – 181** |
 | **Đội ngũ Trí thức** | Lao động sáng tạo đặc biệt, nòng cốt kinh tế tri thức | **Trang 180 – 181** |
 | **Đội ngũ Doanh nhân** | Lực lượng xung kích kinh tế thị trường, tạo việc làm, đóng góp GDP | **Trang 181 – 182** |
-| **Phụ nữ & Thế hệ Trẻ** | Bình đẳng giới, rường cột tương lai, xung kích đổi mới sáng tạo | **Trang 182 – 183** |
 | **Tính tất yếu của Liên minh** | Góc độ Chính trị, Kinh tế, Văn hóa - Xã hội | **Trang 183 – 184** |
 | **Nội dung Kinh tế của Liên minh** | Nội dung cơ bản, quyết định nhất; lợi ích kinh tế là động lực trực tiếp | **Trang 184 – 185** |
 | **Nội dung Chính trị của Liên minh** | Giữ vững vai trò lãnh đạo của Đảng; xây dựng Nhà nước của dân | **Trang 185** |

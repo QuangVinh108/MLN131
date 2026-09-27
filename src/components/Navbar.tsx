@@ -123,17 +123,13 @@ export const Navbar: React.FC = () => {
             <div
               className="display"
               style={{
-                fontSize: '1.15rem',
+                fontSize: '1.25rem',
                 fontWeight: 700,
-                letterSpacing: '0.04em',
+                letterSpacing: '0.06em',
                 lineHeight: 1.2
               }}
             >
               <span className="text-gold-grad">{PRESENTATION_CONFIG.subjectCode}</span>
-              <span style={{ color: isLight ? '#64748b' : '#f3ede0', margin: '0 0.35rem', opacity: 0.6 }}>×</span>
-              <span style={{ color: isLight ? '#0f172a' : '#f3ede0', fontWeight: 600, fontSize: '0.95rem' }}>
-                LIÊN MINH GIAI CẤP
-              </span>
             </div>
           </div>
         </div>

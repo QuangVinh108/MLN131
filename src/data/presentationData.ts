@@ -95,8 +95,8 @@ export const TEAM_MEMBERS = [
   {
     name: 'Trần Thị B',
     studentId: 'B21DCCN002',
-    role: 'Thành viên · Thuyết trình Chi tiết 5 Giai cấp, Tầng lớp',
-    parts: 'Slide 5 - 8: Công nhân, Nông dân, Trí thức, Doanh nhân, Thanh niên'
+    role: 'Thành viên · Thuyết trình Chi tiết 4 Giai cấp, Tầng lớp Cốt lõi',
+    parts: 'Slide 5 - 8: Công nhân, Nông dân, Trí thức, Doanh nhân'
   },
   {
     name: 'Lê Hoàng C',
@@ -115,7 +115,7 @@ export const TEAM_MEMBERS = [
 export const NAV_ITEMS = [
   { id: 'hero', label: 'Khai mạc' },
   { id: 'tong-quan', label: 'Bối cảnh' },
-  { id: 'giai-tang', label: '5 Giai tầng' },
+  { id: 'giai-tang', label: '4 Giai tầng' },
   { id: 'lien-minh', label: 'Bản chất Liên minh' },
   { id: 'tam-giac', label: '3 Nội dung' },
   { id: 'so-do-4-nha', label: 'Mô hình 4 Nhà' },
@@ -243,34 +243,6 @@ export const CLASS_PILLARS: ClassPillar[] = [
     ],
     quote: 'Phát triển đội ngũ doanh nhân lớn mạnh về số lượng và chất lượng, có tinh thần cống hiến cho dân tộc, có chuẩn mực đạo đức, văn hóa kinh doanh tiên tiến.',
     scriptNote: 'Làm rõ cho giảng viên: Doanh nhân trong KTTT định hướng XHCN ở VN không đối kháng với công nhân, mà liên kết hợp tác vì mục tiêu dân giàu nước mạnh.'
-  },
-  {
-    id: 'phu-nu-thanh-nien',
-    name: 'Tầng lớp Phụ nữ & Thế hệ Trẻ',
-    shortName: 'Phụ nữ & Thế hệ Trẻ',
-    badge: 'Động lực Tương lai',
-    iconName: 'Sparkles',
-    accentColor: '#ec4899',
-    position: 'Các tầng lớp xã hội quan trọng bổ trợ, phát huy bình đẳng giới và là rường cột tương lai, xung kích đi đầu trong đổi mới sáng tạo.',
-    statistics: [
-      { label: 'Tỷ lệ nữ ĐBQH', value: '> 30%', trend: 'Cao hàng đầu khu vực ASEAN' },
-      { label: 'Lực lượng thanh niên', value: '~ 22 triệu', trend: 'Thời kỳ dân số vàng của Việt Nam' },
-      { label: 'Khởi nghiệp đổi mới', value: '> 70%', trend: 'Ý tưởng khởi nghiệp đến từ người trẻ' }
-    ],
-    characteristics: [
-      'Phụ nữ Việt Nam phát huy truyền thống "Anh hùng, bất khuất, trung hậu, đảm đang" gắn liền với phong trào "Giỏi việc nước, đảm việc nhà".',
-      'Thanh niên là lực lượng xung kích cách mạng, nhiệt huyết, khao khát khẳng định bản thân và tiếp cận công nghệ nhanh nhất.'
-    ],
-    trends: [
-      'Thanh niên, sinh viên là lực lượng nòng cốt tham gia chuyển đổi số cộng đồng, bình dân học vụ số.',
-      'Phụ nữ ngày càng giữ nhiều trọng trách lãnh đạo trong cơ quan Đảng, Nhà nước và tập đoàn kinh tế.'
-    ],
-    challenges: [
-      'Áp lực việc làm, thích ứng với yêu cầu kỹ năng mới trong kỷ nguyên số.',
-      'Hiện tượng sống ảo, lệch chuẩn giá trị văn hóa trên mạng xã hội của một bộ phận người trẻ.'
-    ],
-    quote: 'Thanh niên là rường cột của nước nhà, chủ nhân tương lai của đất nước... Phụ nữ là lực lượng quan trọng của khối đại đoàn kết toàn dân tộc.',
-    scriptNote: 'Liên hệ trực tiếp: Chúng ta - những sinh viên ngồi đây - chính là đại diện cho thế hệ trẻ trong cơ cấu xã hội Việt Nam thời kỳ quá độ!'
   }
 ];
 
@@ -662,7 +634,7 @@ export const PRESENTATION_SLIDES: Slide[] = [
   {
     id: 'slide-3',
     sectionId: 'giai-tang',
-    sectionTitle: '5 Giai tầng',
+    sectionTitle: '4 Giai tầng',
     slideNumber: 3,
     title: 'Vị Thế & Biến Đổi Của Giai Cấp Công Nhân Việt Nam',
     subtitle: 'Lực lượng lãnh đạo cách mạng và nòng cốt trong sự nghiệp CNH, HĐH đất nước',
@@ -679,7 +651,7 @@ export const PRESENTATION_SLIDES: Slide[] = [
   {
     id: 'slide-4',
     sectionId: 'giai-tang',
-    sectionTitle: '5 Giai tầng',
+    sectionTitle: '4 Giai tầng',
     slideNumber: 4,
     title: 'Giai Cấp Nông Dân & Đội Ngũ Trí Thức Trong Kỷ Nguyên Mới',
     subtitle: 'Nông dân hiện đại và Trí thức sáng tạo - Hai động lực chiến lược của dân tộc',
@@ -696,18 +668,18 @@ export const PRESENTATION_SLIDES: Slide[] = [
   {
     id: 'slide-5',
     sectionId: 'giai-tang',
-    sectionTitle: '5 Giai tầng',
+    sectionTitle: '4 Giai tầng',
     slideNumber: 5,
-    title: 'Đội Ngũ Doanh Nhân & Tầng Lớp Phụ Nữ, Thế Hệ Trẻ',
-    subtitle: 'Động lực bứt phá kinh tế tư nhân và rường cột tương lai của đất nước',
+    title: 'Vị Thế & Biến Đổi Của Đội Ngũ Doanh Nhân Việt Nam',
+    subtitle: 'Lực lượng xung kích phát triển kinh tế thị trường định hướng XHCN',
     speaker: 'Trần Thị B',
     speakerRole: 'Thành viên Nhóm',
     duration: '3 phút',
-    script: 'Một điểm rất mới và tiến bộ trong văn kiện Đảng ta là vị trí của đội ngũ doanh nhân. Doanh nhân không phải đối tượng bị gạt ra ngoài, mà là lực lượng xung kích kiến tạo trên 50% GDP và hơn 85% việc làm mới. Cùng với đó, phụ nữ và thế hệ trẻ - những sinh viên như chúng ta hôm nay - là ngọn lửa xung kích đổi mới sáng tạo, chuyển đổi số cộng đồng. Khối liên minh xã hội vì thế trở nên tràn đầy sinh lực và đa dạng sắc màu!',
+    script: 'Tiếp tục với lực lượng thứ tư trong cơ cấu giai tầng: Đội ngũ Doanh nhân Việt Nam (Giáo trình tr. 181 – 182). Một điểm rất mới và tiến bộ trong giáo trình và văn kiện Đảng ta là khẳng định vị thế to lớn của doanh nhân. Doanh nhân không phải đối tượng bị gạt ra ngoài, mà là lực lượng xung kích kiến tạo trên 50% GDP và hơn 85% việc làm mới cho toàn xã hội. Đội ngũ doanh nhân ngày càng lớn mạnh về số lượng và chất lượng, mang khát vọng cống hiến cho dân tộc, văn hóa kinh doanh thượng tôn pháp luật và trách nhiệm xã hội sâu sắc!',
     keyPoints: [
-      'Doanh nhân là lực lượng xung kích phát triển kinh tế thị trường, mang tinh thần phụng sự dân tộc.',
-      'Phụ nữ khẳng định vai trò bình đẳng giới, đóng góp to lớn trên mọi mặt trận chính trị - kinh tế.',
-      'Thanh niên, sinh viên là lực lượng xung kích làm chủ công nghệ, gánh vác tương lai đất nước.'
+      'Doanh nhân là tầng lớp xã hội phát triển nhanh và vượt bậc từ công cuộc Đổi mới.',
+      'Lực lượng chủ công, xung kích kiến tạo trên 50% GDP và hơn 85% việc làm mới.',
+      'Xây dựng đội ngũ doanh nhân lớn mạnh, có đạo đức kinh doanh văn minh và trách nhiệm xã hội.'
     ]
   },
   {
