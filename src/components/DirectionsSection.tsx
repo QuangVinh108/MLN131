@@ -61,18 +61,19 @@ export const DirectionsSection: React.FC = () => {
             color: isLight ? '#b91c1c' : '#d9b36b',
             display: 'inline-flex',
             alignItems: 'center',
-            gap: '0.5rem',
-            padding: '0.4rem 1.1rem',
+            gap: '0.55rem',
+            padding: '0.48rem 1.35rem',
             borderRadius: '999px',
-            background: isLight ? 'rgba(185, 28, 28, 0.08)' : 'rgba(217, 179, 107, 0.1)',
-            border: isLight ? '1px solid rgba(185, 28, 28, 0.2)' : '1px solid rgba(217, 179, 107, 0.25)',
+            background: isLight ? 'rgba(185, 28, 28, 0.08)' : 'rgba(217, 179, 107, 0.12)',
+            border: isLight ? '1.5px solid rgba(185, 28, 28, 0.25)' : '1.5px solid rgba(217, 179, 107, 0.3)',
             marginBottom: '1rem',
-            fontSize: '0.8rem',
+            fontSize: 'clamp(0.85rem, 1.1vw, 0.95rem)',
             fontWeight: 700,
-            letterSpacing: '0.05em'
+            letterSpacing: '0.04em',
+            boxShadow: isLight ? '0 3px 10px rgba(185, 28, 28, 0.06)' : '0 3px 12px rgba(217, 179, 107, 0.08)'
           }}
         >
-          <BookOpen size={15} />
+          <BookOpen size={16} />
           <span>PHƯƠNG HƯỚNG XÂY DỰNG CƠ CẤU GIAI CẤP & TĂNG CƯỜNG LIÊN MINH</span>
         </div>
 

@@ -62,26 +62,29 @@ export const AllianceEssenceSection: React.FC = () => {
       }}
     >
       {/* Section Header */}
-      <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-        <div
+      <div style={{ textAlign: 'center', marginBottom: '2.2rem' }}>
+        <h2
           className="eyebrow"
           style={{
             color: isLight ? '#b91c1c' : '#d9b36b',
             display: 'inline-flex',
             alignItems: 'center',
-            gap: '0.5rem',
-            padding: '0.45rem 1.2rem',
+            gap: '0.6rem',
+            padding: '0.52rem 1.5rem',
             borderRadius: '999px',
-            background: isLight ? 'rgba(185, 28, 28, 0.08)' : 'rgba(217, 179, 107, 0.1)',
-            border: isLight ? '1px solid rgba(185, 28, 28, 0.2)' : '1px solid rgba(217, 179, 107, 0.25)',
-            fontSize: '0.82rem',
+            background: isLight ? 'rgba(185, 28, 28, 0.08)' : 'rgba(217, 179, 107, 0.12)',
+            border: isLight ? '1.5px solid rgba(185, 28, 28, 0.25)' : '1.5px solid rgba(217, 179, 107, 0.3)',
+            fontSize: 'clamp(0.88rem, 1.2vw, 1.02rem)',
             fontWeight: 700,
-            letterSpacing: '0.05em'
+            letterSpacing: '0.04em',
+            margin: 0,
+            lineHeight: 1.35,
+            boxShadow: isLight ? '0 3px 10px rgba(185, 28, 28, 0.06)' : '0 3px 12px rgba(217, 179, 107, 0.08)'
           }}
         >
-          <Sparkles size={16} />
+          <Sparkles size={18} style={{ flexShrink: 0 }} />
           <span>LIÊN MINH GIAI CẤP, TẦNG LỚP TRONG THỜI KỲ QUÁ ĐỘ LÊN CNXH Ở VIỆT NAM</span>
-        </div>
+        </h2>
       </div>
 
       {/* Core Definition Banner */}

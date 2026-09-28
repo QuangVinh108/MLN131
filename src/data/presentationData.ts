@@ -135,7 +135,7 @@ export const TEAM_MEMBERS = [
     name: 'Trần Thị B',
     studentId: 'B21DCCN002',
     role: 'Thành viên · Thuyết trình Đặc điểm & Cơ cấu giai cấp',
-    parts: '3 Đặc điểm cơ cấu giai cấp & 5 giai cấp/tầng lớp: Công nhân, Nông dân, Trí thức, Doanh nhân, Phụ nữ & Thanh niên'
+    parts: '3 Đặc điểm cơ cấu giai cấp & 4 giai cấp/tầng lớp cốt lõi: Công nhân, Nông dân, Trí thức, Doanh nhân'
   },
   {
     name: 'Lê Hoàng C',
@@ -297,38 +297,6 @@ export const CLASS_PILLARS: ClassPillar[] = [
     imageUrl: '/images/docx/image12.png',
     imageCaption: 'Lễ kỷ niệm Ngày Doanh nhân Việt Nam 13/10 - Tôn vinh Doanh nhân Việt Nam tiêu biểu',
     scriptNote: 'Doanh nhân trong KTTT định hướng XHCN không đối kháng mà đồng hành cùng công nhân, nông dân, trí thức vì mục tiêu dân giàu, nước mạnh.'
-  },
-  {
-    id: 'phu-nu-thanh-nien',
-    name: 'Tầng lớp Phụ nữ & Thế hệ Trẻ',
-    shortName: 'Phụ nữ & Thế hệ Trẻ',
-    badge: 'Chính sách Đặc thù',
-    iconName: 'Sparkles',
-    accentColor: '#ec4899',
-    position: 'Các lực lượng xã hội được chú trọng đặc biệt trong hệ thống chính sách xã hội: Phụ nữ là lực lượng to lớn trong mọi lĩnh vực; Thanh niên là rường cột nước nhà, chủ nhân tương lai của đất nước.',
-    statistics: [
-      { label: 'Tỷ lệ nữ ĐBQH', value: '> 30%', trend: 'Cao hàng đầu khu vực ASEAN' },
-      { label: 'Lực lượng thanh niên', value: '~ 22 triệu', trend: 'Thời kỳ dân số vàng của Việt Nam' },
-      { label: 'Khởi nghiệp đổi mới', value: '> 70%', trend: 'Ý tưởng khởi nghiệp đến từ người trẻ' }
-    ],
-    characteristics: [
-      'Phụ nữ Việt Nam phát huy truyền thống yêu nước, bản lĩnh, nhân ái, có vai trò to lớn trong gia đình và xã hội.',
-      'Thanh niên là lực lượng xung kích trong học tập, lao động, chuyển đổi số và bảo vệ Tổ quốc.'
-    ],
-    trends: [
-      'Thanh niên, sinh viên là lực lượng tiên phong trong phong trào khởi nghiệp sáng tạo và kinh tế số.',
-      'Phụ nữ ngày càng khẳng định vị thế bình đẳng trong lãnh đạo, quản lý và hoạt động kinh tế.'
-    ],
-    challenges: [
-      'Yêu cầu nâng cao kỹ năng số, thích ứng với cách mạng công nghiệp 4.0 và hội nhập quốc tế.',
-      'Thực hiện bình đẳng giới thực chất, bảo vệ quyền lợi bà mẹ, trẻ em và đào tạo nghề cho thanh niên.'
-    ],
-    quote: 'Thanh niên là người chủ tương lai của nước nhà. Nước nhà thịnh hay suy, yếu hay mạnh một phần lớn là do các thanh niên.',
-    quoteAuthor: 'Chủ tịch Hồ Chí Minh',
-    sourceLabel: 'Chính sách an sinh và phát triển thanh niên, phụ nữ',
-    imageUrl: '/images/docx/image15.png',
-    imageCaption: 'Thế hệ trẻ và các tầng lớp nhân dân trong khối đại đoàn kết toàn dân tộc: Khát vọng phụng sự Tổ quốc',
-    scriptNote: 'Phương hướng 2 nhấn mạnh: Cần xây dựng chính sách cho từng nhóm: công nhân, nông dân, trí thức, doanh nhân, phụ nữ, thanh niên.'
   }
 ];
 

@@ -24,18 +24,19 @@ export const OverviewSection: React.FC = () => {
             color: isLight ? '#b91c1c' : '#d9b36b',
             display: 'inline-flex',
             alignItems: 'center',
-            gap: '0.5rem',
-            padding: '0.4rem 1.1rem',
+            gap: '0.55rem',
+            padding: '0.48rem 1.35rem',
             borderRadius: '999px',
-            background: isLight ? 'rgba(185, 28, 28, 0.08)' : 'rgba(217, 179, 107, 0.1)',
-            border: isLight ? '1px solid rgba(185, 28, 28, 0.2)' : '1px solid rgba(217, 179, 107, 0.25)',
+            background: isLight ? 'rgba(185, 28, 28, 0.08)' : 'rgba(217, 179, 107, 0.12)',
+            border: isLight ? '1.5px solid rgba(185, 28, 28, 0.25)' : '1.5px solid rgba(217, 179, 107, 0.3)',
             marginBottom: '1rem',
-            fontSize: '0.8rem',
+            fontSize: 'clamp(0.85rem, 1.1vw, 0.95rem)',
             fontWeight: 700,
-            letterSpacing: '0.05em'
+            letterSpacing: '0.04em',
+            boxShadow: isLight ? '0 3px 10px rgba(185, 28, 28, 0.06)' : '0 3px 12px rgba(217, 179, 107, 0.08)'
           }}
         >
-          <BookOpen size={15} />
+          <BookOpen size={16} />
           <span>CƠ CẤU XÃ HỘI - GIAI CẤP TRONG THỜI KỲ QUÁ ĐỘ</span>
         </div>
 
@@ -788,10 +789,22 @@ export const OverviewSection: React.FC = () => {
                 Mô hình Khép kín & Đơn nhất
               </h4>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: '0.88rem', color: isLight ? '#475569' : '#a0988a' }}>
-                <li>❌ Chỉ thừa nhận 2 giai cấp (Công nhân, Nông dân tập thể) và 1 tầng lớp (Trí thức XHCN).</li>
-                <li>❌ Phủ nhận kinh tế tư nhân; quy đổi mọi thành phần về sở hữu toàn dân và tập thể.</li>
-                <li>❌ Phân phối bình quân, cào bằng, triệt tiêu động lực phấn đấu cá nhân.</li>
-                <li>❌ Cơ cấu giai cấp đóng kín, kém năng động và kìm hãm sức sản xuất.</li>
+                <li style={{ display: 'flex', gap: '0.65rem', alignItems: 'flex-start', lineHeight: 1.55 }}>
+                  <span style={{ color: '#b5403a', fontSize: '1.2rem', lineHeight: 1, flexShrink: 0 }}>•</span>
+                  <span>Chỉ thừa nhận 2 giai cấp (Công nhân, Nông dân tập thể) và 1 tầng lớp (Trí thức XHCN).</span>
+                </li>
+                <li style={{ display: 'flex', gap: '0.65rem', alignItems: 'flex-start', lineHeight: 1.55 }}>
+                  <span style={{ color: '#b5403a', fontSize: '1.2rem', lineHeight: 1, flexShrink: 0 }}>•</span>
+                  <span>Phủ nhận kinh tế tư nhân; quy đổi mọi thành phần về sở hữu toàn dân và tập thể.</span>
+                </li>
+                <li style={{ display: 'flex', gap: '0.65rem', alignItems: 'flex-start', lineHeight: 1.55 }}>
+                  <span style={{ color: '#b5403a', fontSize: '1.2rem', lineHeight: 1, flexShrink: 0 }}>•</span>
+                  <span>Phân phối bình quân, cào bằng, triệt tiêu động lực phấn đấu cá nhân.</span>
+                </li>
+                <li style={{ display: 'flex', gap: '0.65rem', alignItems: 'flex-start', lineHeight: 1.55 }}>
+                  <span style={{ color: '#b5403a', fontSize: '1.2rem', lineHeight: 1, flexShrink: 0 }}>•</span>
+                  <span>Cơ cấu giai cấp đóng kín, kém năng động và kìm hãm sức sản xuất.</span>
+                </li>
               </ul>
             </div>
 
@@ -814,10 +827,22 @@ export const OverviewSection: React.FC = () => {
                 Đa dạng, Mở rộng & Hội nhập Số
               </h4>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: '0.88rem', color: isLight ? '#1e293b' : '#ded6c5' }}>
-                <li>✅ Xác định rõ 5 giai cấp, tầng lớp cốt lõi: Công nhân, Nông dân, Trí thức, Doanh nhân, Phụ nữ & Thanh niên.</li>
-                <li>✅ Kinh tế thị trường nhiều thành phần; kinh tế tư nhân là động lực quan trọng của nền kinh tế.</li>
-                <li>✅ Phân phối chủ yếu theo kết quả lao động và mức độ đóng góp vốn, công nghệ.</li>
-                <li>✅ Khơi dậy khát vọng dân tộc, giải phóng tối đa sức sáng tạo của mọi tầng lớp nhân dân.</li>
+                <li style={{ display: 'flex', gap: '0.65rem', alignItems: 'flex-start', lineHeight: 1.55 }}>
+                  <span style={{ color: '#b5403a', fontSize: '1.2rem', lineHeight: 1, flexShrink: 0 }}>•</span>
+                  <span>Xác định rõ 5 giai cấp, tầng lớp cốt lõi: Công nhân, Nông dân, Trí thức, Doanh nhân, Phụ nữ & Thanh niên.</span>
+                </li>
+                <li style={{ display: 'flex', gap: '0.65rem', alignItems: 'flex-start', lineHeight: 1.55 }}>
+                  <span style={{ color: '#b5403a', fontSize: '1.2rem', lineHeight: 1, flexShrink: 0 }}>•</span>
+                  <span>Kinh tế thị trường nhiều thành phần; kinh tế tư nhân là động lực quan trọng của nền kinh tế.</span>
+                </li>
+                <li style={{ display: 'flex', gap: '0.65rem', alignItems: 'flex-start', lineHeight: 1.55 }}>
+                  <span style={{ color: '#b5403a', fontSize: '1.2rem', lineHeight: 1, flexShrink: 0 }}>•</span>
+                  <span>Phân phối chủ yếu theo kết quả lao động và mức độ đóng góp vốn, công nghệ.</span>
+                </li>
+                <li style={{ display: 'flex', gap: '0.65rem', alignItems: 'flex-start', lineHeight: 1.55 }}>
+                  <span style={{ color: '#b5403a', fontSize: '1.2rem', lineHeight: 1, flexShrink: 0 }}>•</span>
+                  <span>Khơi dậy khát vọng dân tộc, giải phóng tối đa sức sáng tạo của mọi tầng lớp nhân dân.</span>
+                </li>
               </ul>
             </div>
           </div>

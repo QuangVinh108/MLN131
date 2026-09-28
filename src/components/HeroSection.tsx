@@ -91,21 +91,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
           style={{
             display: 'inline-flex',
             alignItems: 'center',
-            gap: '0.6rem',
-            padding: '0.45rem 1.2rem',
+            gap: '0.75rem',
+            padding: '0.65rem 1.6rem',
             borderRadius: '999px',
             background: isLight
               ? 'rgba(217, 179, 107, 0.18)'
               : 'linear-gradient(135deg, rgba(217, 179, 107, 0.12), rgba(200, 151, 63, 0.06))',
-            border: isLight ? '1px solid rgba(180, 83, 9, 0.35)' : '1px solid rgba(217, 179, 107, 0.3)',
-            marginBottom: '2rem',
+            border: isLight ? '1.5px solid rgba(180, 83, 9, 0.35)' : '1.5px solid rgba(217, 179, 107, 0.35)',
+            marginBottom: '2.2rem',
             boxShadow: isLight ? '0 2px 10px rgba(180, 83, 9, 0.08)' : '0 4px 20px rgba(0, 0, 0, 0.4)'
           }}
         >
           <span
             style={{
-              width: '8px',
-              height: '8px',
+              width: '9px',
+              height: '9px',
               borderRadius: '50%',
               backgroundColor: '#b5403a',
               boxShadow: '0 0 10px #b5403a',
@@ -115,9 +115,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
           <span
             className="eyebrow"
             style={{
-              fontSize: '0.78rem',
+              fontSize: 'clamp(0.85rem, 1.2vw, 1.05rem)',
+              fontWeight: 800,
               color: isLight ? '#92400e' : '#e6c98c',
-              letterSpacing: '0.22em'
+              letterSpacing: '0.18em'
             }}
           >
             HỌC PHẦN MLN131 · CHỦ NGHĨA XÃ HỘI KHOA HỌC · KỲ FALL2026

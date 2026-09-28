@@ -54,16 +54,16 @@ export const ClassPillarsSection: React.FC = () => {
             lineHeight: 1.6
           }}
         >
-          Khám phá chi tiết vị thế lịch sử, số liệu thực tiễn và xu hướng phát triển của các giai cấp, tầng lớp
+          Khám phá chi tiết vị thế lịch sử, đặc điểm và xu hướng phát triển của các giai cấp, tầng lớp
           trong thời kỳ quá độ lên CNXH ở Việt Nam.
         </p>
       </div>
 
-      {/* 5 Pillar Navigation Buttons */}
+      {/* 4 Pillar Navigation Buttons */}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
           gap: '1rem',
           marginBottom: '2.5rem'
         }}
@@ -224,47 +224,6 @@ export const ClassPillarsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Statistical Highlights Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-            gap: '1rem',
-            marginBottom: '2.5rem'
-          }}
-        >
-          {selectedPillar.statistics.map((stat, idx) => (
-            <div
-              key={idx}
-              style={{
-                background: isLight ? '#f8fafc' : 'rgba(18, 16, 23, 0.75)',
-                padding: '1.2rem',
-                borderRadius: '12px',
-                border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.16)'
-              }}
-            >
-              <div style={{ fontSize: '0.78rem', color: isLight ? '#64748b' : '#b8b0a0', marginBottom: '0.3rem' }}>
-                {stat.label}
-              </div>
-              <div
-                className="display"
-                style={{
-                  fontSize: '1.8rem',
-                  fontWeight: 800,
-                  color: selectedPillar.accentColor,
-                  lineHeight: 1.1,
-                  marginBottom: '0.35rem'
-                }}
-              >
-                {stat.value}
-              </div>
-              <div style={{ fontSize: '0.78rem', color: isLight ? '#334155' : '#ded6c5', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                <TrendingUp size={13} color={selectedPillar.accentColor} />
-                <span>{stat.trend}</span>
-              </div>
-            </div>
-          ))}
-        </div>
 
         {/* Three Columns: Characteristics, Trends 4.0, Challenges */}
         <div

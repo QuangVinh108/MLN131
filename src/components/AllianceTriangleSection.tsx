@@ -4,7 +4,6 @@ import {
   DollarSign,
   ShieldAlert,
   Sparkles,
-  CheckCircle,
   Target,
   Layers,
   Lightbulb,
@@ -250,7 +249,7 @@ export const AllianceTriangleSection: React.FC = () => {
                     color: isLight ? '#334155' : '#ded6c5'
                   }}
                 >
-                  <CheckCircle size={18} color={activePillar.color} style={{ flexShrink: 0, marginTop: '0.2rem' }} />
+                  <span style={{ color: activePillar.color, fontSize: '1.2rem', lineHeight: 1, flexShrink: 0, marginTop: '0.15rem' }}>•</span>
                   <span>{goal}</span>
                 </li>
               ))}
@@ -312,7 +311,7 @@ export const AllianceTriangleSection: React.FC = () => {
                     color: isLight ? '#334155' : '#ded6c5'
                   }}
                 >
-                  <CheckCircle size={18} color={activePillar.color} style={{ flexShrink: 0, marginTop: '0.2rem' }} />
+                  <span style={{ color: activePillar.color, fontSize: '1.2rem', lineHeight: 1, flexShrink: 0, marginTop: '0.15rem' }}>•</span>
                   <span>{content}</span>
                 </li>
               ))}
