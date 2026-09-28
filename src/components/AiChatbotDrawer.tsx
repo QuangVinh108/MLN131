@@ -56,9 +56,10 @@ export const AiChatbotDrawer: React.FC<AiChatbotDrawerProps> = ({ isOpen, onClos
       if (matchedFaq) {
         responseText = matchedFaq.answer;
       } else {
-        responseText = `Về câu hỏi: "${query}", theo quan điểm của Giáo trình Chủ nghĩa Xã hội Khoa học (2021, Chương 5, Mục III):
-1. Về cơ cấu giai cấp: Trong thời kỳ quá độ ở Việt Nam, cơ cấu giai cấp biến đổi gắn liền với nền kinh tế thị trường định hướng XHCN nhiều thành phần, gồm 4 giai cấp, tầng lớp cốt lõi: Công nhân, Nông dân, Trí thức và Doanh nhân dưới sự lãnh đạo của Đảng.
-2. Về liên minh: Khối liên minh công nhân - nông dân - trí thức và đội ngũ doanh nhân là tất yếu khách quan. Trong đó, nội dung kinh tế là cơ sở quyết định nhất nhằm kết hợp hài hòa các lợi ích; nội dung chính trị giữ vững định hướng XHCN; nội dung văn hóa - xã hội hướng đến con người và công bằng xã hội.
+        responseText = `Về câu hỏi: "${query}", theo quan điểm của Giáo trình Chủ nghĩa Xã hội Khoa học:
+1. Về cơ cấu giai cấp: Cơ cấu giai cấp biến đổi gắn liền với nền kinh tế thị trường định hướng XHCN nhiều thành phần, gồm 5 giai cấp, tầng lớp xã hội: Công nhân, Nông dân, Trí thức, Doanh nhân, Phụ nữ & Thanh niên dưới sự lãnh đạo của Đảng.
+2. Về liên minh: Khối liên minh công nhân - nông dân - trí thức là nền tảng; mở rộng liên minh với doanh nhân, phụ nữ và thanh niên. Trong đó, nội dung kinh tế là cơ sở quyết định nhất; nội dung chính trị định hướng XHCN; nội dung văn hóa - xã hội gắn tăng trưởng với công bằng ("không để ai bị bỏ lại phía sau").
+3. Về 5 phương hướng cơ bản: Đẩy mạnh CNH-HĐH gắn với kinh tế tri thức; thực hiện chính sách xã hội tổng thể cho từng giai tầng; phát huy đại đoàn kết toàn dân tộc; hoàn thiện thể chế KTTT & ĐMST số; đổi mới phương thức lãnh đạo của Đảng và Nhà nước.
 Nếu cần thêm chi tiết, bạn có thể tham khảo thêm trong Giáo trình hoặc đặt thêm câu hỏi cụ thể hơn nhé!`;
       }
 

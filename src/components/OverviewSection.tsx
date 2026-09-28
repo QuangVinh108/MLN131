@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Layers, Shuffle, Compass, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Layers, Shuffle, Compass, CheckCircle2, BookOpen, AlertCircle } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 export const OverviewSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'khai-niem' | 'quy-luat' | 'so-sanh'>('quy-luat');
+  const [activeTab, setActiveTab] = useState<'khai-niem' | 'quy-luat' | 'so-sanh'>('khai-niem');
   const { isLight } = useTheme();
 
   return (
@@ -18,6 +18,27 @@ export const OverviewSection: React.FC = () => {
     >
       {/* Section Header */}
       <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+        <div
+          className="eyebrow"
+          style={{
+            color: isLight ? '#b91c1c' : '#d9b36b',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.4rem 1.1rem',
+            borderRadius: '999px',
+            background: isLight ? 'rgba(185, 28, 28, 0.08)' : 'rgba(217, 179, 107, 0.1)',
+            border: isLight ? '1px solid rgba(185, 28, 28, 0.2)' : '1px solid rgba(217, 179, 107, 0.25)',
+            marginBottom: '1rem',
+            fontSize: '0.8rem',
+            fontWeight: 700,
+            letterSpacing: '0.05em'
+          }}
+        >
+          <BookOpen size={15} />
+          <span>CƠ CẤU XÃ HỘI - GIAI CẤP TRONG THỜI KỲ QUÁ ĐỘ</span>
+        </div>
+
         <h2
           className="display"
           style={{
@@ -28,20 +49,20 @@ export const OverviewSection: React.FC = () => {
             color: isLight ? '#0f172a' : '#f8fafc'
           }}
         >
-          Tính Quy Luật Biến Đổi Của <span className="text-gold-grad">Cơ Cấu Giai Cấp</span>
+          Bối Cảnh & Cơ Sở <span className="text-gold-grad">Cơ Cấu Giai Cấp</span>
         </h2>
         <div className="gold-line" style={{ maxWidth: '280px', margin: '0 auto 1.2rem auto' }} />
         <p
           style={{
             fontSize: '1.05rem',
             color: isLight ? '#475569' : '#b8b0a0',
-            maxWidth: '780px',
+            maxWidth: '820px',
             margin: '0 auto',
             lineHeight: 1.6
           }}
         >
-          Trong thời kỳ quá độ, cơ cấu xã hội - giai cấp giữ vị trí trung tâm, chi phối các cơ cấu xã hội khác
-          và biến đổi gắn liền với sự vận động của nền kinh tế thị trường định hướng XHCN.
+          Trong thời kỳ quá độ lên chủ nghĩa xã hội, cơ cấu xã hội - giai cấp ở Việt Nam luôn vận động và biến đổi,
+          gắn chặt với sự chuyển dịch của cơ cấu kinh tế nhiều thành phần, CNH, HĐH và hội nhập quốc tế.
         </p>
       </div>
 
@@ -55,24 +76,6 @@ export const OverviewSection: React.FC = () => {
           flexWrap: 'wrap'
         }}
       >
-        <button
-          onClick={() => setActiveTab('quy-luat')}
-          className="glass"
-          style={{
-            padding: '0.7rem 1.4rem',
-            borderRadius: '999px',
-            fontSize: '0.9rem',
-            fontWeight: 600,
-            background: activeTab === 'quy-luat'
-              ? (isLight ? 'linear-gradient(135deg, rgba(217, 179, 107, 0.3), rgba(200, 151, 63, 0.2))' : 'linear-gradient(135deg, rgba(217, 179, 107, 0.3), rgba(200, 151, 63, 0.15))')
-              : (isLight ? '#ffffff' : 'rgba(255, 255, 255, 0.03)'),
-            color: activeTab === 'quy-luat' ? (isLight ? '#854d0e' : '#f4e6c3') : (isLight ? '#475569' : '#b8b0a0'),
-            border: activeTab === 'quy-luat' ? (isLight ? '1.5px solid #ca8a04' : '1px solid #d9b36b') : (isLight ? '1px solid #cbd5e1' : '1px solid rgba(217, 179, 107, 0.18)'),
-            boxShadow: isLight && activeTab === 'quy-luat' ? '0 2px 8px rgba(202, 138, 4, 0.2)' : 'none'
-          }}
-        >
-          ✨ 3 Đặc điểm Quy luật Biến đổi
-        </button>
         <button
           onClick={() => setActiveTab('khai-niem')}
           className="glass"
@@ -89,7 +92,25 @@ export const OverviewSection: React.FC = () => {
             boxShadow: isLight && activeTab === 'khai-niem' ? '0 2px 8px rgba(202, 138, 4, 0.2)' : 'none'
           }}
         >
-          📖 Khái niệm & Vị trí Trung tâm
+          📖 Khái niệm & Cơ sở hình thành
+        </button>
+        <button
+          onClick={() => setActiveTab('quy-luat')}
+          className="glass"
+          style={{
+            padding: '0.7rem 1.4rem',
+            borderRadius: '999px',
+            fontSize: '0.9rem',
+            fontWeight: 600,
+            background: activeTab === 'quy-luat'
+              ? (isLight ? 'linear-gradient(135deg, rgba(217, 179, 107, 0.3), rgba(200, 151, 63, 0.2))' : 'linear-gradient(135deg, rgba(217, 179, 107, 0.3), rgba(200, 151, 63, 0.15))')
+              : (isLight ? '#ffffff' : 'rgba(255, 255, 255, 0.03)'),
+            color: activeTab === 'quy-luat' ? (isLight ? '#854d0e' : '#f4e6c3') : (isLight ? '#475569' : '#b8b0a0'),
+            border: activeTab === 'quy-luat' ? (isLight ? '1.5px solid #ca8a04' : '1px solid #d9b36b') : (isLight ? '1px solid #cbd5e1' : '1px solid rgba(217, 179, 107, 0.18)'),
+            boxShadow: isLight && activeTab === 'quy-luat' ? '0 2px 8px rgba(202, 138, 4, 0.2)' : 'none'
+          }}
+        >
+          ✨ Đặc điểm Cơ cấu giai cấp
         </button>
         <button
           onClick={() => setActiveTab('so-sanh')}
@@ -107,172 +128,11 @@ export const OverviewSection: React.FC = () => {
             boxShadow: isLight && activeTab === 'so-sanh' ? '0 2px 8px rgba(202, 138, 4, 0.2)' : 'none'
           }}
         >
-          ⚖️ So sánh Trước Đổi mới vs Hiện nay
+          ⚖️ So sánh Cơ cấu giai cấp các thời kỳ
         </button>
       </div>
 
-      {/* Tab 1: 3 Quy Luật Biến Đổi */}
-      {activeTab === 'quy-luat' && (
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '1.5rem'
-          }}
-        >
-          {/* Card 1 */}
-          <div
-            className="glass-card"
-            style={{
-              padding: '2rem',
-              background: isLight ? '#ffffff' : undefined,
-              border: isLight ? '1px solid rgba(217, 179, 107, 0.35)' : undefined,
-              boxShadow: isLight ? '0 4px 20px -2px rgba(0,0,0,0.06)' : undefined
-            }}
-          >
-            <div
-              style={{
-                width: '46px',
-                height: '46px',
-                borderRadius: '12px',
-                background: isLight ? 'rgba(217, 179, 107, 0.22)' : 'rgba(217, 179, 107, 0.18)',
-                border: '1px solid rgba(217, 179, 107, 0.4)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: isLight ? '#92400e' : '#e6c98c',
-                marginBottom: '1.2rem'
-              }}
-            >
-              <Shuffle size={24} />
-            </div>
-            <div className="eyebrow" style={{ color: isLight ? '#b45309' : '#d9b36b', marginBottom: '0.35rem' }}>
-              QUY LUẬT 01
-            </div>
-            <h3 className="display" style={{ fontSize: '1.3rem', fontWeight: 700, color: isLight ? '#0f172a' : '#f4e6c3', marginBottom: '0.75rem' }}>
-              Quy định bởi Cơ cấu Kinh tế
-            </h3>
-            <p style={{ fontSize: '0.92rem', color: isLight ? '#334155' : '#ded6c5', lineHeight: 1.65, marginBottom: '1rem' }}>
-              Cơ cấu xã hội - giai cấp biến đổi gắn liền và bị quy định bởi cơ cấu kinh tế nhiều thành phần. Nền kinh tế
-              có bao nhiêu thành phần kinh tế, hình thức sở hữu thì cơ cấu giai cấp sẽ có sự đa dạng hóa tương ứng.
-            </p>
-            <div
-              style={{
-                background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.03)',
-                padding: '0.75rem 1rem',
-                borderRadius: '8px',
-                borderLeft: '3px solid #d9b36b',
-                fontSize: '0.82rem',
-                color: isLight ? '#475569' : '#b8b0a0'
-              }}
-            >
-              💡 <em>Kinh tế nhà nước, tập thể, tư nhân và FDI tạo nên sự phân tầng và tính đa dạng trong người lao động.</em>
-            </div>
-          </div>
-
-          {/* Card 2 */}
-          <div
-            className="glass-card"
-            style={{
-              padding: '2rem',
-              background: isLight ? '#ffffff' : undefined,
-              border: isLight ? '1px solid rgba(181, 64, 58, 0.35)' : undefined,
-              boxShadow: isLight ? '0 4px 20px -2px rgba(0,0,0,0.06)' : undefined
-            }}
-          >
-            <div
-              style={{
-                width: '46px',
-                height: '46px',
-                borderRadius: '12px',
-                background: isLight ? 'rgba(181, 64, 58, 0.15)' : 'rgba(181, 64, 58, 0.2)',
-                border: '1px solid rgba(181, 64, 58, 0.4)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: isLight ? '#b91c1c' : '#ff9a8d',
-                marginBottom: '1.2rem'
-              }}
-            >
-              <Compass size={24} />
-            </div>
-            <div className="eyebrow" style={{ color: isLight ? '#b91c1c' : '#ff9a8d', marginBottom: '0.35rem' }}>
-              QUY LUẬT 02
-            </div>
-            <h3 className="display" style={{ fontSize: '1.3rem', fontWeight: 700, color: isLight ? '#0f172a' : '#f4e6c3', marginBottom: '0.75rem' }}>
-              Vừa Đa Dạng, Vừa Thống Nhất
-            </h3>
-            <p style={{ fontSize: '0.92rem', color: isLight ? '#334155' : '#ded6c5', lineHeight: 1.65, marginBottom: '1rem' }}>
-              Đa dạng, phức tạp về ngành nghề, mức thu nhập và lợi ích cục bộ; nhưng <strong>thống nhất cao độ</strong> vì
-              mọi giai cấp, tầng lớp đều đặt dưới sự lãnh đạo của Đảng Cộng sản Việt Nam, cùng chung mục tiêu XHCN.
-            </p>
-            <div
-              style={{
-                background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.03)',
-                padding: '0.75rem 1rem',
-                borderRadius: '8px',
-                borderLeft: '3px solid #b5403a',
-                fontSize: '0.82rem',
-                color: isLight ? '#475569' : '#b8b0a0'
-              }}
-            >
-              💡 <em>Không tồn tại đối kháng giai cấp sinh tử, mà là quan hệ đồng thuận xã hội trên nền tảng độc lập dân tộc.</em>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div
-            className="glass-card"
-            style={{
-              padding: '2rem',
-              background: isLight ? '#ffffff' : undefined,
-              border: isLight ? '1px solid rgba(52, 211, 153, 0.35)' : undefined,
-              boxShadow: isLight ? '0 4px 20px -2px rgba(0,0,0,0.06)' : undefined
-            }}
-          >
-            <div
-              style={{
-                width: '46px',
-                height: '46px',
-                borderRadius: '12px',
-                background: isLight ? 'rgba(52, 211, 153, 0.15)' : 'rgba(52, 211, 153, 0.2)',
-                border: '1px solid rgba(52, 211, 153, 0.4)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: isLight ? '#047857' : '#34d399',
-                marginBottom: '1.2rem'
-              }}
-            >
-              <Layers size={24} />
-            </div>
-            <div className="eyebrow" style={{ color: isLight ? '#047857' : '#34d399', marginBottom: '0.35rem' }}>
-              QUY LUẬT 03
-            </div>
-            <h3 className="display" style={{ fontSize: '1.3rem', fontWeight: 700, color: isLight ? '#0f172a' : '#f4e6c3', marginBottom: '0.75rem' }}>
-              Xu Hướng Xích Lại Gần Nhau
-            </h3>
-            <p style={{ fontSize: '0.92rem', color: isLight ? '#334155' : '#ded6c5', lineHeight: 1.65, marginBottom: '1rem' }}>
-              Dưới tác động của CNH, HĐH và chuyển đổi số, khoảng cách giữa các giai tầng dần được thu hẹp về quan hệ sở hữu,
-              tính chất lao động (trí thức hóa) và mức độ thụ hưởng thành quả văn hóa, tinh thần.
-            </p>
-            <div
-              style={{
-                background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.03)',
-                padding: '0.75rem 1rem',
-                borderRadius: '8px',
-                borderLeft: '3px solid #34d399',
-                fontSize: '0.82rem',
-                color: isLight ? '#475569' : '#b8b0a0'
-              }}
-            >
-              💡 <em>Nông dân có tri thức công nghệ; công nhân có kỹ năng cao; trí thức gắn liền với xưởng máy và đồng ruộng.</em>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Tab 2: Khái niệm & Vị trí */}
+      {/* Tab 1: Khái niệm & Cơ sở hình thành */}
       {activeTab === 'khai-niem' && (
         <div
           className="glass-card"
@@ -282,33 +142,75 @@ export const OverviewSection: React.FC = () => {
             boxShadow: isLight ? '0 4px 20px -2px rgba(0,0,0,0.06)' : undefined
           }}
         >
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', alignItems: 'flex-start' }}>
+            {/* Cột Trái: Khái niệm */}
             <div>
               <div className="eyebrow" style={{ color: isLight ? '#b45309' : '#d9b36b', marginBottom: '0.5rem' }}>
                 ĐỊNH NGHĨA KHOA HỌC
               </div>
-              <h3 className="display" style={{ fontSize: '1.6rem', color: isLight ? '#0f172a' : '#f4e6c3', marginBottom: '1rem' }}>
-                Cơ Cấu Xã Hội - Giai Cấp Là Gì?
+              <h3 className="display" style={{ fontSize: '1.55rem', color: isLight ? '#0f172a' : '#f4e6c3', marginBottom: '1rem' }}>
+                Khái Niệm Cơ Cấu Xã Hội - Giai Cấp
               </h3>
               <p style={{ color: isLight ? '#334155' : '#ded6c5', lineHeight: 1.7, fontSize: '0.96rem', marginBottom: '1.2rem' }}>
-                Cơ cấu xã hội - giai cấp là hệ thống các giai cấp, tầng lớp xã hội tồn tại khách quan trong một chế độ xã hội nhất định,
-                cùng với những mối quan hệ về sở hữu, quản lý và phân phối lợi ích giữa chúng trong quá trình sản xuất vật chất.
+                Cơ cấu xã hội – giai cấp là <strong>hệ thống các giai cấp, tầng lớp xã hội tồn tại khách quan</strong> trong một chế độ xã hội nhất định,
+                được thể hiện qua các mối quan hệ về <em>sở hữu tư liệu sản xuất, tổ chức – quản lý sản xuất và địa vị chính trị – xã hội</em>.
               </p>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
-                <li style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.9rem', color: isLight ? '#1e293b' : '#f3ede0' }}>
-                  <CheckCircle2 size={18} color="#d9b36b" />
-                  <span>Là loại hình cơ cấu cơ bản, quan trọng và giữ vị trí trung tâm nhất.</span>
-                </li>
-                <li style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.9rem', color: isLight ? '#1e293b' : '#f3ede0' }}>
-                  <CheckCircle2 size={18} color="#d9b36b" />
-                  <span>Chi phối trực tiếp đến cơ cấu dân tộc, tôn giáo, dân số và nghề nghiệp.</span>
-                </li>
-                <li style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.9rem', color: isLight ? '#1e293b' : '#f3ede0' }}>
-                  <CheckCircle2 size={18} color="#d9b36b" />
-                  <span>Là căn cứ chính trị để Đảng và Nhà nước hoạch định chính sách đại đoàn kết toàn dân tộc.</span>
-                </li>
-              </ul>
+
+              {/* Image 13: Lenin */}
+              <div
+                style={{
+                  borderRadius: '12px',
+                  overflow: 'hidden',
+                  border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.25)',
+                  marginBottom: '1.2rem',
+                  background: isLight ? '#f1f5f9' : 'rgba(0,0,0,0.3)'
+                }}
+              >
+                <div style={{ height: '220px', overflow: 'hidden' }}>
+                  <img
+                    src="/images/docx/image13.png"
+                    alt="V.I. Lênin diễn thuyết trước quần chúng"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                      transition: 'transform 0.4s ease'
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.04)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                  />
+                </div>
+                <div
+                  style={{
+                    padding: '0.6rem 0.9rem',
+                    fontSize: '0.8rem',
+                    color: isLight ? '#64748b' : '#b8b0a0',
+                    background: isLight ? '#f8fafc' : 'rgba(20, 18, 27, 0.75)',
+                    borderTop: isLight ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,0.06)',
+                    fontStyle: 'italic'
+                  }}
+                >
+                  📷 V.I. Lênin diễn thuyết trước quần chúng: Định nghĩa kinh điển về phân chia giai cấp
+                </div>
+              </div>
+
+              <div
+                style={{
+                  background: isLight ? 'rgba(217, 179, 107, 0.12)' : 'rgba(217, 179, 107, 0.08)',
+                  padding: '1rem 1.2rem',
+                  borderRadius: '12px',
+                  borderLeft: '4px solid #d9b36b',
+                  fontSize: '0.9rem',
+                  color: isLight ? '#854d0e' : '#f4e6c3',
+                  lineHeight: 1.6
+                }}
+              >
+                👉 <strong>Trong thời kỳ quá độ lên CNXH:</strong> Cơ cấu này gồm nhiều giai cấp, tầng lớp cùng tồn tại, có quan hệ vừa khác biệt về lợi ích, vừa liên hệ, hợp tác mật thiết với nhau.
+              </div>
             </div>
+
+            {/* Cột Phải: Cơ sở hình thành và biến đổi ở Việt Nam */}
             <div
               style={{
                 background: isLight ? '#f8fafc' : 'linear-gradient(135deg, rgba(20, 18, 27, 0.9), rgba(30, 26, 38, 0.7))',
@@ -317,44 +219,391 @@ export const OverviewSection: React.FC = () => {
                 border: isLight ? '1px solid #cbd5e1' : '1px solid rgba(217, 179, 107, 0.25)'
               }}
             >
-              <div style={{ textAlign: 'center', marginBottom: '1.2rem' }}>
-                <span className="eyebrow" style={{ color: isLight ? '#b45309' : '#e6c98c' }}>SƠ ĐỒ VỊ TRÍ TRUNG TÂM</span>
+              <div className="eyebrow" style={{ color: isLight ? '#b45309' : '#e6c98c', marginBottom: '1rem' }}>
+                CƠ SỞ HÌNH THÀNH & BIẾN ĐỔI Ở VIỆT NAM
               </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+                  <div style={{ padding: '0.4rem', borderRadius: '8px', background: isLight ? 'rgba(181, 64, 58, 0.12)' : 'rgba(181, 64, 58, 0.2)', color: '#b5403a' }}>
+                    <CheckCircle2 size={18} />
+                  </div>
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: '0.95rem', color: isLight ? '#0f172a' : '#f4e6c3' }}>
+                      1. Cơ cấu kinh tế là cơ sở quyết định
+                    </div>
+                    <div style={{ fontSize: '0.85rem', color: isLight ? '#475569' : '#b8b0a0', marginTop: '0.2rem' }}>
+                      Sự thay đổi của cơ cấu kinh tế trực tiếp dẫn đến sự thay đổi về số lượng, vị trí và vai trò của các giai cấp, tầng lớp xã hội.
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+                  <div style={{ padding: '0.4rem', borderRadius: '8px', background: isLight ? 'rgba(217, 179, 107, 0.15)' : 'rgba(217, 179, 107, 0.2)', color: '#d9b36b' }}>
+                    <CheckCircle2 size={18} />
+                  </div>
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: '0.95rem', color: isLight ? '#0f172a' : '#f4e6c3' }}>
+                      2. Nền kinh tế nhiều thành phần
+                    </div>
+                    <div style={{ fontSize: '0.85rem', color: isLight ? '#475569' : '#b8b0a0', marginTop: '0.2rem' }}>
+                      Sự tồn tại của nhiều hình thức sở hữu và thành phần kinh tế làm cho cơ cấu xã hội – giai cấp ngày càng đa dạng, năng động và linh hoạt.
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+                  <div style={{ padding: '0.4rem', borderRadius: '8px', background: isLight ? 'rgba(52, 211, 153, 0.15)' : 'rgba(52, 211, 153, 0.2)', color: '#34d399' }}>
+                    <CheckCircle2 size={18} />
+                  </div>
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: '0.95rem', color: isLight ? '#0f172a' : '#f4e6c3' }}>
+                      3. CNH, HĐH & Khoa học – Công nghệ
+                    </div>
+                    <div style={{ fontSize: '0.85rem', color: isLight ? '#475569' : '#b8b0a0', marginTop: '0.2rem' }}>
+                      Thúc đẩy chuyển dịch cơ cấu lao động theo hướng hiện đại, hình thành và phát triển những nhóm xã hội mới (công nhân trí thức, chuyên gia số).
+                    </div>
+                  </div>
+                </div>
+
+                {/* Image 19: CNH, HĐH & KH-CN */}
+                <div
+                  style={{
+                    borderRadius: '12px',
+                    overflow: 'hidden',
+                    border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.25)',
+                    marginTop: '0.6rem',
+                    background: isLight ? '#f1f5f9' : 'rgba(0,0,0,0.3)'
+                  }}
+                >
+                  <div style={{ height: '180px', overflow: 'hidden' }}>
+                    <img
+                      src="/images/docx/image19.png"
+                      alt="Đẩy mạnh công nghiệp hóa, hiện đại hóa và ứng dụng khoa học công nghệ"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        display: 'block',
+                        transition: 'transform 0.4s ease'
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.04)')}
+                      onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      padding: '0.5rem 0.8rem',
+                      fontSize: '0.78rem',
+                      color: isLight ? '#64748b' : '#b8b0a0',
+                      background: isLight ? '#f8fafc' : 'rgba(20, 18, 27, 0.75)',
+                      borderTop: isLight ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,0.06)',
+                      fontStyle: 'italic'
+                    }}
+                  >
+                    📷 Đẩy mạnh CNH, HĐH và phát triển khoa học – công nghệ thúc đẩy chuyển dịch cơ cấu lao động
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Tab 2: 3 Đặc điểm của cơ cấu xã hội – giai cấp */}
+      {activeTab === 'quy-luat' && (
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: '1.5rem'
+          }}
+        >
+          {/* Đặc điểm 1 */}
+          <div
+            className="glass-card"
+            style={{
+              padding: '2rem',
+              background: isLight ? '#ffffff' : undefined,
+              border: isLight ? '1px solid rgba(217, 179, 107, 0.35)' : undefined,
+              boxShadow: isLight ? '0 4px 20px -2px rgba(0,0,0,0.06)' : undefined,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between'
+            }}
+          >
+            <div>
               <div
                 style={{
-                  background: isLight
-                    ? 'linear-gradient(135deg, rgba(181, 64, 58, 0.15), rgba(217, 179, 107, 0.25))'
-                    : 'linear-gradient(135deg, rgba(181, 64, 58, 0.3), rgba(217, 179, 107, 0.25))',
-                  border: isLight ? '2px solid #ca8a04' : '1.5px solid #d9b36b',
+                  width: '46px',
+                  height: '46px',
                   borderRadius: '12px',
-                  padding: '1.2rem',
-                  textAlign: 'center',
-                  fontWeight: 700,
-                  color: isLight ? '#991b1b' : '#fbf5e6',
-                  marginBottom: '1rem',
-                  fontSize: '1.05rem',
-                  boxShadow: isLight ? '0 4px 15px rgba(202, 138, 4, 0.2)' : '0 0 25px rgba(217, 179, 107, 0.25)'
+                  background: isLight ? 'rgba(217, 179, 107, 0.22)' : 'rgba(217, 179, 107, 0.18)',
+                  border: '1px solid rgba(217, 179, 107, 0.4)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: isLight ? '#92400e' : '#e6c98c',
+                  marginBottom: '1.2rem'
                 }}
               >
-                Cơ Cấu Xã Hội - Giai Cấp
-                <div style={{ fontSize: '0.75rem', fontWeight: 500, color: isLight ? '#b45309' : '#e6c98c', marginTop: '0.2rem' }}>
-                  (Hạt nhân & Vị trí Quyết định)
+                <Shuffle size={24} />
+              </div>
+              <div className="eyebrow" style={{ color: isLight ? '#b45309' : '#d9b36b', marginBottom: '0.35rem' }}>
+                ĐẶC ĐIỂM 01
+              </div>
+              <h3 className="display" style={{ fontSize: '1.25rem', fontWeight: 700, color: isLight ? '#0f172a' : '#f4e6c3', marginBottom: '0.75rem' }}>
+                Vừa Mang Tính Quy Luật Phổ Biến, Vừa Mang Tính Đặc Thù
+              </h3>
+              <p style={{ fontSize: '0.92rem', color: isLight ? '#334155' : '#ded6c5', lineHeight: 1.65, marginBottom: '1rem' }}>
+                Sự biến đổi cơ cấu xã hội – giai cấp ở Việt Nam vừa tuân theo quy luật chung của thời kỳ quá độ lên CNXH,
+                vừa chịu tác động sâu sắc của điều kiện lịch sử, kinh tế và xã hội đặc thù của Việt Nam.
+              </p>
+
+              {/* Image 7 */}
+              <div
+                style={{
+                  borderRadius: '10px',
+                  overflow: 'hidden',
+                  border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.2)',
+                  marginBottom: '1rem',
+                  background: isLight ? '#f1f5f9' : 'rgba(0,0,0,0.3)'
+                }}
+              >
+                <div style={{ height: '175px', overflow: 'hidden' }}>
+                  <img
+                    src="/images/docx/image7.png"
+                    alt="Tranh cổ động các tầng lớp nhân dân đoàn kết dưới ngọn cờ Đảng và Bác Hồ"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                      transition: 'transform 0.4s ease'
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                  />
+                </div>
+                <div
+                  style={{
+                    padding: '0.5rem 0.75rem',
+                    fontSize: '0.78rem',
+                    color: isLight ? '#64748b' : '#b8b0a0',
+                    background: isLight ? '#f8fafc' : 'rgba(20, 18, 27, 0.75)',
+                    borderTop: isLight ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,0.06)',
+                    fontStyle: 'italic'
+                  }}
+                >
+                  📷 Tranh cổ động các tầng lớp nhân dân đoàn kết dưới ngọn cờ Đảng và Bác Hồ
                 </div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.6rem' }}>
-                <div style={{ background: isLight ? '#ffffff' : 'rgba(255, 255, 255, 0.05)', padding: '0.6rem', borderRadius: '8px', textAlign: 'center', fontSize: '0.8rem', color: isLight ? '#334155' : '#b8b0a0', border: isLight ? '1px solid #e2e8f0' : 'none', fontWeight: isLight ? 600 : 400 }}>
-                  Cơ cấu Dân tộc
+
+              <div
+                style={{
+                  background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.03)',
+                  padding: '0.75rem 1rem',
+                  borderRadius: '8px',
+                  borderLeft: '3px solid #d9b36b',
+                  fontSize: '0.82rem',
+                  color: isLight ? '#475569' : '#b8b0a0'
+                }}
+              >
+                💡 <em>Cơ cấu giai cấp Việt Nam có những đặc điểm riêng nhưng vẫn nằm trong xu hướng vận động chung của thời kỳ quá độ.</em>
+              </div>
+            </div>
+          </div>
+
+          {/* Đặc điểm 2 */}
+          <div
+            className="glass-card"
+            style={{
+              padding: '2rem',
+              background: isLight ? '#ffffff' : undefined,
+              border: isLight ? '1px solid rgba(181, 64, 58, 0.35)' : undefined,
+              boxShadow: isLight ? '0 4px 20px -2px rgba(0,0,0,0.06)' : undefined,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between'
+            }}
+          >
+            <div>
+              <div
+                style={{
+                  width: '46px',
+                  height: '46px',
+                  borderRadius: '12px',
+                  background: isLight ? 'rgba(181, 64, 58, 0.15)' : 'rgba(181, 64, 58, 0.2)',
+                  border: '1px solid rgba(181, 64, 58, 0.4)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: isLight ? '#b91c1c' : '#ff9a8d',
+                  marginBottom: '1.2rem'
+                }}
+              >
+                <Compass size={24} />
+              </div>
+              <div className="eyebrow" style={{ color: isLight ? '#b91c1c' : '#ff9a8d', marginBottom: '0.35rem' }}>
+                ĐẶC ĐIỂM 02
+              </div>
+              <h3 className="display" style={{ fontSize: '1.25rem', fontWeight: 700, color: isLight ? '#0f172a' : '#f4e6c3', marginBottom: '0.75rem' }}>
+                Ngày Càng Đa Dạng, Phức Tạp & Xuất Hiện Tầng Lớp Mới
+              </h3>
+              <p style={{ fontSize: '0.92rem', color: isLight ? '#334155' : '#ded6c5', lineHeight: 1.65, marginBottom: '1rem' }}>
+                Kinh tế nhiều thành phần, CNH, HĐH và kinh tế tri thức làm xuất hiện nhiều nhóm xã hội mới. Bên cạnh công nhân, nông dân, trí thức,
+                ngày càng nổi bật đội ngũ doanh nhân và các nhóm lao động số năng động.
+              </p>
+
+              {/* Image 15 */}
+              <div
+                style={{
+                  borderRadius: '10px',
+                  overflow: 'hidden',
+                  border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(181, 64, 58, 0.25)',
+                  marginBottom: '1rem',
+                  background: isLight ? '#f1f5f9' : 'rgba(0,0,0,0.3)'
+                }}
+              >
+                <div style={{ height: '175px', overflow: 'hidden' }}>
+                  <img
+                    src="/images/docx/image15.png"
+                    alt="Đại đoàn kết toàn dân tộc phát huy sức mạnh thời đại mới"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                      transition: 'transform 0.4s ease'
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                  />
                 </div>
-                <div style={{ background: isLight ? '#ffffff' : 'rgba(255, 255, 255, 0.05)', padding: '0.6rem', borderRadius: '8px', textAlign: 'center', fontSize: '0.8rem', color: isLight ? '#334155' : '#b8b0a0', border: isLight ? '1px solid #e2e8f0' : 'none', fontWeight: isLight ? 600 : 400 }}>
-                  Cơ cấu Dân cư & Nghề nghiệp
-                </div>
-                <div style={{ background: isLight ? '#ffffff' : 'rgba(255, 255, 255, 0.05)', padding: '0.6rem', borderRadius: '8px', textAlign: 'center', fontSize: '0.8rem', color: isLight ? '#334155' : '#b8b0a0', border: isLight ? '1px solid #e2e8f0' : 'none', fontWeight: isLight ? 600 : 400 }}>
-                  Cơ cấu Tôn giáo
-                </div>
-                <div style={{ background: isLight ? '#ffffff' : 'rgba(255, 255, 255, 0.05)', padding: '0.6rem', borderRadius: '8px', textAlign: 'center', fontSize: '0.8rem', color: isLight ? '#334155' : '#b8b0a0', border: isLight ? '1px solid #e2e8f0' : 'none', fontWeight: isLight ? 600 : 400 }}>
-                  Cơ cấu Lãnh thổ Vùng miền
+                <div
+                  style={{
+                    padding: '0.5rem 0.75rem',
+                    fontSize: '0.78rem',
+                    color: isLight ? '#64748b' : '#b8b0a0',
+                    background: isLight ? '#f8fafc' : 'rgba(20, 18, 27, 0.75)',
+                    borderTop: isLight ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,0.06)',
+                    fontStyle: 'italic'
+                  }}
+                >
+                  📷 Cơ cấu xã hội đa dạng, phong phú với các lực lượng xã hội mới
                 </div>
               </div>
+
+              <div
+                style={{
+                  background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.03)',
+                  padding: '0.75rem 1rem',
+                  borderRadius: '8px',
+                  borderLeft: '3px solid #b5403a',
+                  fontSize: '0.82rem',
+                  color: isLight ? '#475569' : '#b8b0a0'
+                }}
+              >
+                💡 <em>Cơ cấu xã hội – giai cấp Việt Nam ngày càng đa dạng, linh hoạt và năng động trong kỷ nguyên phát triển mới.</em>
+              </div>
+            </div>
+          </div>
+
+          {/* Đặc điểm 3 */}
+          <div
+            className="glass-card"
+            style={{
+              padding: '2rem',
+              background: isLight ? '#ffffff' : undefined,
+              border: isLight ? '1px solid rgba(52, 211, 153, 0.35)' : undefined,
+              boxShadow: isLight ? '0 4px 20px -2px rgba(0,0,0,0.06)' : undefined,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between'
+            }}
+          >
+            <div>
+              <div
+                style={{
+                  width: '46px',
+                  height: '46px',
+                  borderRadius: '12px',
+                  background: isLight ? 'rgba(52, 211, 153, 0.15)' : 'rgba(52, 211, 153, 0.2)',
+                  border: '1px solid rgba(52, 211, 153, 0.4)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: isLight ? '#047857' : '#34d399',
+                  marginBottom: '1.2rem'
+                }}
+              >
+                <Layers size={24} />
+              </div>
+              <div className="eyebrow" style={{ color: isLight ? '#047857' : '#34d399', marginBottom: '0.35rem' }}>
+                ĐẶC ĐIỂM 03
+              </div>
+              <h3 className="display" style={{ fontSize: '1.25rem', fontWeight: 700, color: isLight ? '#0f172a' : '#f4e6c3', marginBottom: '0.75rem' }}>
+                Vừa Khác Biệt, Vừa Có Sự Liên Minh & Xích Lại Gần Nhau
+              </h3>
+              <p style={{ fontSize: '0.92rem', color: isLight ? '#334155' : '#ded6c5', lineHeight: 1.65, marginBottom: '1rem' }}>
+                Các giai cấp, tầng lớp có vị trí và lợi ích khác nhau nên vẫn tồn tại những khác biệt. Tuy nhiên, họ đồng thời có lợi ích chung,
+                từ đó hình thành quan hệ hợp tác, liên kết và liên minh chặt chẽ.
+              </p>
+
+              {/* Image 18: Đại đoàn kết toàn dân tộc */}
+              <div
+                style={{
+                  borderRadius: '10px',
+                  overflow: 'hidden',
+                  border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(52, 211, 153, 0.25)',
+                  marginBottom: '1rem',
+                  background: isLight ? '#f1f5f9' : 'rgba(0,0,0,0.3)'
+                }}
+              >
+                <div style={{ height: '175px', overflow: 'hidden' }}>
+                  <img
+                    src="/images/docx/image18.png"
+                    alt="Khối đại đoàn kết toàn dân tộc trong kỷ nguyên mới"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                      transition: 'transform 0.4s ease'
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                  />
+                </div>
+                <div
+                  style={{
+                    padding: '0.5rem 0.75rem',
+                    fontSize: '0.78rem',
+                    color: isLight ? '#64748b' : '#b8b0a0',
+                    background: isLight ? '#f8fafc' : 'rgba(20, 18, 27, 0.75)',
+                    borderTop: isLight ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,0.06)',
+                    fontStyle: 'italic'
+                  }}
+                >
+                  📷 Khối đại đoàn kết toàn dân tộc: Vừa tôn trọng sự khác biệt, vừa gắn kết liên minh
+                </div>
+              </div>
+
+              <div
+                style={{
+                  background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.03)',
+                  padding: '0.75rem 1rem',
+                  borderRadius: '8px',
+                  borderLeft: '3px solid #34d399',
+                  fontSize: '0.82rem',
+                  color: isLight ? '#475569' : '#b8b0a0',
+                  marginBottom: '1rem'
+                }}
+              >
+                💡 <em>Đây là cơ sở củng cố khối đại đoàn kết toàn dân tộc, với nền tảng là liên minh công - nông - trí thức dưới sự lãnh đạo của Đảng.</em>
+              </div>
+            </div>
+            <div style={{ fontSize: '0.8rem', color: isLight ? '#047857' : '#34d399', fontWeight: 600 }}>
+              Cơ sở khối Đại đoàn kết toàn dân
             </div>
           </div>
         </div>
@@ -414,7 +663,7 @@ export const OverviewSection: React.FC = () => {
                 Đa dạng, Mở rộng & Hội nhập Số
               </h4>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: '0.88rem', color: isLight ? '#1e293b' : '#ded6c5' }}>
-                <li>✅ Xác định rõ 4 giai cấp, tầng lớp cốt lõi: Công nhân, Nông dân, Trí thức và Doanh nhân.</li>
+                <li>✅ Xác định rõ 5 giai cấp, tầng lớp cốt lõi: Công nhân, Nông dân, Trí thức, Doanh nhân, Phụ nữ & Thanh niên.</li>
                 <li>✅ Kinh tế thị trường nhiều thành phần; kinh tế tư nhân là động lực quan trọng của nền kinh tế.</li>
                 <li>✅ Phân phối chủ yếu theo kết quả lao động và mức độ đóng góp vốn, công nghệ.</li>
                 <li>✅ Khơi dậy khát vọng dân tộc, giải phóng tối đa sức sáng tạo của mọi tầng lớp nhân dân.</li>

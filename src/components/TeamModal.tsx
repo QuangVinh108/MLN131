@@ -159,7 +159,7 @@ export const TeamModal: React.FC<TeamModalProps> = ({
               <strong style={{ fontSize: '0.95rem' }}>Tài Liệu Học Tập & Trích Dẫn Chuẩn</strong>
             </div>
             <p style={{ fontSize: '0.86rem', color: isLight ? '#1e293b' : '#ded6c5', lineHeight: 1.6 }}>
-              Toàn bộ nội dung bài thuyết trình được biên soạn dựa trên <strong>Giáo trình Chủ nghĩa Xã hội Khoa học (Bộ GD&ĐT, 2021)</strong>, Chương 5, Mục III: "Cơ cấu xã hội - giai cấp và liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam".
+              Toàn bộ nội dung bài thuyết trình được biên soạn dựa trên <strong>Giáo trình Chủ nghĩa Xã hội Khoa học (Bộ GD&ĐT, 2021)</strong>: "Cơ cấu xã hội - giai cấp và liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam".
             </p>
           </div>
 

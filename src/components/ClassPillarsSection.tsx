@@ -42,7 +42,7 @@ export const ClassPillarsSection: React.FC = () => {
             color: isLight ? '#0f172a' : '#fbf5e6'
           }}
         >
-          4 Trụ Cột <span className="text-gold-grad">Giai Cấp & Tầng Lớp</span> Cốt Lõi
+          <span className="text-gold-grad">Cơ Cấu Giai Cấp</span> & Tầng Lớp Xã Hội
         </h2>
         <div className="gold-line" style={{ maxWidth: '280px', margin: '0 auto 1.2rem auto' }} />
         <p
@@ -54,12 +54,12 @@ export const ClassPillarsSection: React.FC = () => {
             lineHeight: 1.6
           }}
         >
-          Khám phá chi tiết vị thế lịch sử, số liệu thực tiễn và xu hướng biến đổi của 4 giai cấp, tầng lớp cốt lõi
+          Khám phá chi tiết vị thế lịch sử, số liệu thực tiễn và xu hướng phát triển của các giai cấp, tầng lớp
           trong thời kỳ quá độ lên CNXH ở Việt Nam.
         </p>
       </div>
 
-      {/* 4 Pillar Navigation Buttons */}
+      {/* 5 Pillar Navigation Buttons */}
       <div
         style={{
           display: 'grid',
@@ -361,24 +361,171 @@ export const ClassPillarsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Famous Quote */}
+        {/* Famous Quote & Citation */}
         <div
           style={{
             background: isLight ? '#f1f5f9' : 'linear-gradient(135deg, rgba(20, 18, 27, 0.9), rgba(30, 26, 38, 0.7))',
-            padding: '1.2rem 1.8rem',
-            borderRadius: '12px',
+            padding: '1.4rem 1.8rem',
+            borderRadius: '14px',
             border: isLight ? '1px solid #cbd5e1' : '1px solid rgba(217, 179, 107, 0.2)',
             display: 'flex',
-            alignItems: 'center',
-            gap: '1rem',
-            marginBottom: '1.5rem'
+            flexDirection: 'column',
+            gap: '0.8rem',
+            marginBottom: '1rem'
           }}
         >
-          <Quote size={28} color={selectedPillar.accentColor} style={{ flexShrink: 0, opacity: 0.8 }} />
-          <div style={{ fontSize: '0.94rem', fontStyle: 'italic', color: isLight ? '#1e293b' : '#f4e6c3', lineHeight: 1.6 }}>
-            "{selectedPillar.quote}"
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+            <Quote size={28} color={selectedPillar.accentColor} style={{ flexShrink: 0, opacity: 0.8, marginTop: '2px' }} />
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: '0.98rem', fontStyle: 'italic', color: isLight ? '#1e293b' : '#f4e6c3', lineHeight: 1.65 }}>
+                "{selectedPillar.quote}"
+              </div>
+              {selectedPillar.quoteAuthor && (
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: selectedPillar.accentColor, marginTop: '0.4rem' }}>
+                  — {selectedPillar.quoteAuthor}
+                </div>
+              )}
+            </div>
           </div>
         </div>
+
+        {/* Documentary Photographs from Document */}
+        {selectedPillar.imageUrl && (
+          <div
+            style={{
+              marginTop: '1.5rem',
+              display: 'grid',
+              gridTemplateColumns: selectedPillar.secondaryImageUrl ? 'repeat(auto-fit, minmax(280px, 1fr))' : '1fr',
+              gap: '1.2rem'
+            }}
+          >
+            <div
+              style={{
+                borderRadius: '14px',
+                overflow: 'hidden',
+                border: isLight ? '1px solid #cbd5e1' : `1px solid ${selectedPillar.accentColor}40`,
+                background: isLight ? '#f8fafc' : 'rgba(0,0,0,0.3)',
+                boxShadow: isLight ? '0 4px 15px rgba(0,0,0,0.06)' : '0 10px 25px rgba(0,0,0,0.4)'
+              }}
+            >
+              <div style={{ maxHeight: '340px', overflow: 'hidden', position: 'relative' }}>
+                <img
+                  src={selectedPillar.imageUrl}
+                  alt={selectedPillar.imageCaption || selectedPillar.name}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    maxHeight: '340px',
+                    objectFit: 'cover',
+                    display: 'block',
+                    transition: 'transform 0.4s ease'
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = 'scale(1.03)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = 'scale(1)';
+                  }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '10px',
+                    left: '10px',
+                    padding: '0.25rem 0.65rem',
+                    borderRadius: '6px',
+                    background: 'rgba(0,0,0,0.7)',
+                    backdropFilter: 'blur(6px)',
+                    color: '#ffffff',
+                    fontSize: '0.72rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.04em'
+                  }}
+                >
+                  📷 HÌNH ẢNH TƯ LIỆU THỰC TẾ
+                </div>
+              </div>
+              {selectedPillar.imageCaption && (
+                <div
+                  style={{
+                    padding: '0.75rem 1rem',
+                    fontSize: '0.82rem',
+                    color: isLight ? '#475569' : '#ded6c5',
+                    fontStyle: 'italic',
+                    borderTop: isLight ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,0.08)',
+                    background: isLight ? '#f1f5f9' : 'rgba(18, 16, 23, 0.8)'
+                  }}
+                >
+                  {selectedPillar.imageCaption}
+                </div>
+              )}
+            </div>
+
+            {selectedPillar.secondaryImageUrl && (
+              <div
+                style={{
+                  borderRadius: '14px',
+                  overflow: 'hidden',
+                  border: isLight ? '1px solid #cbd5e1' : `1px solid ${selectedPillar.accentColor}40`,
+                  background: isLight ? '#f8fafc' : 'rgba(0,0,0,0.3)',
+                  boxShadow: isLight ? '0 4px 15px rgba(0,0,0,0.06)' : '0 10px 25px rgba(0,0,0,0.4)'
+                }}
+              >
+                <div style={{ maxHeight: '340px', overflow: 'hidden', position: 'relative' }}>
+                  <img
+                    src={selectedPillar.secondaryImageUrl}
+                    alt={selectedPillar.secondaryImageCaption || selectedPillar.name}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      maxHeight: '340px',
+                      objectFit: 'cover',
+                      display: 'block',
+                      transition: 'transform 0.4s ease'
+                    }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.transform = 'scale(1.03)';
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '10px',
+                      left: '10px',
+                      padding: '0.25rem 0.65rem',
+                      borderRadius: '6px',
+                      background: 'rgba(0,0,0,0.7)',
+                      backdropFilter: 'blur(6px)',
+                      color: '#ffffff',
+                      fontSize: '0.72rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.04em'
+                    }}
+                  >
+                    📷 THỜI KỲ HIỆN ĐẠI & HỘI NHẬP
+                  </div>
+                </div>
+                {selectedPillar.secondaryImageCaption && (
+                  <div
+                    style={{
+                      padding: '0.75rem 1rem',
+                      fontSize: '0.82rem',
+                      color: isLight ? '#475569' : '#ded6c5',
+                      fontStyle: 'italic',
+                      borderTop: isLight ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,0.08)',
+                      background: isLight ? '#f1f5f9' : 'rgba(18, 16, 23, 0.8)'
+                    }}
+                  >
+                    {selectedPillar.secondaryImageCaption}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
 
 
       </div>

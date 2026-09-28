@@ -5,8 +5,7 @@ import { OverviewSection } from './components/OverviewSection';
 import { ClassPillarsSection } from './components/ClassPillarsSection';
 import { AllianceEssenceSection } from './components/AllianceEssenceSection';
 import { AllianceTriangleSection } from './components/AllianceTriangleSection';
-import { FourHousesSection } from './components/FourHousesSection';
-import { TimelineSection } from './components/TimelineSection';
+import { DirectionsSection } from './components/DirectionsSection';
 import { QuizArenaSection } from './components/QuizArenaSection';
 import { QrExperienceSection } from './components/QrExperienceSection';
 import { Footer } from './components/Footer';
@@ -36,9 +35,7 @@ export const App: React.FC = () => {
 
         <AllianceTriangleSection />
 
-        <FourHousesSection />
-
-        <TimelineSection />
+        <DirectionsSection />
 
         <QuizArenaSection />
 

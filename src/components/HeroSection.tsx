@@ -1,5 +1,5 @@
 import React from 'react';
-import { HelpCircle, Sparkles, Users, ShieldCheck, BookOpen } from 'lucide-react';
+import { HelpCircle, Sparkles, Users, ShieldCheck, BookOpen, Compass } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 interface HeroSectionProps {
@@ -250,13 +250,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
             </div>
             <div>
               <div style={{ fontSize: '0.78rem', color: isLight ? '#64748b' : '#b8b0a0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                Cơ Cấu Giai Tầng
+                Cơ Cấu Giai Cấp
               </div>
               <div style={{ fontSize: '1.1rem', fontWeight: 700, color: isLight ? '#0f172a' : '#f4e6c3', margin: '0.2rem 0' }}>
-                4 Giai Tầng Cốt Lõi
+                Giai Cấp & Tầng Lớp
               </div>
               <div style={{ fontSize: '0.82rem', color: isLight ? '#475569' : '#b8b0a0' }}>
-                Công nhân, Nông dân, Trí thức, Doanh nhân
+                Công nhân, Nông dân, Trí thức, Doanh nhân, Phụ nữ & Trẻ
               </div>
             </div>
           </div>
@@ -314,17 +314,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToQuiz }) => {
                 color: isLight ? '#059669' : '#34d399'
               }}
             >
-              <Sparkles size={22} />
+              <Compass size={22} />
             </div>
             <div>
               <div style={{ fontSize: '0.78rem', color: isLight ? '#64748b' : '#b8b0a0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                Thực tiễn sinh động
+                Định hướng chiến lược
               </div>
               <div style={{ fontSize: '1.1rem', fontWeight: 700, color: isLight ? '#0f172a' : '#f4e6c3', margin: '0.2rem 0' }}>
-                Mô Hình "Liên Kết 4 Nhà"
+                5 Phương Hướng Cơ Bản
               </div>
               <div style={{ fontSize: '0.82rem', color: isLight ? '#475569' : '#b8b0a0' }}>
-                Nhà nước · Nhà khoa học · Doanh nghiệp · Nhà nông
+                Xây dựng cơ cấu giai cấp & củng cố liên minh
               </div>
             </div>
           </div>

@@ -163,6 +163,23 @@ export const AllianceTriangleSection: React.FC = () => {
           </div>
         </div>
 
+        {/* Practical Simple Explanation Callout from MLN131.docx */}
+        {activePillar.practicalExplanation && (
+          <div
+            style={{
+              background: isLight ? 'rgba(217, 179, 107, 0.12)' : 'rgba(217, 179, 107, 0.08)',
+              padding: '1.1rem 1.6rem',
+              borderRadius: '12px',
+              borderLeft: `4px solid ${activePillar.color}`,
+              marginBottom: '2rem'
+            }}
+          >
+            <div style={{ fontSize: '0.94rem', color: isLight ? '#854d0e' : '#f4e6c3', lineHeight: 1.6 }}>
+              💡 <strong>Diễn giải thực tế (Dễ hiểu):</strong> {activePillar.practicalExplanation}
+            </div>
+          </div>
+        )}
+
         {/* 4 Core Focus Areas Grid */}
         <div style={{ marginBottom: '2.5rem' }}>
           <h4
@@ -236,7 +253,7 @@ export const AllianceTriangleSection: React.FC = () => {
             padding: '1.5rem 1.8rem',
             borderRadius: '12px',
             border: isLight ? '1px solid #cbd5e1' : '1px solid rgba(255, 255, 255, 0.08)',
-            marginBottom: '2rem'
+            marginBottom: '1.5rem'
           }}
         >
           <div style={{ fontSize: '0.82rem', fontWeight: 700, color: isLight ? '#b45309' : '#e6c98c', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.8rem' }}>
@@ -251,6 +268,81 @@ export const AllianceTriangleSection: React.FC = () => {
             ))}
           </div>
         </div>
+
+        {/* Documentary Photographs from Document */}
+        {activePillar.images && activePillar.images.length > 0 && (
+          <div
+            style={{
+              marginBottom: '1.5rem',
+              display: 'grid',
+              gridTemplateColumns: activePillar.images.length > 1 ? 'repeat(auto-fit, minmax(280px, 1fr))' : '1fr',
+              gap: '1.2rem'
+            }}
+          >
+            {activePillar.images.map((img, idx) => (
+              <div
+                key={idx}
+                style={{
+                  borderRadius: '14px',
+                  overflow: 'hidden',
+                  border: isLight ? '1px solid #cbd5e1' : `1px solid ${activePillar.color}40`,
+                  background: isLight ? '#f8fafc' : 'rgba(0,0,0,0.3)',
+                  boxShadow: isLight ? '0 4px 15px rgba(0,0,0,0.06)' : '0 10px 25px rgba(0,0,0,0.4)'
+                }}
+              >
+                <div style={{ maxHeight: '320px', overflow: 'hidden', position: 'relative' }}>
+                  <img
+                    src={img.url}
+                    alt={img.caption}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      maxHeight: '320px',
+                      objectFit: 'cover',
+                      display: 'block',
+                      transition: 'transform 0.4s ease'
+                    }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.transform = 'scale(1.03)';
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '10px',
+                      left: '10px',
+                      padding: '0.25rem 0.65rem',
+                      borderRadius: '6px',
+                      background: 'rgba(0,0,0,0.7)',
+                      backdropFilter: 'blur(6px)',
+                      color: '#ffffff',
+                      fontSize: '0.72rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.04em'
+                    }}
+                  >
+                    📷 HÌNH ẢNH MINH HỌA TÀI LIỆU
+                  </div>
+                </div>
+                <div
+                  style={{
+                    padding: '0.75rem 1rem',
+                    fontSize: '0.82rem',
+                    color: isLight ? '#475569' : '#ded6c5',
+                    fontStyle: 'italic',
+                    borderTop: isLight ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,0.08)',
+                    background: isLight ? '#f1f5f9' : 'rgba(18, 16, 23, 0.8)'
+                  }}
+                >
+                  {img.caption}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

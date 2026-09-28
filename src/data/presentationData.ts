@@ -33,6 +33,13 @@ export interface ClassPillar {
   trends: string[]; // Xu hướng biến đổi trong thời kỳ quá độ & CMCN 4.0
   challenges: string[];
   quote: string;
+  quoteAuthor?: string;
+  sourceLabel?: string;
+  sourceUrl?: string;
+  imageUrl?: string;
+  imageCaption?: string;
+  secondaryImageUrl?: string;
+  secondaryImageCaption?: string;
   scriptNote: string;
 }
 
@@ -46,7 +53,11 @@ export interface AlliancePillar {
     heading: string;
     details: string;
   }[];
+  practicalExplanation?: string;
   practicalExamples: string[];
+  sourceLabel?: string;
+  sourceUrl?: string;
+  images?: { url: string; caption: string }[];
   scriptNote: string;
 }
 
@@ -75,12 +86,35 @@ export interface FAQItem {
   keywords: string[];
 }
 
+export interface DirectionItem {
+  id: string;
+  number: number;
+  title: string;
+  shortTitle: string;
+  badge: string;
+  iconName: string;
+  color: string;
+  pagesRef?: string;
+  coreContent: string;
+  keyMeasures: string[];
+  groupPolicies?: {
+    group: string;
+    icon: string;
+    policy: string;
+  }[];
+  significance: string;
+  sourceLabel?: string;
+  sourceUrl?: string;
+  imageUrl?: string;
+  imageCaption?: string;
+}
+
 export const PRESENTATION_CONFIG = {
   subjectCode: 'MLN131',
   subjectName: 'Chủ nghĩa Xã hội Khoa học',
-  chapter: 'Chương 5 · Phần III',
+  chapter: 'Chuyên đề',
   chapterTitle: 'Cơ cấu xã hội - giai cấp và liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam',
-  textbookRef: 'Giáo trình Chủ nghĩa Xã hội Khoa học (Bộ GD&ĐT, 2021)',
+  textbookRef: 'Giáo trình Chủ nghĩa Xã hội Khoa học',
   groupName: 'Nhóm Thuyết trình MLN131',
   presentationDate: 'Kỳ Fall2026',
 };
@@ -89,37 +123,35 @@ export const TEAM_MEMBERS = [
   {
     name: 'Nguyễn Văn A',
     studentId: 'B21DCCN001',
-    role: 'Trưởng nhóm · Thuyết trình Khai mạc & Phần III.1 Tổng quan',
-    parts: 'Slide 1 - 4: Đặt vấn đề, Tính quy luật biến đổi cơ cấu xã hội - giai cấp'
+    role: 'Trưởng nhóm · Thuyết trình Bối cảnh, Khái niệm & Cơ sở hình thành',
+    parts: 'Khái niệm & Cơ sở hình thành (Cơ cấu kinh tế, Nhiều thành phần, CNH-HĐH, KH-CN)'
   },
   {
     name: 'Trần Thị B',
     studentId: 'B21DCCN002',
-    role: 'Thành viên · Thuyết trình Chi tiết 4 Giai cấp, Tầng lớp Cốt lõi',
-    parts: 'Slide 5 - 8: Công nhân, Nông dân, Trí thức, Doanh nhân'
+    role: 'Thành viên · Thuyết trình Đặc điểm & Cơ cấu giai cấp',
+    parts: '3 Đặc điểm cơ cấu giai cấp & 5 giai cấp/tầng lớp: Công nhân, Nông dân, Trí thức, Doanh nhân, Phụ nữ & Thanh niên'
   },
   {
     name: 'Lê Hoàng C',
     studentId: 'B21DCCN003',
-    role: 'Thành viên · Thuyết trình Phần III.2 Liên minh Giai cấp',
-    parts: 'Slide 9 - 12: Tính tất yếu & 3 Nội dung Liên minh (Kinh tế, Chính trị, Xã hội)'
+    role: 'Thành viên · Thuyết trình Bản chất & 3 Nội dung Liên minh',
+    parts: 'Bản chất liên minh & 3 Nội dung Liên minh: Kinh tế (quyết định nhất), Chính trị, Văn hóa - Xã hội'
   },
   {
     name: 'Phạm Minh D',
     studentId: 'B21DCCN004',
-    role: 'Thành viên · Phản biện, Trắc nghiệm & Điều hành Hội đồng Q&A',
-    parts: 'Slide 13 - 15: Sơ đồ 4 Nhà, Tổng kết, Điều hành Minigame và Q&A'
+    role: 'Thành viên · Thuyết trình 5 Phương hướng cơ bản & Điều hành Minigame',
+    parts: '5 Phương hướng xây dựng cơ cấu & liên minh, Minigame Trắc nghiệm Hội trường & Q&A'
   }
 ];
 
 export const NAV_ITEMS = [
-  { id: 'hero', label: 'Khai mạc' },
   { id: 'tong-quan', label: 'Bối cảnh' },
-  { id: 'giai-tang', label: '4 Giai tầng' },
+  { id: 'giai-tang', label: 'Cơ cấu giai cấp' },
   { id: 'lien-minh', label: 'Bản chất Liên minh' },
-  { id: 'tam-giac', label: '3 Nội dung' },
-  { id: 'so-do-4-nha', label: 'Mô hình 4 Nhà' },
-  { id: 'dong-thoi-gian', label: 'Dòng thời gian' },
+  { id: 'tam-giac', label: 'Nội dung' },
+  { id: 'phuong-huong', label: 'Phương hướng' },
   { id: 'quiz', label: 'Trắc nghiệm' },
   { id: 'quet-ma', label: 'Quét mã' }
 ];
@@ -132,27 +164,32 @@ export const CLASS_PILLARS: ClassPillar[] = [
     badge: 'Giai cấp Lãnh đạo',
     iconName: 'Hammer',
     accentColor: '#b5403a',
-    position: 'Lực lượng lãnh đạo cách mạng thông qua Đảng Cộng sản Việt Nam; lực lượng tiên phong trong sự nghiệp công nghiệp hoá, hiện đại hoá đất nước.',
+    position: 'Là giai cấp lãnh đạo cách mạng thông qua Đảng Cộng sản Việt Nam; đại diện cho phương thức sản xuất tiên tiến; giữ vai trò tiên phong trong công nghiệp hóa, hiện đại hóa và là lực lượng nòng cốt trong liên minh công nhân – nông dân – trí thức.',
     statistics: [
-      { label: 'Quy mô lao động', value: '> 17 triệu', trend: 'Tăng trưởng đều hàng năm' },
+      { label: 'Quy mô lao động', value: '> 17 triệu', trend: 'Tăng trưởng đều đặn hàng năm' },
       { label: 'Đóng góp GDP', value: '> 60%', trend: 'Nòng cốt trong khu vực công nghiệp & dịch vụ' },
       { label: 'Tỷ lệ qua đào tạo', value: '~ 28 - 30%', trend: 'Cần nâng cao trình độ tay nghề công nghệ cao' }
     ],
     characteristics: [
+      'Là giai cấp lãnh đạo cách mạng thông qua đội tiền phong là Đảng Cộng sản Việt Nam.',
       'Đại diện cho phương thức sản xuất tiên tiến, gắn liền với nền công nghiệp hiện đại.',
-      'Có hệ tư tưởng tiên tiến là chủ nghĩa Mác - Lênin, tư tưởng Hồ Chí Minh.',
-      'Có tính tổ chức, kỷ luật cao, tinh thần quốc tế chân chính.'
+      'Giữ vai trò tiên phong trong công nghiệp hóa, hiện đại hóa đất nước.',
+      'Là lực lượng nòng cốt trong liên minh công nhân – nông dân – trí thức.'
     ],
     trends: [
-      'Xu hướng trí thức hoá: Công nhân áo xanh chuyển dịch mạnh sang công nhân áo trắng (tri thức công nghiệp, vận hành tự động hoá, IoT).',
-      'Đa dạng hoá thành phần: Làm việc trong doanh nghiệp nhà nước, tư nhân trong nước, và các tập đoàn FDI đa quốc gia.',
-      'Tăng nhanh về số lượng trong các khu công nghiệp, đô thị kinh tế trọng điểm.'
+      'Tăng nhanh về cả số lượng và chất lượng.',
+      'Cơ cấu nghề nghiệp ngày càng đa dạng, gắn với các ngành công nghiệp hiện đại và dịch vụ công nghệ cao.',
+      'Bộ phận công nhân trí thức ngày càng phát triển, làm chủ kỹ thuật và chuyển đổi số.'
     ],
     challenges: [
       'Nguy cơ bị thay thế bởi robot và tự động hoá nếu không kịp chuyển đổi số kỹ năng nghề.',
       'Đời sống, nhà ở công nhân, thiết chế văn hóa tại một số khu chế xuất còn nhiều khó khăn.'
     ],
-    quote: 'Giai cấp công nhân Việt Nam là lực lượng lãnh đạo cách mạng thông qua đội tiền phong là Đảng Cộng sản Việt Nam; giai cấp tiên phong trong sự nghiệp xây dựng chủ nghĩa xã hội.',
+    quote: 'Giai cấp công nhân là giai cấp lãnh đạo cách mạng thông qua Đảng Cộng sản Việt Nam, đại diện cho phương thức sản xuất tiên tiến.',
+    quoteAuthor: 'Giáo trình CNXHKH & Văn kiện Đảng',
+    sourceLabel: 'Sứ mệnh lịch sử của giai cấp công nhân',
+    imageUrl: '/images/docx/image6.png',
+    imageCaption: 'Chủ tịch Hồ Chí Minh thăm và động viên công nhân đang thao tác máy móc kỹ thuật tại nhà máy',
     scriptNote: 'Nhấn mạnh: Trong kinh tế thị trường, bản chất cách mạng của giai cấp công nhân không hề mất đi, mà đang được hiện đại hóa với tri thức công nghệ mới!'
   },
   {
@@ -162,58 +199,68 @@ export const CLASS_PILLARS: ClassPillar[] = [
     badge: 'Chiến lược Tam Nông',
     iconName: 'Wheat',
     accentColor: '#34d399',
-    position: 'Lực lượng đông đảo nhất trong dân cư, có vị trí chiến lược trong sự nghiệp phát triển nông nghiệp, nông dân, nông thôn và bảo vệ chủ quyền quốc gia.',
+    position: 'Có vị trí quan trọng trong phát triển nông nghiệp, nông thôn và xây dựng nông thôn mới; góp phần bảo đảm ổn định xã hội và phát triển đất nước.',
     statistics: [
       { label: 'Tỷ trọng dân số', value: '~ 62%', trend: 'Khu vực nông thôn đang đô thị hóa' },
       { label: 'Lao động nông nghiệp', value: '~ 27%', trend: 'Giảm dần chuyển sang công nghiệp/dịch vụ' },
       { label: 'Xuất khẩu nông sản', value: '> 53 tỷ USD', trend: 'Top đầu thế giới về gạo, cà phê, sầu riêng' }
     ],
     characteristics: [
-      'Gắn bó máu thịt với ruộng đồng, có truyền thống yêu nước, cần cù, chịu thương chịu khó.',
-      'Là đồng minh tự nhiên, tin cậy nhất và bền vững nhất của giai cấp công nhân từ cách mạng dân tộc đến xây dựng CNXH.',
-      'Lực lượng giữ gìn và phát huy bản sắc văn hóa dân tộc ở làng quê Việt Nam.'
+      'Gắn bó máu thịt với nông nghiệp, nông thôn, có truyền thống yêu nước, cần cù, chịu thương chịu khó.',
+      'Có vị trí quan trọng trong phát triển nông nghiệp, nông thôn và xây dựng nông thôn mới.',
+      'Góp phần bảo đảm an ninh lương thực quốc gia, ổn định chính trị - xã hội và phát triển đất nước.'
     ],
     trends: [
-      'Chuyển dịch cơ cấu lao động: Rời khỏi nông nghiệp truyền thống, chuyển sang công nghiệp chế biến, du lịch nông thôn.',
-      'Xuất hiện tầng lớp nông dân thế hệ mới: Nông dân số, giám đốc hợp tác xã kiểu mới, làm chủ quy trình VietGAP, GlobalGAP.',
-      'Sự phân hóa giàu nghèo nội bộ nông dân: Một bộ phận làm giàu từ nông nghiệp hàng hóa, trang trại sinh thái.'
+      'Cơ cấu ngày càng đa dạng theo hướng sản xuất nông nghiệp hàng hóa lớn, chuỗi giá trị.',
+      'Tỷ lệ lao động nông nghiệp có xu hướng giảm dần trong cơ cấu lao động xã hội.',
+      'Một bộ phận chuyển sang công nghiệp và dịch vụ, trở thành công nhân hoặc lao động ở các lĩnh vực khác.'
     ],
     challenges: [
       'Biến đổi khí hậu (xâm nhập mặn ĐBSCL, hạn hán Tây Nguyên) ảnh hưởng trực tiếp đến sinh kế.',
       'Tình trạng ly nông - ly hương, già hóa dân số nông thôn khi thanh niên di cư về đô thị.'
     ],
-    quote: 'Nông dân là chủ thể, là trung tâm của quá trình phát triển nông nghiệp, kinh tế nông thôn và xây dựng nông thôn mới.',
-    scriptNote: 'Lưu ý: Nông dân Việt Nam ngày nay không còn là hình ảnh con trâu đi trước cái cày, mà đang trở thành doanh nhân nông nghiệp, nông dân 4.0 điều khiển drone phun thuốc!'
+    quote: 'Nông dân ta giàu thì nước ta giàu. Nông nghiệp ta thịnh thì nước ta thịnh.',
+    quoteAuthor: 'Chủ tịch Hồ Chí Minh',
+    sourceLabel: 'Phát huy vai trò của giai cấp nông dân',
+    imageUrl: '/images/docx/image5.png',
+    imageCaption: 'Bác Hồ nói chuyện thân tình cùng bà con nông dân đang gặt lúa trên đồng ruộng: "Nông dân ta giàu thì nước ta giàu. Nông nghiệp ta thịnh thì nước ta thịnh"',
+    scriptNote: 'Bác Hồ coi trọng đặc biệt vai trò của nông dân: Nông dân ta giàu thì nước ta giàu, nông nghiệp thịnh thì nước ta thịnh!'
   },
   {
     id: 'tri-thuc',
     name: 'Đội ngũ Trí thức',
     shortName: 'Trí thức',
-    badge: 'Tài nguyên Đặc biệt',
+    badge: 'Vốn Liếng Quý Báu',
     iconName: 'GraduationCap',
     accentColor: '#e6c98c',
-    position: 'Lực lượng lao động sáng tạo đặc biệt quan trọng trong tiến trình đẩy mạnh CNH, HĐH đất nước và hội nhập quốc tế; nòng cốt của nền kinh tế tri thức.',
+    position: 'Là lực lượng lao động sáng tạo đặc biệt quan trọng; có vai trò to lớn trong công nghiệp hóa, hiện đại hóa, kinh tế tri thức, khoa học – công nghệ và phát triển văn hóa; là một bộ phận quan trọng của liên minh công nhân – nông dân – trí thức.',
     statistics: [
       { label: 'Quy mô đội ngũ', value: '> 6.5 triệu', trend: 'Tăng trưởng hơn gấp 3 lần sau 20 năm' },
       { label: 'Tỷ lệ đóng góp TFP', value: '> 45%', trend: 'Đóng góp của năng suất các yếu tố tổng hợp' },
       { label: 'Công bố quốc tế', value: 'Tăng 15%/năm', trend: 'Nhiều bằng sáng chế công nghệ cao' }
     ],
     characteristics: [
-      'Là tầng lớp xã hội đặc biệt (không phải giai cấp độc lập), quy tụ những người lao động trí óc tinh hoa.',
-      'Luôn nhạy bén với cái mới, đi đầu trong nghiên cứu khoa học, chuyển giao công nghệ và khai phóng tư duy.',
-      'Đóng vai trò phản biện xã hội, tham mưu hoạch định đường lối, chính sách cho Đảng và Nhà nước.'
+      'Là lực lượng lao động sáng tạo đặc biệt quan trọng của đất nước.',
+      'Có vai trò quyết định trong công nghiệp hóa, hiện đại hóa, kinh tế tri thức, khoa học – công nghệ và phát triển văn hóa.',
+      'Là bộ phận cấu thành nền tảng của liên minh công nhân – nông dân – trí thức dưới sự lãnh đạo của Đảng.'
     ],
     trends: [
-      'Phát triển mạnh mẽ trong các lĩnh vực mũi nhọn: Trí tuệ nhân tạo (AI), Bán dẫn, Công nghệ sinh học, Năng lượng tái tạo.',
-      'Gắn kết chặt chẽ với thị trường: Trí thức khởi nghiệp (Startup Founder, DeepTech).',
-      'Đội ngũ trí thức người Việt ở nước ngoài (Việt kiều) ngày càng hướng về đóng góp cho quê hương.'
+      'Tăng nhanh về cả số lượng và chất lượng chuyên môn.',
+      'Ngày càng giữ vai trò lớn trong nghiên cứu khoa học – công nghệ, đổi mới sáng tạo và kinh tế tri thức.',
+      'Đội ngũ trí thức trẻ và trí thức người Việt ở nước ngoài tích cực đóng góp cho công cuộc chuyển đổi số quốc gia.'
     ],
     challenges: [
       'Chảy máu chất xám (Brain drain) sang khu vực tư nhân hoặc các quốc gia phát triển.',
-      'Cơ chế trọng dụng và đãi ngộ nhân tài, tự chủ đại học vẫn còn nhiều điểm nghẽn.'
+      'Cơ chế trọng dụng và đãi ngộ nhân tài, tự chủ học thuật vẫn cần tiếp tục hoàn thiện.'
     ],
-    quote: 'Trí thức là vốn liếng quý báu của dân tộc... Xây dựng đội ngũ trí thức vững mạnh là trực tiếp nâng tầm trí tuệ của dân tộc, sức mạnh của đất nước.',
-    scriptNote: 'Nhắc lại luận điểm Mác: Trí thức là một tầng lớp xã hội linh hoạt, luôn liên minh với giai cấp công nhân để biến tri thức thành lực lượng vật chất to lớn.'
+    quote: 'Trí thức là vốn liếng quý báu của dân tộc.',
+    quoteAuthor: 'Chủ tịch Hồ Chí Minh',
+    sourceLabel: 'Xây dựng đội ngũ trí thức theo tư tưởng Hồ Chí Minh',
+    imageUrl: '/images/docx/image9.png',
+    imageCaption: 'Bác Hồ gặp gỡ, trò chuyện cùng các nhà khoa học, trí thức tiêu biểu: "Trí thức là vốn liếng quý báu của dân tộc"',
+    secondaryImageUrl: '/images/docx/image17.png',
+    secondaryImageCaption: 'Thủ tướng Phạm Minh Chính thăm các nhà khoa học, trí thức trẻ tại phòng thí nghiệm công nghệ sinh học',
+    scriptNote: 'Bác Hồ khẳng định: Trí thức là vốn liếng quý báu của dân tộc, đưa tri thức gắn liền với xưởng máy và ruộng đồng.'
   },
   {
     id: 'doanh-nhan',
@@ -222,27 +269,64 @@ export const CLASS_PILLARS: ClassPillar[] = [
     badge: 'Lực lượng Xung kích',
     iconName: 'Briefcase',
     accentColor: '#f59e0b',
-    position: 'Tầng lớp xã hội phát triển vượt bậc trong thời kỳ Đổi mới; lực lượng chủ công kiến tạo của cải, việc làm và nâng cao năng lực cạnh tranh quốc gia.',
+    position: 'Là tầng lớp phát triển nhanh về số lượng và quy mô trong thời kỳ đổi mới; đóng góp to lớn vào phát triển kinh tế, tạo việc làm và thực hiện an sinh xã hội.',
     statistics: [
       { label: 'Số lượng doanh nghiệp', value: '> 900.000 DN', trend: 'Cùng hơn 5 triệu hộ kinh doanh cá thể' },
       { label: 'Đóng góp GDP', value: '> 50%', trend: 'Khu vực kinh tế tư nhân là động lực quan trọng' },
       { label: 'Tạo việc làm mới', value: '> 85%', trend: 'Giải quyết việc làm cho lực lượng lao động xã hội' }
     ],
     characteristics: [
-      'Dám nghĩ, dám làm, năng động sáng tạo, chấp nhận rủi ro trên thương trường.',
-      'Hoạt động sản xuất kinh doanh theo khuôn khổ pháp luật của Nhà nước định hướng XHCN.',
-      'Hình thành tinh thần doanh nhân dân tộc, phụng sự Tổ quốc và trách nhiệm xã hội sâu sắc.'
+      'Phát triển nhanh về số lượng và quy mô trong thời kỳ Đổi mới.',
+      'Đóng góp tích cực vào phát triển kinh tế, tạo việc làm và thực hiện an sinh xã hội.',
+      'Năng động, sáng tạo, dám nghĩ, dám làm, thích ứng linh hoạt với kinh tế thị trường.'
     ],
     trends: [
-      'Hình thành các tập đoàn kinh tế tư nhân quy mô lớn vươn tầm khu vực và thế giới (Viettel, Vingroup, Thaco, FPT, TH True Milk...).',
-      'Thế hệ doanh nhân trẻ khởi nghiệp sáng tạo (GenZ Founder), bắt kịp xu hướng Net Zero, ESG, kinh tế tuần hoàn.'
+      'Tiếp tục phát triển cả về số lượng và chất lượng, hình thành nhiều tập đoàn lớn vươn tầm quốc tế.',
+      'Yêu cầu ngày càng cao về năng lực quản trị, đạo đức kinh doanh, trách nhiệm xã hội và khả năng cạnh tranh.',
+      'Định hướng xây dựng đội ngũ doanh nhân có tinh thần cống hiến cho dân tộc, chuẩn mực văn hóa và trình độ quản trị, kinh doanh tốt.'
     ],
     challenges: [
       'Quy mô đa phần là doanh nghiệp nhỏ và vừa (SMEs), khả năng chống chịu trước biến động chuỗi cung ứng còn hạn chế.',
-      'Cần xây dựng đạo đức kinh doanh văn minh, tránh làm ăn chụp giật, trốn thuế hay hủy hoại môi trường.'
+      'Cần xây dựng đạo đức kinh doanh văn minh, trách nhiệm xã hội và bảo vệ môi trường sinh thái.'
     ],
-    quote: 'Phát triển đội ngũ doanh nhân lớn mạnh về số lượng và chất lượng, có tinh thần cống hiến cho dân tộc, có chuẩn mực đạo đức, văn hóa kinh doanh tiên tiến.',
-    scriptNote: 'Làm rõ cho giảng viên: Doanh nhân trong KTTT định hướng XHCN ở VN không đối kháng với công nhân, mà liên kết hợp tác vì mục tiêu dân giàu nước mạnh.'
+    quote: 'Xây dựng đội ngũ doanh nhân lớn mạnh, có tinh thần cống hiến cho dân tộc, chuẩn mực văn hóa và trình độ quản trị, kinh doanh tốt.',
+    quoteAuthor: 'Nghị quyết 41-NQ/TW của Bộ Chính trị',
+    sourceLabel: 'Phát huy vai trò của đội ngũ doanh nhân',
+    imageUrl: '/images/docx/image12.png',
+    imageCaption: 'Lễ kỷ niệm Ngày Doanh nhân Việt Nam 13/10 - Tôn vinh Doanh nhân Việt Nam tiêu biểu',
+    scriptNote: 'Doanh nhân trong KTTT định hướng XHCN không đối kháng mà đồng hành cùng công nhân, nông dân, trí thức vì mục tiêu dân giàu, nước mạnh.'
+  },
+  {
+    id: 'phu-nu-thanh-nien',
+    name: 'Tầng lớp Phụ nữ & Thế hệ Trẻ',
+    shortName: 'Phụ nữ & Thế hệ Trẻ',
+    badge: 'Chính sách Đặc thù',
+    iconName: 'Sparkles',
+    accentColor: '#ec4899',
+    position: 'Các lực lượng xã hội được chú trọng đặc biệt trong hệ thống chính sách xã hội: Phụ nữ là lực lượng to lớn trong mọi lĩnh vực; Thanh niên là rường cột nước nhà, chủ nhân tương lai của đất nước.',
+    statistics: [
+      { label: 'Tỷ lệ nữ ĐBQH', value: '> 30%', trend: 'Cao hàng đầu khu vực ASEAN' },
+      { label: 'Lực lượng thanh niên', value: '~ 22 triệu', trend: 'Thời kỳ dân số vàng của Việt Nam' },
+      { label: 'Khởi nghiệp đổi mới', value: '> 70%', trend: 'Ý tưởng khởi nghiệp đến từ người trẻ' }
+    ],
+    characteristics: [
+      'Phụ nữ Việt Nam phát huy truyền thống yêu nước, bản lĩnh, nhân ái, có vai trò to lớn trong gia đình và xã hội.',
+      'Thanh niên là lực lượng xung kích trong học tập, lao động, chuyển đổi số và bảo vệ Tổ quốc.'
+    ],
+    trends: [
+      'Thanh niên, sinh viên là lực lượng tiên phong trong phong trào khởi nghiệp sáng tạo và kinh tế số.',
+      'Phụ nữ ngày càng khẳng định vị thế bình đẳng trong lãnh đạo, quản lý và hoạt động kinh tế.'
+    ],
+    challenges: [
+      'Yêu cầu nâng cao kỹ năng số, thích ứng với cách mạng công nghiệp 4.0 và hội nhập quốc tế.',
+      'Thực hiện bình đẳng giới thực chất, bảo vệ quyền lợi bà mẹ, trẻ em và đào tạo nghề cho thanh niên.'
+    ],
+    quote: 'Thanh niên là người chủ tương lai của nước nhà. Nước nhà thịnh hay suy, yếu hay mạnh một phần lớn là do các thanh niên.',
+    quoteAuthor: 'Chủ tịch Hồ Chí Minh',
+    sourceLabel: 'Chính sách an sinh và phát triển thanh niên, phụ nữ',
+    imageUrl: '/images/docx/image15.png',
+    imageCaption: 'Thế hệ trẻ và các tầng lớp nhân dân trong khối đại đoàn kết toàn dân tộc: Khát vọng phụng sự Tổ quốc',
+    scriptNote: 'Phương hướng 2 nhấn mạnh: Cần xây dựng chính sách cho từng nhóm: công nhân, nông dân, trí thức, doanh nhân, phụ nữ, thanh niên.'
   }
 ];
 
@@ -252,93 +336,97 @@ export const ALLIANCE_PILLARS: AlliancePillar[] = [
     title: 'Nội dung Kinh tế',
     nature: 'Nội dung CƠ BẢN, QUYẾT ĐỊNH NHẤT',
     color: '#d9b36b',
-    summary: 'Kinh tế là cơ sở vật chất - kỹ thuật của liên minh. Nếu không thỏa mãn lợi ích kinh tế thiết thực của các bên thì liên minh chỉ là hình thức khẩu hiệu suông.',
+    summary: 'Đây là nội dung cơ bản và có ý nghĩa quyết định nhất. Mục tiêu nhằm tạo cơ sở vật chất - kỹ thuật cho CNXH, bảo đảm lợi ích kinh tế của các giai cấp, tầng lớp, tạo sự gắn bó lâu dài.',
     coreContents: [
       {
-        heading: 'Đẩy mạnh CNH, HĐH gắn với kinh tế tri thức',
-        details: 'Chuyển dịch cơ cấu kinh tế theo hướng hiện đại, nâng cao năng suất lao động, tạo tiền đề vật chất để gắn kết công nhân - nông dân - trí thức.'
+        heading: 'Mục tiêu kinh tế của liên minh',
+        details: 'Tạo cơ sở vật chất - kỹ thuật cho CNXH; bảo đảm lợi ích kinh tế của các giai cấp, tầng lớp; tạo sự gắn bó lâu dài giữa công nhân, nông dân, trí thức và các lực lượng khác.'
       },
       {
-        heading: 'Xác định đúng tiềm năng và cơ cấu kinh tế',
-        details: 'Xây dựng mối liên hệ hữu cơ giữa công nghiệp chế tạo, nông nghiệp sạch công nghệ cao, dịch vụ logistics và công nghệ thông tin.'
+        heading: 'Đẩy mạnh CNH, HĐH & Chuyển dịch cơ cấu kinh tế',
+        details: 'Đẩy mạnh công nghiệp hóa, hiện đại hóa; phát triển sản xuất; chuyển dịch cơ cấu kinh tế; phát triển nông nghiệp, nông thôn gắn với khoa học - công nghệ; nâng cao năng suất lao động.'
       },
       {
-        heading: 'Bảo đảm hài hòa lợi ích kinh tế (Lợi ích là động lực trực tiếp)',
-        details: 'Thực hiện nguyên tắc phân phối theo kết quả lao động và hiệu quả kinh tế; tôn trọng và bảo vệ lợi ích hợp pháp của người lao động và chủ doanh nghiệp.'
-      },
-      {
-        heading: 'Đổi mới quan hệ sản xuất & cơ chế thị trường',
-        details: 'Phát triển kinh tế nhiều thành phần, hoàn thiện thể chế kinh tế thị trường định hướng XHCN, chống độc quyền và tiêu cực kinh tế.'
+        heading: 'Mở rộng hợp tác & Hài hòa lợi ích',
+        details: 'Mở rộng hợp tác giữa công nghiệp - nông nghiệp - khoa học, công nghệ - dịch vụ; bảo đảm hài hòa lợi ích giữa các giai cấp, tầng lớp trong xã hội.'
       }
     ],
+    practicalExplanation: 'Có thể hiểu đơn giản: công nhân tạo ra sản phẩm công nghiệp, nông dân tạo ra sản phẩm nông nghiệp, trí thức cung cấp tri thức và công nghệ; khi ba lực lượng này phối hợp hiệu quả thì nền kinh tế phát triển bền vững hơn.',
     practicalExamples: [
-      'Mô hình liên kết 4 Nhà (Nhà nước - Nhà khoa học - Doanh nghiệp - Nông dân).',
-      'Chuỗi cung ứng xuất khẩu gạo Việt Nam sang EU theo hiệp định EVFTA.',
-      'Chương trình OCOP (Mỗi xã một sản phẩm) kết hợp công nghệ thương mại điện tử.'
+      'Chuỗi liên kết công nghiệp chế biến nông sản xuất khẩu chất lượng cao (gạo, cà phê, thủy sản).',
+      'Ứng dụng phần mềm IoT, cảm biến, máy bay không người lái trong quản lý đồng ruộng thông minh.',
+      'Khắc phục bệnh quan liêu, hình thức trong phát triển hợp tác xã kiểu mới theo định hướng của Chính phủ.'
     ],
-    scriptNote: 'Cực kỳ quan trọng: Lênin từng dạy "Chính trị là biểu hiện tập trung của kinh tế". Kinh tế là cái gốc, cái bụng có no thì lòng mới yên để đoàn kết!'
+    sourceLabel: 'Tư tưởng Hồ Chí Minh về phát triển kinh tế thời kỳ quá độ',
+    images: [
+      { url: '/images/docx/image3.png', caption: 'Bác Hồ thăm nhà máy sản xuất - Tư tưởng Hồ Chí Minh về phát triển kinh tế thời kỳ quá độ' },
+      { url: '/images/docx/image10.png', caption: 'Khảo sát và phát triển chuỗi giá trị nông sản an toàn của Hợp tác xã' }
+    ],
+    scriptNote: 'Kinh tế là nội dung cốt lõi và quyết định nhất. Khi lợi ích kinh tế của các bên được bảo đảm thì khối liên minh mới thực sự bền chặt lâu dài.'
   },
   {
     id: 'chinh-tri',
     title: 'Nội dung Chính trị',
     nature: 'Nội dung ĐỊNH HƯỚNG & BẢO ĐẢM VỮNG CHẮC',
     color: '#b5403a',
-    summary: 'Chính trị giữ vai trò định hướng chính trị cho khối liên minh, bảo đảm khối liên minh phát triển đúng quỹ đạo xã hội chủ nghĩa.',
+    summary: 'Mục tiêu chính là giữ vững ổn định chính trị, củng cố vai trò lãnh đạo của Đảng, phát huy quyền làm chủ của nhân dân và tăng cường khối đại đoàn kết toàn dân.',
     coreContents: [
       {
-        heading: 'Giữ vững vai trò lãnh đạo của Đảng Cộng sản Việt Nam',
-        details: 'Đảng là nhân tố quyết định mọi thắng lợi của cách mạng; định ra đường lối, chủ trương thống nhất lợi ích của toàn dân tộc.'
+        heading: 'Mục tiêu chính trị cốt lõi',
+        details: 'Giữ vững ổn định chính trị; củng cố vai trò lãnh đạo của Đảng; phát huy quyền làm chủ của nhân dân; tăng cường khối đại đoàn kết toàn dân.'
       },
       {
-        heading: 'Xây dựng Nhà nước pháp quyền XHCN của Nhân dân',
-        details: 'Nhà nước là công cụ chủ yếu thể chế hóa đường lối của Đảng, quản lý xã hội bằng pháp luật, bảo vệ quyền làm chủ của nhân dân.'
+        heading: 'Phát huy dân chủ XHCN & Xây dựng Nhà nước pháp quyền',
+        details: 'Phát huy dân chủ XHCN; bảo đảm quyền và lợi ích chính đáng của các giai cấp, tầng lớp; xây dựng Nhà nước pháp quyền XHCN của Nhân dân, do Nhân dân, vì Nhân dân.'
       },
       {
-        heading: 'Phát huy nền dân chủ Xã hội chủ nghĩa',
-        details: 'Thực hiện phương châm "Dân biết, dân bàn, dân làm, dân kiểm tra, dân giám sát, dân thụ hưởng" trong mọi lĩnh vực đời sống.'
-      },
-      {
-        heading: 'Đấu tranh chống lại âm mưu "Diễn biến hòa bình"',
-        details: 'Vạch trần âm mưu của các thế lực thù địch nhằm chia rẽ khối đại đoàn kết, tách rời công nhân với nông dân và trí thức.'
+        heading: 'Tăng cường đồng thuận & Đấu tranh chống chia rẽ',
+        details: 'Tăng cường đồng thuận xã hội; kiên quyết đấu tranh chống những biểu hiện chia rẽ, phá hoại khối đại đoàn kết toàn dân tộc của các thế lực thù địch.'
       }
     ],
+    practicalExplanation: 'Giáo trình nhấn mạnh liên minh phải gắn chặt với việc củng cố nền tảng chính trị - xã hội của chế độ XHCN dưới sự lãnh đạo duy nhất của Đảng Cộng sản Việt Nam.',
     practicalExamples: [
-      'Hệ thống Mặt trận Tổ quốc và các đoàn thể chính trị - xã hội giám sát và phản biện xã hội.',
-      'Quy chế dân chủ ở cơ sở, các cuộc tiếp xúc cử tri của Đại biểu Quốc hội.',
-      'Đại hội đại biểu toàn quốc lần thứ XIII của Đảng khẳng định sức mạnh đại đoàn kết toàn dân tộc.'
+      'Đại hội đại biểu toàn quốc Mặt trận Tổ quốc Việt Nam củng cố khối đại đoàn kết dân tộc.',
+      'Thực hiện phương châm: Dân biết, dân bàn, dân làm, dân kiểm tra, dân giám sát, dân thụ hưởng.',
+      'Phát huy vai trò phản biện xã hội của Công đoàn, Hội Nông dân, Đoàn Thanh niên, Hội Phụ nữ.'
     ],
-    scriptNote: 'Nhấn mạnh: Nếu không có sự lãnh đạo của Đảng và nền tảng chính trị vững chắc, liên minh sẽ bị phân rã trước các luồng tư tưởng ngoại lai và xung đột cục bộ.'
+    sourceLabel: 'Đại hội MTTQ Việt Nam',
+    images: [
+      { url: '/images/docx/image4.png', caption: 'Khai mạc trọng thể Đại hội đại biểu toàn quốc Mặt trận Tổ quốc Việt Nam - Củng cố nền tảng khối đại đoàn kết' }
+    ],
+    scriptNote: 'Chính trị giữ vai trò định hướng bảo đảm cho liên minh đi đúng quỹ đạo XHCN, không bị chệch hướng trong kinh tế thị trường.'
   },
   {
     id: 'van-hoa-xa-hoi',
     title: 'Nội dung Văn hóa - Xã hội',
     nature: 'Nội dung MỤC TIÊU & CHẤT LƯỢNG ĐỜI SỐNG',
     color: '#4aa3a0',
-    summary: 'Văn hóa - Xã hội là thước đo tính ưu việt của chế độ XHCN, bảo đảm sự phát triển toàn diện của con người và gắn kết tinh thần toàn dân.',
+    summary: 'Mục tiêu nâng cao đời sống vật chất và tinh thần, phát triển con người, thu hẹp khoảng cách xã hội, xây dựng đời sống văn hóa tiến bộ gắn với: Dân tộc – Nhân văn – Dân chủ – Khoa học.',
     coreContents: [
       {
-        heading: 'Gắn tăng trưởng kinh tế với tiến bộ & công bằng xã hội',
-        details: 'Không hy sinh công bằng xã hội và môi trường để chạy theo tăng trưởng kinh tế đơn thuần; "Không để ai bị bỏ lại phía sau".'
+        heading: 'Mục tiêu văn hóa - xã hội',
+        details: 'Nâng cao đời sống vật chất và tinh thần; phát triển con người; thu hẹp khoảng cách xã hội; xây dựng đời sống văn hóa tiến bộ.'
       },
       {
-        heading: 'Nâng cao dân trí & phát triển nguồn nhân lực chất lượng cao',
-        details: 'Đổi mới căn bản, toàn diện giáo dục - đào tạo, phổ cập kỹ năng số cho công nhân và nông dân.'
+        heading: 'Các nội dung xã hội trọng tâm',
+        details: 'Phát triển giáo dục; chăm sóc sức khỏe; giải quyết việc làm; giảm nghèo bền vững; thực hiện chính sách an sinh xã hội; nâng cao đời sống văn hóa; thực hiện công bằng xã hội; xây dựng con người Việt Nam phát triển toàn diện.'
       },
       {
-        heading: 'Thực hiện tốt các chính sách an sinh xã hội',
-        details: 'Bảo hiểm y tế, bảo hiểm xã hội toàn dân, xóa đói giảm nghèo bền vững, chăm sóc người có công, cựu chiến binh.'
-      },
-      {
-        heading: 'Xây dựng nền văn hóa tiên tiến, đậm đà bản sắc dân tộc',
-        details: 'Xây dựng con người Việt Nam thời đại mới với các hệ giá trị chuẩn mực: Yêu nước, đoàn kết, tự cường, nghĩa tình, trung thực, trách nhiệm, kỷ cương, sáng tạo.'
+        heading: '4 Giá trị văn hóa cốt lõi theo Giáo trình',
+        details: 'Giáo trình nhấn mạnh phát triển văn hóa phải gắn liền với 4 giá trị rường cột: Dân tộc – Nhân văn – Dân chủ – Khoa học.'
       }
     ],
+    practicalExplanation: 'Phát triển văn hóa và bảo đảm an sinh xã hội là mục tiêu tối thượng nhằm mang lại hạnh phúc thực sự cho mọi giai cấp, tầng lớp nhân dân trong xã hội.',
     practicalExamples: [
-      'Chương trình mục tiêu quốc gia về Xây dựng Nông thôn mới và Giảm nghèo bền vững.',
-      'Chiến dịch tiêm chủng vắc-xin COVID-19 thần tốc miễn phí cho toàn dân.',
-      'Chính sách nhà ở xã hội cho công nhân tại các khu công nghiệp Bắc Ninh, Bình Dương, Hải Phòng.'
+      'Hướng dẫn tổ chức Ngày hội Đại đoàn kết toàn dân tộc tại các khu dân cư trên toàn quốc.',
+      'Chính sách bao phủ bảo hiểm y tế toàn dân, cấp thẻ BHYT miễn phí cho hộ nghèo, cận nghèo.',
+      'Phát triển mạng lưới trường học, trạm y tế, thiết chế văn hóa cơ sở tại nông thôn và khu công nghiệp.'
     ],
-    scriptNote: 'Chốt lại: Liên minh giai cấp cuối cùng là để phục vụ con người, mang lại cuộc sống ấm no, tự do, hạnh phúc cho toàn thể nhân dân Việt Nam!'
+    sourceLabel: 'Ủy ban Trung ương Mặt trận Tổ quốc Việt Nam',
+    images: [
+      { url: '/images/docx/image1.png', caption: 'Giao lưu văn hóa nghệ thuật các dân tộc tại Ngày hội Đại đoàn kết: Thấm nhuần 4 giá trị Dân tộc - Nhân văn - Dân chủ - Khoa học' }
+    ],
+    scriptNote: 'Văn hóa - xã hội thể hiện bản chất nhân văn ưu việt của CNXH: phát triển kinh tế vì con người, không để ai bị bỏ lại phía sau.'
   }
 ];
 
@@ -386,6 +474,141 @@ export const FOUR_HOUSES_DATA = [
       'Tuân thủ nghiêm ngặt quy trình kỹ thuật, đảm bảo an toàn vệ sinh thực phẩm.',
       'Ứng dụng phần mềm ghi chép nhật ký mùa vụ số hóa, sử dụng drone, cảm biến IoT.'
     ]
+  }
+];
+
+export const DIRECTIONS_DATA: DirectionItem[] = [
+  {
+    id: 'phuong-huong-1',
+    number: 1,
+    title: 'Một là, đẩy mạnh công nghiệp hóa, hiện đại hóa',
+    shortTitle: 'Đẩy mạnh CNH, HĐH',
+    badge: 'Nhiệm vụ Trung tâm',
+    iconName: 'Factory',
+    color: '#b5403a',
+    coreContent: 'Phát triển lực lượng sản xuất; gắn tăng trưởng kinh tế với tiến bộ, công bằng xã hội; tạo môi trường để các giai cấp, tầng lớp phát triển; tạo cơ sở kinh tế cho liên minh giai cấp, tầng lớp.',
+    keyMeasures: [
+      'Phát triển mạnh mẽ lực lượng sản xuất và khoa học công nghệ.',
+      'Gắn tăng trưởng kinh tế với bảo đảm tiến bộ, công bằng xã hội trong từng bước phát triển.',
+      'Tạo môi trường thuận lợi để các giai cấp, tầng lớp phát huy tối đa năng lực.',
+      'Tạo lập cơ sở kinh tế vững chắc cho khối liên minh giai cấp, tầng lớp.'
+    ],
+    significance: 'Kinh tế phát triển thì mới có điều kiện nâng cao đời sống và tạo sự gắn kết lợi ích giữa các lực lượng xã hội.',
+    sourceLabel: 'Đẩy mạnh CNH, HĐH đất nước',
+    imageUrl: '/images/docx/image8.png',
+    imageCaption: 'Dây chuyền sản xuất tự động hóa công nghệ cao: Đẩy mạnh công nghiệp hóa, hiện đại hóa'
+  },
+  {
+    id: 'phuong-huong-2',
+    number: 2,
+    title: 'Hai là, xây dựng và thực hiện hệ thống chính sách xã hội phù hợp',
+    shortTitle: 'Chính sách xã hội phù hợp',
+    badge: 'Đòn bẩy Trực tiếp',
+    iconName: 'Users',
+    color: '#d9b36b',
+    coreContent: 'Xây dựng chính sách cho từng giai cấp, tầng lớp: công nhân, nông dân, trí thức, doanh nhân, phụ nữ, thanh niên nhằm bảo đảm quyền lợi chính đáng, tạo cơ hội phát triển, giảm chênh lệch và phân hóa giàu nghèo.',
+    keyMeasures: [
+      'Bảo đảm quyền lợi chính đáng và tạo cơ hội phát triển đồng đều cho mọi công dân.',
+      'Giảm chênh lệch xã hội, hạn chế phân hóa giàu nghèo giữa các giai tầng và vùng miền.',
+      'Tăng khả năng tiếp cận giáo dục, y tế, việc làm, nhà ở và các chế độ phúc lợi an sinh xã hội.',
+      'Thực hiện chính sách bảo hiểm y tế toàn dân, hỗ trợ mua và cấp thẻ BHYT miễn phí cho hộ nghèo.'
+    ],
+    groupPolicies: [
+      {
+        group: 'Giai cấp Công nhân',
+        icon: 'Hammer',
+        policy: 'Quan tâm đào tạo, bồi dưỡng nâng cao trình độ văn hóa, chuyên môn, kỹ năng nghề; giải quyết việc làm, nhà ở xã hội, bệnh viện, trường học tại các khu công nghiệp; xây dựng giai cấp công nhân hiện đại, lớn mạnh.'
+      },
+      {
+        group: 'Giai cấp Nông dân',
+        icon: 'Wheat',
+        policy: 'Phát huy vai trò chủ thể trong phát triển nông nghiệp, kinh tế nông thôn và xây dựng nông thôn mới; hỗ trợ vốn ưu đãi, chuyển giao KH-CN, đào tạo nghề chuyển đổi sinh kế và bảo hiểm nông nghiệp.'
+      },
+      {
+        group: 'Đội ngũ Trí thức',
+        icon: 'GraduationCap',
+        policy: 'Xây dựng đội ngũ trí thức ngày càng lớn mạnh, chất lượng cao; thực hiện chính sách trọng dụng, đãi ngộ xứng đáng nhân tài; bảo vệ quyền sở hữu trí tuệ và tạo môi trường tự do học thuật, sáng tạo.'
+      },
+      {
+        group: 'Đội ngũ Doanh nhân',
+        icon: 'Briefcase',
+        policy: 'Tạo môi trường kinh doanh minh bạch, bình đẳng, an toàn; khuyến khích tinh thần khởi nghiệp sáng tạo, làm giàu hợp pháp; tôn vinh doanh nhân cống hiến vì cộng đồng và phụng sự Tổ quốc.'
+      },
+      {
+        group: 'Tầng lớp Phụ nữ',
+        icon: 'Sparkles',
+        policy: 'Nâng cao trình độ mọi mặt và đời sống vật chất, tinh thần; thực hiện tốt bình đẳng giới thực chất; tạo điều kiện cho phụ nữ phát triển tài năng, tham gia lãnh đạo quản lý và bảo vệ quyền lợi bà mẹ, trẻ em.'
+      },
+      {
+        group: 'Thế hệ trẻ / Thanh niên',
+        icon: 'TrendingUp',
+        policy: 'Giáo dục lý tưởng cách mạng, đạo đức lối sống văn hóa; đổi mới căn bản giáo dục và đào tạo; tạo môi trường khởi nghiệp, lập nghiệp, phát huy tinh thần xung kích trong chuyển đổi số và bảo vệ Tổ quốc.'
+      }
+    ],
+    significance: 'Giáo trình nhấn mạnh chính sách phải phù hợp với đặc điểm, vị trí và vai trò của từng nhóm xã hội.',
+    sourceLabel: 'Chính sách cấp thẻ BHYT cho hộ nghèo',
+    imageUrl: '/images/docx/image2.png',
+    imageCaption: 'Chương trình cấp phát thẻ BHYT và an sinh xã hội cho hộ nghèo, phụ nữ và người yếu thế'
+  },
+  {
+    id: 'phuong-huong-3',
+    number: 3,
+    title: 'Ba là, tạo sự đồng thuận và phát huy đại đoàn kết toàn dân',
+    shortTitle: 'Đồng thuận & Đại đoàn kết',
+    badge: 'Nguồn lực Sức mạnh',
+    iconName: 'HeartHandshake',
+    color: '#34d399',
+    coreContent: 'Nâng cao nhận thức về vai trò của liên minh giai cấp, tầng lớp; phát huy vai trò của từng thành viên trong xã hội; giải quyết hài hòa lợi ích, hạn chế mâu thuẫn xã hội, tăng cường sự đồng thuận.',
+    keyMeasures: [
+      'Nâng cao nhận thức của toàn xã hội về vị trí chiến lược của khối liên minh giai cấp, tầng lớp.',
+      'Phát huy vai trò, năng lực sáng tạo của từng thành viên trong cộng đồng xã hội.',
+      'Giải quyết hài hòa quan hệ lợi ích, hạn chế mâu thuẫn xã hội nảy sinh.',
+      'Tăng cường sự đồng thuận xã hội trên nền tảng mục tiêu chung: Dân giàu, nước mạnh, dân chủ, công bằng, văn minh.'
+    ],
+    significance: 'Mục tiêu cuối cùng là tạo thành sức mạnh tổng hợp của toàn xã hội trong sự nghiệp xây dựng và bảo vệ vững chắc Tổ quốc.',
+    sourceLabel: 'Phát huy đại đoàn kết toàn dân tộc',
+    imageUrl: '/images/docx/image14.png',
+    imageCaption: 'Ngày hội Đại đoàn kết toàn dân tộc tại khu dân cư: Tạo sự đồng thuận và sức mạnh tổng hợp'
+  },
+  {
+    id: 'phuong-huong-4',
+    number: 4,
+    title: 'Bốn là, hoàn thiện thể chế kinh tế thị trường định hướng XHCN',
+    shortTitle: 'Thể chế KTTT & Đổi mới sáng tạo',
+    badge: 'Động lực Kinh tế',
+    iconName: 'Layers',
+    color: '#38bdf8',
+    coreContent: 'Hoàn thiện cơ chế, chính sách; tạo môi trường thuận lợi cho sản xuất, kinh doanh; phát huy vai trò của khoa học - công nghệ; khuyến khích đổi mới sáng tạo; bảo đảm hài hòa lợi ích và tăng cường liên kết 4 lực lượng.',
+    keyMeasures: [
+      'Hoàn thiện cơ chế, chính sách, tạo môi trường thuận lợi cho sản xuất, kinh doanh phát triển.',
+      'Phát huy vai trò của khoa học - công nghệ, khuyến khích chuyển đổi số và đổi mới sáng tạo.',
+      'Tạo điều kiện thuận lợi để mọi giai cấp, tầng lớp tham gia và thụ hưởng thành quả phát triển kinh tế.',
+      'Bảo đảm hài hòa lợi ích; nâng cao trình độ lực lượng lao động; tăng cường liên kết giữa công nhân, nông dân, trí thức và doanh nhân.'
+    ],
+    significance: 'Giải phóng triệt để sức sản xuất xã hội, tạo hành lang pháp lý thông thoáng để các chủ thể liên minh hợp tác cùng phát triển bền vững.',
+    sourceLabel: 'Đổi mới công nghệ cao thúc đẩy kinh tế',
+    imageUrl: '/images/docx/image16.png',
+    imageCaption: 'Chuyên gia vận hành trung tâm gia công CNC hiện đại: Hoàn thiện thể chế KTTT & liên kết công nghệ cao'
+  },
+  {
+    id: 'phuong-huong-5',
+    number: 5,
+    title: 'Năm là, đổi mới hoạt động của Đảng, Nhà nước, Mặt trận Tổ quốc và các tổ chức chính trị - xã hội',
+    shortTitle: 'Đổi mới hệ thống chính trị & Đoàn thể',
+    badge: 'Nhân tố Quyết định',
+    iconName: 'ShieldCheck',
+    color: '#a855f7',
+    coreContent: 'Nâng cao hiệu quả lãnh đạo của Đảng; nâng cao hiệu lực quản lý của Nhà nước; phát huy vai trò của Mặt trận Tổ quốc; tăng cường hoạt động của Công đoàn, Hội Nông dân, Đoàn Thanh niên, Hội Phụ nữ và các tổ chức xã hội.',
+    keyMeasures: [
+      'Nâng cao năng lực và hiệu quả lãnh đạo của Đảng đối với toàn xã hội.',
+      'Nâng cao hiệu lực, hiệu quả quản lý, điều hành của Nhà nước pháp quyền XHCN.',
+      'Phát huy mạnh mẽ vai trò tập hợp khối đại đoàn kết của Mặt trận Tổ quốc Việt Nam.',
+      'Tăng cường hoạt động thiết thực của Công đoàn, Hội Nông dân, Đoàn Thanh niên, Hội Phụ nữ trong việc đại diện và bảo vệ quyền lợi chính đáng của đoàn viên, hội viên.'
+    ],
+    significance: 'Tập hợp các lực lượng xã hội; bảo vệ quyền lợi chính đáng; củng cố khối đại đoàn kết; tăng cường liên minh giữa các giai cấp và tầng lớp.',
+    sourceLabel: 'Đại hội Công đoàn Xây dựng giai cấp công nhân vững mạnh',
+    imageUrl: '/images/docx/image11.png',
+    imageCaption: 'Đại hội XIII Công đoàn Việt Nam: Đổi mới hoạt động các tổ chức chính trị - xã hội, bảo vệ người lao động'
   }
 ];
 
@@ -485,7 +708,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   },
   {
     id: 4,
-    question: 'Tầng lớp nào được xem là lực lượng lao động sáng tạo đặc biệt quan trọng, nòng cốt của nền kinh tế tri thức?',
+    question: 'Lực lượng nào được Chủ tịch Hồ Chí Minh khẳng định là "vốn liếng quý báu của dân tộc", là lực lượng lao động sáng tạo đặc biệt quan trọng?',
     options: [
       'A. Đội ngũ Trí thức',
       'B. Đội ngũ Doanh nhân',
@@ -493,21 +716,21 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
       'D. Thợ thủ công truyền thống'
     ],
     correctAnswer: 0,
-    explanation: 'Đội ngũ trí thức là lực lượng lao động sáng tạo đặc biệt quan trọng trong tiến trình đẩy mạnh CNH, HĐH và hội nhập quốc tế.',
-    referencePage: 'Giáo trình CNXHKH'
+    explanation: 'Chủ tịch Hồ Chí Minh khẳng định: "Trí thức là vốn liếng quý báu của dân tộc", nhấn mạnh vị trí đặc biệt quan trọng của trí thức trong CNH, HĐH, kinh tế tri thức và phát triển văn hóa.',
+    referencePage: 'Tài liệu chuyên đề'
   },
   {
     id: 5,
-    question: 'Xu hướng biến đổi nào sau đây thể hiện tính quy luật tích cực trong cơ cấu xã hội - giai cấp ở Việt Nam?',
+    question: 'Chủ tịch Hồ Chí Minh từng nhấn mạnh vai trò của giai cấp nào qua câu nói: "Nông dân ta giàu thì nước ta giàu. Nông nghiệp ta thịnh thì nước ta thịnh"?',
     options: [
-      'A. Phân cực đối kháng gay gắt giữa các tầng lớp',
-      'B. Xích lại gần nhau giữa các giai cấp, tầng lớp về quyền làm chủ và mức độ thụ hưởng',
-      'C. Triệt tiêu hoàn toàn sự khác biệt giữa lao động trí óc và chân tay ngay lập tức',
-      'D. Xóa bỏ khu vực kinh tế tư nhân'
+      'A. Giai cấp Công nhân',
+      'B. Giai cấp Nông dân & Nông nghiệp',
+      'C. Đội ngũ Doanh nhân',
+      'D. Lực lượng Hợp tác xã'
     ],
     correctAnswer: 1,
-    explanation: 'Xu hướng xích lại gần nhau giữa các giai cấp, tầng lớp là xu hướng bao trùm, diễn ra trên cơ sở phát triển của lực lượng sản xuất và sự hoàn thiện quan hệ sản xuất mới.',
-    referencePage: 'Giáo trình CNXHKH'
+    explanation: 'Hồ Chí Minh từng nhấn mạnh: "Nông dân ta giàu thì nước ta giàu. Nông nghiệp ta thịnh thì nước ta thịnh", khẳng định vị trí chiến lược của nông dân trong bảo đảm an ninh lương thực và ổn định xã hội.',
+    referencePage: 'Tài liệu chuyên đề'
   },
   {
     id: 6,
@@ -524,16 +747,16 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   },
   {
     id: 7,
-    question: 'Mô hình liên kết nào trong thực tiễn nông nghiệp phản ánh sâu sắc mối quan hệ liên minh công nhân - nông dân - trí thức - doanh nhân?',
+    question: 'Theo nội dung văn hóa - xã hội của liên minh trong MLN131, sự phát triển văn hóa phải gắn liền với 4 giá trị nào?',
     options: [
-      'A. Canh tác tự cung tự cấp nhỏ lẻ',
-      'B. Mô hình Liên kết 4 Nhà (Nhà nước - Nhà khoa học - Doanh nghiệp - Nhà nông)',
-      'C. Buôn bán tiểu ngạch biên giới',
-      'D. Phát triển phường hội thủ công cổ truyền'
+      'A. Tự do - Bình đẳng - Bác ái - Hiện đại',
+      'B. Dân tộc - Nhân văn - Dân chủ - Khoa học',
+      'C. Cổ truyền - Hội nhập - Kinh tế - Thị trường',
+      'D. Toàn cầu hóa - Công nghệ - Khởi nghiệp - Tinh hoa'
     ],
     correctAnswer: 1,
-    explanation: 'Mô hình "Liên kết 4 Nhà" là biểu hiện sinh động, hiệu quả nhất của sự gắn kết giữa công nghiệp, nông nghiệp, khoa học công nghệ và sự quản lý định hướng của Nhà nước.',
-    referencePage: 'Giáo trình CNXHKH'
+    explanation: 'Tài liệu MLN131 và Giáo trình CNXHKH nhấn mạnh phát triển văn hóa trong khối liên minh phải gắn chặt với 4 giá trị cốt lõi: Dân tộc, Nhân văn, Dân chủ và Khoa học.',
+    referencePage: 'Tài liệu chuyên đề'
   },
   {
     id: 8,
@@ -591,40 +814,19 @@ export const FAQ_DATA: FAQItem[] = [
 export const PRESENTATION_SLIDES: Slide[] = [
   {
     id: 'slide-1',
-    sectionId: 'hero',
-    sectionTitle: 'Khai mạc',
+    sectionId: 'tong-quan',
+    sectionTitle: 'Bối cảnh',
     slideNumber: 1,
     title: 'Cơ Cấu Xã Hội - Giai Cấp & Liên Minh Giai Cấp, Tầng Lớp',
-    subtitle: 'Trong thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam · Học phần MLN131 (Chương 5, Mục III)',
+    subtitle: 'Trong thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam · Học phần MLN131',
     speaker: 'Nguyễn Văn A',
     speakerRole: 'Trưởng nhóm Thuyết trình',
-    duration: '2 phút',
-    script: 'Kính chào Thầy Cô và toàn thể các bạn sinh viên! Trong dòng chảy xây dựng đất nước thời kỳ quá độ lên chủ nghĩa xã hội, Đảng ta luôn khẳng định: Nhận thức đúng đắn cơ cấu xã hội - giai cấp và củng cố vững chắc khối liên minh công nhân - nông dân - trí thức là vấn đề có ý nghĩa chiến lược sống còn. Hôm nay, nhóm chúng em xin trân trọng trình bày chuyên đề Phần III: "Cơ cấu xã hội - giai cấp và liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên CNXH ở Việt Nam". Kính mời Thầy Cô và các bạn cùng theo dõi!',
+    duration: '2.5 phút',
+    script: 'Kính chào Thầy Cô và toàn thể các bạn sinh viên! Trong thời kỳ quá độ lên chủ nghĩa xã hội, cơ cấu xã hội - giai cấp ở Việt Nam luôn vận động và biến đổi gắn liền với sự biến đổi của cơ cấu kinh tế nhiều thành phần, quá trình CNH, HĐH và hội nhập quốc tế. Hôm nay, nhóm chúng em xin trân trọng trình bày chuyên đề: "Cơ cấu xã hội - giai cấp và liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên CNXH ở Việt Nam". Kính mời Thầy Cô và các bạn cùng theo dõi!',
     keyPoints: [
-      'Xác định vị trí then chốt của cơ cấu xã hội - giai cấp trong hệ thống xã hội.',
-      'Làm rõ sự biến đổi có tính quy luật trong nền kinh tế thị trường định hướng XHCN.',
-      'Phân tích tính tất yếu và 3 trụ cột liên minh: Kinh tế, Chính trị, Văn hóa - Xã hội.'
-    ],
-    quote: {
-      text: 'Không có liên minh công nông và trí thức thì không thể xây dựng được chủ nghĩa xã hội.',
-      author: 'V.I. Lênin'
-    }
-  },
-  {
-    id: 'slide-2',
-    sectionId: 'tong-quan',
-    sectionTitle: 'Bối cảnh & Quy luật',
-    slideNumber: 2,
-    title: 'Tính Quy Luật Biến Đổi Cơ Cấu Xã Hội - Giai Cấp',
-    subtitle: 'Sự tương tác giữa Cơ cấu kinh tế nhiều thành phần và Cơ cấu giai tầng xã hội',
-    speaker: 'Nguyễn Văn A',
-    speakerRole: 'Thành viên Nhóm',
-    duration: '3 phút',
-    script: 'Thưa Thầy Cô và các bạn, bước vào thời kỳ quá độ, cơ cấu xã hội - giai cấp của nước ta biến đổi theo một quy luật rất đặc thù. Nó không còn đơn giản, thuần nhất như thời kỳ bao cấp, mà bị chi phối trực tiếp bởi nền kinh tế thị trường định hướng XHCN với nhiều hình thức sở hữu. Kinh tế biến đổi đa dạng kéo theo cơ cấu giai cấp biến đổi vừa đa dạng, phức tạp nhưng lại vừa thống nhất dưới sự lãnh đạo của Đảng Cộng sản Việt Nam. Điểm cốt lõi là xu hướng các giai cấp đang ngày càng xích lại gần nhau vì mục tiêu chung: Dân giàu, nước mạnh, dân chủ, công bằng, văn minh!',
-    keyPoints: [
-      'Cơ cấu kinh tế nhiều thành phần quyết định tính đa dạng, phức tạp của cơ cấu giai cấp.',
-      'Tính thống nhất cao độ: Đặt dưới sự lãnh đạo duy nhất của Đảng Cộng sản Việt Nam.',
-      'Xu hướng bao trùm: Xích lại gần nhau về sở hữu, tính chất lao động và hưởng thụ văn hóa.'
+      'Cơ cấu xã hội - giai cấp vận động và biến đổi gắn liền với sự biến đổi của cơ cấu kinh tế.',
+      'Sự phân hóa bên trong, vừa có lợi ích riêng, vừa có lợi ích chung gắn bó, hợp tác.',
+      'Công nhân, nông dân và trí thức giữ vị trí đặc biệt quan trọng, là nòng cốt của khối liên minh.'
     ],
     quote: {
       text: 'Cơ cấu xã hội - giai cấp biến đổi gắn liền và bị quy định bởi cơ cấu kinh tế.',
@@ -632,54 +834,74 @@ export const PRESENTATION_SLIDES: Slide[] = [
     }
   },
   {
+    id: 'slide-2',
+    sectionId: 'tong-quan',
+    sectionTitle: 'Bối cảnh',
+    slideNumber: 2,
+    title: 'Khái Niệm, Cơ Sở Hình Thành & Ba Đặc Điểm Cơ Cấu Xã Hội - Giai Cấp',
+    subtitle: 'Kinh tế nhiều thành phần, CNH-HĐH và xu hướng xích lại gần nhau giữa các giai tầng',
+    speaker: 'Nguyễn Văn A',
+    speakerRole: 'Thành viên Nhóm',
+    duration: '3 phút',
+    script: 'Thưa Thầy Cô và các bạn, cơ cấu xã hội - giai cấp là hệ thống các giai cấp, tầng lớp tồn tại khách quan, thể hiện qua quan hệ sở hữu tư liệu sản xuất, tổ chức quản lý và địa vị chính trị - xã hội. Cơ cấu này có 3 đặc điểm lớn: Thứ nhất, vừa mang tính quy luật phổ biến của thời kỳ quá độ, vừa mang tính đặc thù của Việt Nam; Thứ hai, ngày càng đa dạng, phức tạp và xuất hiện các tầng lớp mới như doanh nhân; Thứ ba, vừa có sự khác biệt về lợi ích nhưng lại vừa có sự liên minh và xích lại gần nhau dưới sự lãnh đạo của Đảng!',
+    keyPoints: [
+      '3 Cơ sở hình thành: Cơ cấu kinh tế, Kinh tế nhiều thành phần, CNH-HĐH & KH-CN.',
+      'Đặc điểm 1: Vừa mang tính quy luật phổ biến, vừa mang tính đặc thù.',
+      'Đặc điểm 2: Đa dạng, phức tạp, xuất hiện doanh nhân và các nhóm xã hội mới.',
+      'Đặc điểm 3: Vừa khác biệt, vừa liên minh và xích lại gần nhau vì mục tiêu chung.'
+    ]
+  },
+  {
     id: 'slide-3',
     sectionId: 'giai-tang',
-    sectionTitle: '4 Giai tầng',
+    sectionTitle: 'Cơ cấu giai cấp',
     slideNumber: 3,
-    title: 'Vị Thế & Biến Đổi Của Giai Cấp Công Nhân Việt Nam',
-    subtitle: 'Lực lượng lãnh đạo cách mạng và nòng cốt trong sự nghiệp CNH, HĐH đất nước',
+    title: 'Vị Thế & Xu Hướng Biến Đổi Của Giai Cấp Công Nhân Việt Nam',
+    subtitle: 'Giai cấp lãnh đạo cách mạng và lực lượng tiên phong trong CNH, HĐH đất nước',
     speaker: 'Trần Thị B',
     speakerRole: 'Thành viên Nhóm',
-    duration: '3.5 phút',
-    script: 'Tiếp theo, bạn Trần Thị B xin trình bày về trụ cột đầu tiên: Giai cấp công nhân Việt Nam. Thưa các bạn, công nhân nước ta hiện có hơn 17 triệu lao động, đóng góp trên 60% GDP. Trong bối cảnh cuộc Cách mạng công nghiệp lần thứ tư, công nhân Việt Nam đang chuyển mình mạnh mẽ từ lao động cơ bắp sang lao động trí tuệ, làm chủ robot tự động và công nghệ số. Dù làm việc trong doanh nghiệp nhà nước hay doanh nghiệp FDI, bản chất giai cấp tiên phong và vai trò lãnh đạo cách mạng thông qua Đảng vẫn là nguyên tắc bất biến!',
+    duration: '3 phút',
+    script: 'Tiếp theo, bạn Trần Thị B xin trình bày về lực lượng đầu tiên: Giai cấp công nhân Việt Nam. Theo giáo trình và các nghị quyết của Đảng, công nhân là giai cấp lãnh đạo cách mạng thông qua đội tiền phong là Đảng Cộng sản Việt Nam; đại diện cho phương thức sản xuất tiên tiến và là nòng cốt của liên minh công - nông - trí. Xu hướng hiện nay là công nhân tăng nhanh cả về số lượng và chất lượng, cơ cấu nghề nghiệp đa dạng và bộ phận công nhân trí thức ngày càng phát triển mạnh mẽ.',
     keyPoints: [
-      'Giai cấp lãnh đạo cách mạng thông qua đội tiền phong là Đảng Cộng sản Việt Nam.',
-      'Chuyển dịch cơ cấu mạnh mẽ: Xu hướng trí thức hóa công nhân (công nhân áo trắng).',
-      'Thách thức lớn về nâng cao tỷ lệ qua đào tạo và đảm bảo an sinh nhà ở, đời sống tinh thần.'
+      'Là giai cấp lãnh đạo cách mạng thông qua Đảng Cộng sản Việt Nam.',
+      'Đại diện cho phương thức sản xuất tiên tiến, tiên phong trong CNH, HĐH.',
+      'Xu hướng: Tăng về số lượng, chất lượng và phát triển mạnh mẽ bộ phận công nhân trí thức.'
     ]
   },
   {
     id: 'slide-4',
     sectionId: 'giai-tang',
-    sectionTitle: '4 Giai tầng',
+    sectionTitle: 'Cơ cấu giai cấp',
     slideNumber: 4,
     title: 'Giai Cấp Nông Dân & Đội Ngũ Trí Thức Trong Kỷ Nguyên Mới',
-    subtitle: 'Nông dân hiện đại và Trí thức sáng tạo - Hai động lực chiến lược của dân tộc',
+    subtitle: 'Lời dạy của Bác Hồ: "Nông dân ta giàu thì nước ta giàu" & "Trí thức là vốn liếng quý báu"',
     speaker: 'Trần Thị B',
     speakerRole: 'Thành viên Nhóm',
     duration: '3.5 phút',
-    script: 'Xin Thầy Cô và các bạn hãy nhìn vào bức tranh nông thôn hôm nay. Nông dân chiếm hơn 60% dân số, không còn bó hẹp trong lối canh tác cũ mà đang trở thành "nông dân 4.0", làm chủ nông nghiệp công nghệ cao, đưa Việt Nam vào top xuất khẩu nông sản thế giới. Song hành cùng nông dân là đội ngũ trí thức - vốn liếng quý báu của dân tộc. Trí thức chính là khối óc sáng tạo, nghiên cứu giống mới, phần mềm quản lý, và vạch ra giải pháp ứng phó biến đổi khí hậu để chắp cánh cho nông nghiệp và công nghiệp cất cánh!',
+    script: 'Thưa Thầy Cô và các bạn, về giai cấp nông dân, Chủ tịch Hồ Chí Minh từng căn dặn: "Nông dân ta giàu thì nước ta giàu. Nông nghiệp ta thịnh thì nước ta thịnh". Nông dân có vị trí then chốt trong phát triển nông nghiệp, xây dựng nông thôn mới và ổn định xã hội. Song hành cùng nông dân là đội ngũ trí thức - lực lượng lao động sáng tạo đặc biệt quan trọng, được Bác Hồ khẳng định: "Trí thức là vốn liếng quý báu của dân tộc". Trí thức giữ vai trò nòng cốt trong kinh tế tri thức, khoa học công nghệ và đổi mới sáng tạo.',
     keyPoints: [
-      'Nông dân là chủ thể trong xây dựng nông thôn mới, chuyển từ nông dân truyền thống sang nông dân số.',
-      'Trí thức là lực lượng lao động sáng tạo đặc biệt quan trọng, tài nguyên trí tuệ của đất nước.',
-      'Sự hòa quyện mật thiết giữa trí thức và nông dân tạo nên sức bật kinh tế nông nghiệp hàng hóa.'
+      'Nông dân: Vị trí quan trọng trong nông nghiệp, nông thôn mới và ổn định xã hội.',
+      'Trích dẫn Bác Hồ: "Nông dân ta giàu thì nước ta giàu. Nông nghiệp ta thịnh thì nước ta thịnh."',
+      'Trí thức: Lực lượng lao động sáng tạo đặc biệt quan trọng trong CNH, HĐH và văn hóa.',
+      'Trích dẫn Bác Hồ: "Trí thức là vốn liếng quý báu của dân tộc."'
     ]
   },
   {
     id: 'slide-5',
     sectionId: 'giai-tang',
-    sectionTitle: '4 Giai tầng',
+    sectionTitle: 'Cơ cấu giai cấp',
     slideNumber: 5,
-    title: 'Vị Thế & Biến Đổi Của Đội Ngũ Doanh Nhân Việt Nam',
-    subtitle: 'Lực lượng xung kích phát triển kinh tế thị trường định hướng XHCN',
+    title: 'Đội Ngũ Doanh Nhân & Tầng Lớp Phụ Nữ, Thế Hệ Trẻ',
+    subtitle: 'Động lực bứt phá kinh tế và các lực lượng được đặc biệt quan tâm trong chính sách xã hội',
     speaker: 'Trần Thị B',
     speakerRole: 'Thành viên Nhóm',
     duration: '3 phút',
-    script: 'Tiếp tục với lực lượng thứ tư trong cơ cấu giai tầng: Đội ngũ Doanh nhân Việt Nam (Giáo trình tr. 181 – 182). Một điểm rất mới và tiến bộ trong giáo trình và văn kiện Đảng ta là khẳng định vị thế to lớn của doanh nhân. Doanh nhân không phải đối tượng bị gạt ra ngoài, mà là lực lượng xung kích kiến tạo trên 50% GDP và hơn 85% việc làm mới cho toàn xã hội. Đội ngũ doanh nhân ngày càng lớn mạnh về số lượng và chất lượng, mang khát vọng cống hiến cho dân tộc, văn hóa kinh doanh thượng tôn pháp luật và trách nhiệm xã hội sâu sắc!',
+    script: 'Lực lượng thứ tư là Đội ngũ Doanh nhân - tầng lớp phát triển nhanh về số lượng và quy mô trong thời kỳ đổi mới, đóng góp to lớn vào tăng trưởng GDP, tạo việc làm và an sinh xã hội. Bên cạnh đó, tầng lớp Phụ nữ và Thế hệ trẻ (thanh niên, sinh viên) là các lực lượng xã hội được chú trọng đặc biệt trong hệ thống chính sách xã hội của Đảng. Phụ nữ phát huy vai trò to lớn trong mọi mặt đời sống; thanh niên là rường cột nước nhà, xung kích trong chuyển đổi số và bảo vệ Tổ quốc!',
     keyPoints: [
-      'Doanh nhân là tầng lớp xã hội phát triển nhanh và vượt bậc từ công cuộc Đổi mới.',
-      'Lực lượng chủ công, xung kích kiến tạo trên 50% GDP và hơn 85% việc làm mới.',
-      'Xây dựng đội ngũ doanh nhân lớn mạnh, có đạo đức kinh doanh văn minh và trách nhiệm xã hội.'
+      'Doanh nhân: Phát triển nhanh, đóng góp lớn vào kinh tế, tạo việc làm và trách nhiệm xã hội.',
+      'Định hướng: Xây dựng doanh nhân có đạo đức kinh doanh, chuẩn mực văn hóa và tinh thần dân tộc.',
+      'Phụ nữ: Nâng cao đời sống, thực hiện bình đẳng giới thực chất và bảo vệ quyền lợi bà mẹ, trẻ em.',
+      'Thanh niên: Rường cột nước nhà, tiên phong khởi nghiệp sáng tạo và chuyển đổi số.'
     ]
   },
   {
@@ -687,141 +909,110 @@ export const PRESENTATION_SLIDES: Slide[] = [
     sectionId: 'lien-minh',
     sectionTitle: 'Bản chất Liên minh',
     slideNumber: 6,
-    title: 'Tính Tất Yếu Của Khối Liên Minh Giai Cấp, Tầng Lớp',
-    subtitle: 'Tại sao công nhân, nông dân và trí thức bắt buộc phải liên minh chặt chẽ?',
+    title: 'Bản Chất & Tính Tất Yếu Của Khối Liên Minh Giai Cấp, Tầng Lớp',
+    subtitle: 'Nền tảng chính trị - xã hội vững chắc dưới sự lãnh đạo của Đảng Cộng sản Việt Nam',
     speaker: 'Lê Hoàng C',
     speakerRole: 'Thành viên Nhóm',
     duration: '3 phút',
-    script: 'Kính thưa Thầy Cô và các bạn, em là Lê Hoàng C. Bây giờ chúng ta bước sang Mục III.2: Liên minh giai cấp, tầng lớp. Tại sao liên minh lại là tất yếu khách quan? V.I. Lênin đã chỉ rõ: Nếu chỉ có giai cấp công nhân đơn độc thì không thể đánh đổ được chế độ cũ và càng không thể xây dựng thành công chế độ mới. Ở Việt Nam, tính tất yếu này xuất phát từ: Thứ nhất, về chính trị - tạo dựng bức tường thành bảo vệ Tổ quốc; Thứ hai, về kinh tế - sự gắn kết cung - cầu sống còn giữa công nghiệp, nông nghiệp và khoa học kỹ thuật; Thứ ba, về xã hội - nhằm nâng cao đời sống và thực hiện công bằng xã hội.',
+    script: 'Kính thưa Thầy Cô và các bạn, em là Lê Hoàng C. Chúng ta bước sang phần Liên minh giai cấp, tầng lớp. Ở Việt Nam, liên minh trước hết là giữa công nhân với nông dân và trí thức, dưới sự lãnh đạo của Đảng. Đây là cơ sở quan trọng để: củng cố khối đại đoàn kết toàn dân, phát huy sức mạnh tổng hợp, xây dựng và bảo vệ Tổ quốc theo định hướng XHCN. Khối liên minh không chỉ là liên kết chính trị đơn thuần mà là sự phối hợp lợi ích và hành động toàn diện trên cả kinh tế, chính trị và văn hóa - xã hội.',
     keyPoints: [
-      'Góc độ Chính trị: Xây dựng nền tảng chính trị vững chắc của Nhà nước pháp quyền XHCN.',
-      'Góc độ Kinh tế: Yêu cầu khách quan của nền kinh tế nhiều thành phần và phân công lao động.',
-      'Góc độ Xã hội: Xóa bỏ khoảng cách phát triển giữa thành thị và nông thôn, củng cố lòng dân.'
+      'Bản chất: Liên minh giữa công nhân với nông dân và trí thức dưới sự lãnh đạo của Đảng.',
+      'Mục tiêu: Củng cố khối đại đoàn kết, phát huy sức mạnh tổng hợp, bảo vệ vững chắc Tổ quốc.',
+      'Liên minh toàn diện: Không chỉ liên kết chính trị mà là phối hợp lợi ích trên mọi lĩnh vực đời sống.'
     ],
     quote: {
-      text: 'Chỉ có sự liên minh giữa công nhân, nông dân và trí thức mới tạo ra được sức mạnh vô địch để xây dựng xã hội mới.',
-      author: 'Hồ Chí Minh'
+      text: 'Không có liên minh công nông và trí thức thì không thể xây dựng được chủ nghĩa xã hội.',
+      author: 'V.I. Lênin'
     }
   },
   {
     id: 'slide-7',
     sectionId: 'tam-giac',
-    sectionTitle: '3 Nội dung',
+    sectionTitle: 'Nội dung',
     slideNumber: 7,
     title: 'Nội Dung Kinh Tế Của Liên Minh: Cơ Sở Quyết Định Nhất',
-    subtitle: 'Kết hợp hài hòa lợi ích kinh tế và tổ chức sản xuất hiện đại',
+    subtitle: 'Tạo cơ sở vật chất - kỹ thuật cho CNXH và bảo đảm hài hòa lợi ích kinh tế',
     speaker: 'Lê Hoàng C',
     speakerRole: 'Thành viên Nhóm',
-    duration: '4 phút',
-    script: 'Thưa Thầy Cô, khi nghiên cứu về liên minh, câu hỏi quan trọng nhất là: Nội dung nào là quyết định nhất? Câu trả lời chính là: KINH TẾ. Bác Hồ từng dạy: "Có thực mới vực được đạo". Liên minh không thể bền vững bằng những lời hứa suông nếu đời sống của công nhân và nông dân không được nâng cao. Nội dung kinh tế đòi hỏi: Đẩy mạnh công nghiệp hóa, hiện đại hóa nông nghiệp; hình thành các chuỗi giá trị khép kín; phân phối hợp lý lợi nhuận để người nông dân một nắng hai sương không bị ép giá, công nhân có tiền lương xứng đáng và doanh nghiệp có động lực tái đầu tư!',
+    duration: '3.5 phút',
+    script: 'Thưa Thầy Cô, theo tài liệu và Giáo trình, Nội dung Kinh tế là nội dung cơ bản và có ý nghĩa quyết định nhất. Mục tiêu nhằm tạo cơ sở vật chất - kỹ thuật cho CNXH, bảo đảm lợi ích kinh tế của các giai cấp, tầng lớp và tạo sự gắn bó lâu dài. Có thể hiểu rất đơn giản: công nhân tạo ra máy móc công nghiệp, nông dân tạo ra lương thực thực phẩm, trí thức cung cấp khoa học và công nghệ; khi ba lực lượng này phối hợp nhịp nhàng thì nền kinh tế phát triển nhanh và bền vững hơn rất nhiều!',
     keyPoints: [
-      'Lợi ích kinh tế là động lực trực tiếp gắn kết các tầng lớp nhân dân.',
-      'Đẩy mạnh CNH, HĐH đất nước gắn với phát triển kinh tế tri thức và bảo vệ môi trường.',
-      'Xây dựng chuỗi liên kết giá trị và cơ chế phân phối công bằng theo kết quả lao động.'
+      'Nội dung cơ bản và quyết định nhất của liên minh giai cấp.',
+      'Mục tiêu: Tạo cơ sở vật chất - kỹ thuật cho CNXH; bảo đảm lợi ích kinh tế của các giai tầng.',
+      'Nhiệm vụ: Đẩy mạnh CNH-HĐH, phát triển nông nghiệp gắn với KH-CN, nâng cao năng suất lao động.',
+      'Bản chất thực tế: Công nhân sản xuất công nghiệp + Nông dân làm nông sản + Trí thức cung cấp công nghệ.'
     ]
   },
   {
     id: 'slide-8',
     sectionId: 'tam-giac',
-    sectionTitle: '3 Nội dung',
+    sectionTitle: 'Nội dung',
     slideNumber: 8,
     title: 'Nội Dung Chính Trị & Văn Hóa - Xã Hội Của Liên Minh',
-    subtitle: 'Giữ vững ngọn cờ lãnh đạo của Đảng và thước đo nhân văn xã hội chủ nghĩa',
+    subtitle: 'Giữ vững vai trò lãnh đạo của Đảng và 4 giá trị văn hóa: Dân tộc - Nhân văn - Dân chủ - Khoa học',
     speaker: 'Lê Hoàng C',
     speakerRole: 'Thành viên Nhóm',
     duration: '3.5 phút',
-    script: 'Nếu nội dung kinh tế là cái móng nhà, thì nội dung chính trị chính là rường cột định hướng. Liên minh phải giữ vững sự lãnh đạo của Đảng Cộng sản Việt Nam và nền tảng Nhà nước pháp quyền của Nhân dân. Đồng thời, nội dung văn hóa - xã hội là thước đo tính ưu việt của chế độ chúng ta: Đó là chủ trương "Không để ai bị bỏ lại phía sau", nâng cao dân trí, phát triển y tế, giáo dục vùng sâu vùng xa, và xây dựng hệ giá trị con người Việt Nam tiên tiến, đậm đà bản sắc dân tộc.',
+    script: 'Nội dung thứ hai là Chính trị: Giữ vững ổn định chính trị, củng cố vai trò lãnh đạo của Đảng, phát huy dân chủ XHCN và xây dựng Nhà nước pháp quyền của Nhân dân, do Nhân dân, vì Nhân dân. Nội dung thứ ba là Văn hóa - Xã hội: Nâng cao đời sống vật chất và tinh thần, thực hiện chính sách an sinh xã hội, giảm nghèo bền vững. Đặc biệt, giáo trình nhấn mạnh phát triển văn hóa trong khối liên minh phải gắn liền với 4 giá trị cốt lõi: Dân tộc - Nhân văn - Dân chủ - Khoa học!',
     keyPoints: [
-      'Chính trị: Giữ vững vai trò lãnh đạo của Đảng; đập tan âm mưu chia rẽ của các thế lực thù địch.',
-      'Văn hóa - Xã hội: Tăng trưởng kinh tế phải đi đôi với tiến bộ và công bằng xã hội.',
-      'Phát huy quyền làm chủ: Dân biết, dân bàn, dân làm, dân kiểm tra, dân giám sát, dân thụ hưởng.'
+      'Chính trị: Giữ vững vai trò lãnh đạo của Đảng; xây dựng Nhà nước pháp quyền XHCN.',
+      'Chính trị: Tăng cường đồng thuận xã hội, đấu tranh chống chia rẽ khối đại đoàn kết toàn dân.',
+      'Văn hóa - Xã hội: Nâng cao đời sống, an sinh xã hội, giải quyết việc làm, giảm nghèo bền vững.',
+      '4 Giá trị văn hóa cốt lõi: Dân tộc – Nhân văn – Dân chủ – Khoa học.'
     ]
   },
   {
     id: 'slide-9',
-    sectionId: 'so-do-4-nha',
-    sectionTitle: 'Mô hình 4 Nhà',
+    sectionId: 'phuong-huong',
+    sectionTitle: 'Phương hướng',
     slideNumber: 9,
-    title: 'Mô Hình "Liên Kết 4 Nhà" - Hiện Thân Thực Tiễn Sống Động',
-    subtitle: 'Nhà nước · Nhà khoa học · Nhà doanh nghiệp · Nhà nông trong nông nghiệp hiện đại',
+    title: '5 Phương Hướng Cơ Bản Xây Dựng Cơ Cấu & Tăng Cường Liên Minh',
+    subtitle: 'Định hướng chiến lược từ Giáo trình Chủ nghĩa Xã hội Khoa học',
     speaker: 'Phạm Minh D',
     speakerRole: 'Thành viên Nhóm',
-    duration: '3.5 phút',
-    script: 'Kính thưa Thầy Cô và các bạn, em là Phạm Minh D. Để biến lý luận thành hiện thực, Việt Nam đã xây dựng mô hình "Liên kết 4 Nhà" nổi tiếng. Hãy nhìn vào hạt gạo ST25 ngon nhất thế giới: Nhà khoa học (Kỹ sư Hồ Quang Cua và cộng sự) dày công lai tạo; Nhà nước quy hoạch hạ tầng tưới tiêu và cấp mã vùng trồng; Doanh nghiệp đầu tư nhà máy sấy, chế biến và xúc tiến xuất khẩu; và Nhà nông cần cù canh tác đúng chuẩn. Đây chính là minh chứng hùng hồn nhất cho liên minh công - nông - trí - doanh!',
+    duration: '4 phút',
+    script: 'Kính thưa Thầy Cô và các bạn, em là Phạm Minh D. Để hiện thực hóa mục tiêu trên, chuyên đề xác định 5 phương hướng cơ bản: Một là, đẩy mạnh CNH, HĐH đất nước; Hai là, xây dựng và thực hiện hệ thống chính sách xã hội phù hợp cho 6 nhóm: công nhân, nông dân, trí thức, doanh nhân, phụ nữ, thanh niên; Ba là, tạo sự đồng thuận và phát huy đại đoàn kết toàn dân; Bốn là, hoàn thiện thể chế kinh tế thị trường định hướng XHCN & liên kết các lực lượng; Năm là, đổi mới hoạt động của Đảng, Nhà nước, Mặt trận Tổ quốc và các đoàn thể!',
     keyPoints: [
-      'Nhà nước: Kiến tạo cơ chế, quy hoạch và bảo hộ pháp lý.',
-      'Nhà khoa học (Trí thức): Nghiên cứu giống, công nghệ sinh học và kỹ thuật thông minh.',
-      'Nhà doanh nghiệp: Đầu tư vốn, chế biến sâu, xây dựng thương hiệu và mở rộng thị trường.',
-      'Nhà nông: Trực tiếp sản xuất, liên kết hợp tác xã để hình thành cánh đồng mẫu lớn.'
+      'Một là: Đẩy mạnh CNH, HĐH; kinh tế phát triển mới nâng cao đời sống và gắn kết lợi ích.',
+      'Hai là: Chính sách xã hội phù hợp cho từng nhóm: công nhân, nông dân, trí thức, doanh nhân, phụ nữ, thanh niên.',
+      'Ba là: Tạo sự đồng thuận, giải quyết hài hòa lợi ích và phát huy sức mạnh khối đại đoàn kết toàn dân.',
+      'Bốn là: Hoàn thiện thể chế KTTT định hướng XHCN, phát triển KH-CN và tăng cường liên kết các lực lượng.',
+      'Năm là: Đổi mới hoạt động Đảng, Nhà nước, MTTQ và các tổ chức chính trị - xã hội.'
     ]
   },
   {
     id: 'slide-10',
-    sectionId: 'dong-thoi-gian',
-    sectionTitle: 'Dòng thời gian',
+    sectionId: 'quiz',
+    sectionTitle: 'Trắc nghiệm',
     slideNumber: 10,
-    title: 'Sự Phát Triển Nhận Thức Của Đảng Qua Các Kỳ Đại Hội',
-    subtitle: 'Hành trình từ Đổi mới 1986 đến khát vọng Đại hội XIII (2021)',
+    title: 'Đấu Trường Trắc Nghiệm: Ôn Tập Nhanh MLN131',
+    subtitle: 'Mini-game 5 câu hỏi trọng tâm bám sát nội dung chuyên đề và Giáo trình',
     speaker: 'Phạm Minh D',
-    speakerRole: 'Thành viên Nhóm',
+    speakerRole: 'Điều hành Minigame',
     duration: '3 phút',
-    script: 'Nhìn lại 40 năm Đổi mới, nhận thức của Đảng ta về cơ cấu xã hội - giai cấp đã có những bước tiến vượt bậc. Từ chỗ chỉ nhìn nhận đơn giản, chúng ta đã tiến đến tôn vinh đầy đủ vị thế của doanh nhân, trí thức, thanh niên và phụ nữ. Đại hội XIII khẳng định: Khát vọng phát triển đất nước phồn vinh, hạnh phúc chỉ có thể đạt được khi khơi dậy tối đa sức mạnh khối đại đoàn kết toàn dân tộc trên nền tảng liên minh công - nông - trí thức!',
+    script: 'Để buổi thuyết trình thêm phần sôi nổi, nhóm em xin kính mời Thầy Cô và các bạn sinh viên cùng tham gia Minigame Trắc nghiệm gồm 5 câu hỏi trọng tâm: từ câu nói của Bác Hồ về nông dân, trí thức đến nội dung liên minh và 5 phương hướng. Mời các bạn cùng chọn đáp án trực tiếp trên giao diện nhé!',
     keyPoints: [
-      'Đại hội VI (1986): Thừa nhận nền kinh tế nhiều thành phần và tính đa dạng giai tầng.',
-      'Đại hội VII - VIII: Chính thức bổ sung đội ngũ trí thức vào nền tảng cốt lõi của khối liên minh.',
-      'Đại hội IX - XII: Định hình KTTT định hướng XHCN, tôn vinh vai trò của doanh nhân.',
-      'Đại hội XIII (2021): Khơi dậy khát vọng phát triển đất nước, chuyển đổi số quốc gia.'
+      '5 câu hỏi trắc nghiệm sát với nội dung thuyết trình và đề cương ôn tập môn học.',
+      'Tích hợp chấm điểm tức thì, hiệu ứng tương tác sinh động và giải thích chi tiết.',
+      'Hệ thống câu hỏi khoa học, bao quát toàn diện các phần trọng tâm.'
     ]
   },
   {
     id: 'slide-11',
-    sectionId: 'quiz',
-    sectionTitle: 'Trắc nghiệm',
+    sectionId: 'quet-ma',
+    sectionTitle: 'Quét mã & Q&A',
     slideNumber: 11,
-    title: 'Đấu Trường Trắc Nghiệm: Ôn Tập Nhanh MLN131',
-    subtitle: 'Củng cố kiến thức trọng tâm Giáo trình Chủ nghĩa Xã hội Khoa học',
-    speaker: 'Phạm Minh D',
-    speakerRole: 'Điều hành Minigame',
-    duration: '3 phút',
-    script: 'Để buổi thuyết trình thêm phần sôi nổi, nhóm em xin kính mời Thầy Cô và các bạn sinh viên cùng tham gia Minigame Trắc nghiệm ngắn gồm 5 câu hỏi bám sát kiến thức cốt lõi. Các bạn có thể trực tiếp chọn đáp án trên màn hình và xem ngay giải thích học thuật nhé!',
-    keyPoints: [
-      '5 câu hỏi trắc nghiệm sát với đề thi kết thúc học phần MLN131.',
-      'Tích hợp chấm điểm tức thì, hiệu ứng âm thanh và giải thích khoa học.',
-      'Tạo không khí tương tác sôi nổi giữa người thuyết trình và người nghe.'
-    ]
-  },
-  {
-    id: 'slide-12',
-    sectionId: 'phu-luc-ai',
-    sectionTitle: 'Tổng kết & Hỏi đáp',
-    slideNumber: 12,
-    title: 'Tổng Kết & Lời Cảm Ơn · Không Gian Hỏi Đáp Q&A',
-    subtitle: 'Sẵn sàng giải đáp phản biện của Giảng viên và Sinh viên với Trợ lý AI MLN131',
+    title: 'Quét Mã Trải Nghiệm Web Tương Tác & Thảo Luận Q&A',
+    subtitle: 'Truy cập trang web tương tác trên điện thoại để tra cứu và làm trắc nghiệm',
     speaker: 'Cả Nhóm Thuyết trình',
     speakerRole: 'Đại diện Nhóm',
     duration: '2 phút',
-    script: 'Kính thưa Thầy Cô và các bạn! Cơ cấu xã hội - giai cấp và liên minh giai cấp không phải là những trang lý luận khô khan trên giảng đường, mà chính là hơi thở cuộc sống, là nền móng để dân tộc Việt Nam tự tin bước vào kỷ nguyên vươn mình của dân tộc. Nhóm chúng em xin chân thành cảm ơn sự lắng nghe và theo dõi của Thầy Cô và các bạn. Chúng em xin sẵn sàng lắng nghe mọi ý kiến đóng góp, nhận xét và câu hỏi phản biện từ Thầy Cô và cả lớp!',
+    script: 'Kính mời Thầy Cô và các bạn dùng camera điện thoại quét mã QR trên màn hình để trải nghiệm phiên bản web tương tác đầy đủ, đọc lại 5 phương hướng và làm trắc nghiệm. Nhóm chúng em xin chân thành cảm ơn sự chú ý lắng nghe của Thầy Cô và các bạn, và xin sẵn sàng lắng nghe mọi câu hỏi phản biện!',
     keyPoints: [
-      'Tổng kết ngắn gọn thông điệp cốt lõi của chuyên đề.',
-      'Kêu gọi tinh thần trách nhiệm của sinh viên đối với sự phát triển đất nước.',
-      'Mở không gian hỏi đáp tương tác trực tiếp và tra cứu nhanh qua Trợ lý AI.'
-    ]
-  },
-  {
-    id: 'slide-13',
-    sectionId: 'quet-ma',
-    sectionTitle: 'Trải nghiệm thêm',
-    slideNumber: 13,
-    title: 'Quét Mã Để Khám Phá Thêm',
-    subtitle: 'Mở phiên bản web tương tác và tài liệu mở rộng của nhóm trên thiết bị di động',
-    speaker: 'Cả Nhóm Thuyết trình',
-    speakerRole: 'Đại diện Nhóm',
-    duration: '1.5 phút',
-    script: 'Kính mời Thầy Cô và các bạn cùng dùng camera điện thoại quét mã QR trên màn hình hoặc truy cập liên kết https://mln131-gamma.vercel.app/ để tự do trải nghiệm phiên bản web tương tác, làm lại trắc nghiệm và tra cứu tài liệu học tập của nhóm!',
-    keyPoints: [
-      'Quét mã QR bằng camera điện thoại để truy cập tức thì.',
-      'Giao diện web tương tác tối ưu trên cả máy tính và điện thoại.',
-      'Truy cập đầy đủ học liệu, sơ đồ mô hình 4 Nhà và ngân hàng câu hỏi trắc nghiệm.'
+      'Quét mã QR bằng điện thoại để xem trực tiếp ứng dụng web tương tác.',
+      'Tra cứu đầy đủ 5 phương hướng, các trích dẫn của Bác Hồ và nội dung chuyên đề.',
+      'Mở không gian hỏi đáp, giải đáp phản biện học thuật giữa người thuyết trình và người nghe.'
     ]
   }
 ];
+

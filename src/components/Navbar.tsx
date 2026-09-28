@@ -5,7 +5,7 @@ import { useTheme } from '../context/ThemeContext';
 
 export const Navbar: React.FC = () => {
   const { isLight, toggleTheme } = useTheme();
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState('tong-quan');
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -16,12 +16,18 @@ export const Navbar: React.FC = () => {
       const sections = NAV_ITEMS.map(item => document.getElementById(item.id));
       const scrollPosition = window.scrollY + 200;
 
+      let current = '';
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
         if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(NAV_ITEMS[i].id);
+          current = NAV_ITEMS[i].id;
           break;
         }
+      }
+      if (current) {
+        setActiveSection(current);
+      } else if (window.scrollY < 100) {
+        setActiveSection('');
       }
     };
 
@@ -31,6 +37,10 @@ export const Navbar: React.FC = () => {
 
   const scrollTo = (id: string) => {
     setMobileMenuOpen(false);
+    if (id === 'hero' || id === 'top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     const element = document.getElementById(id);
     if (element) {
       const topOffset = 80;
