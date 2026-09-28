@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { ALLIANCE_PILLARS, AlliancePillar } from '../data/presentationData';
-import { DollarSign, ShieldAlert, Sparkles, CheckCircle, ArrowRight, Lightbulb } from 'lucide-react';
+import {
+  DollarSign,
+  ShieldAlert,
+  Sparkles,
+  CheckCircle,
+  Target,
+  Layers,
+  Lightbulb,
+  Quote
+} from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 export const AllianceTriangleSection: React.FC = () => {
@@ -87,7 +96,8 @@ export const AllianceTriangleSection: React.FC = () => {
                   ? (isLight ? `0 6px 20px ${pillar.color}25` : `0 12px 35px -10px ${pillar.color}45`)
                   : (isLight ? '0 2px 8px rgba(0,0,0,0.04)' : 'none'),
                 transform: isActive ? 'translateY(-3px)' : 'none',
-                transition: 'all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)'
+                transition: 'all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)',
+                cursor: 'pointer'
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem' }}>
@@ -117,13 +127,13 @@ export const AllianceTriangleSection: React.FC = () => {
                     border: `1px solid ${pillar.color}35`
                   }}
                 >
-                  {pillar.id === 'kinh-te' ? 'QUYẾT ĐỊNH NHẤT' : pillar.id === 'chinh-tri' ? 'ĐỊNH HƯỚNG' : 'MỤC TIÊU'}
+                  {pillar.badge}
                 </span>
               </div>
               <h3 className="display" style={{ fontSize: '1.35rem', fontWeight: 700, color: isLight ? '#0f172a' : '#fbf5e6', marginBottom: '0.35rem' }}>
                 {pillar.title}
               </h3>
-              <p style={{ fontSize: '0.82rem', color: isLight ? '#475569' : '#b8b0a0', lineHeight: 1.5 }}>
+              <p style={{ fontSize: '0.82rem', color: isLight ? '#475569' : '#b8b0a0', lineHeight: 1.5, margin: 0 }}>
                 {pillar.nature}
               </p>
             </button>
@@ -144,104 +154,234 @@ export const AllianceTriangleSection: React.FC = () => {
           position: 'relative'
         }}
       >
-        {/* 4 Core Focus Areas Grid */}
-        <div style={{ marginBottom: '2.5rem' }}>
-          <h4
-            className="display"
-            style={{
-              fontSize: '1.35rem',
-              fontWeight: 700,
-              color: isLight ? '#0f172a' : '#fbf5e6',
-              marginBottom: '1.5rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.6rem'
-            }}
-          >
-            <Lightbulb size={22} color={activePillar.color} />
-            <span>Nội Dung Trọng Tâm & Nhiệm Vụ Cụ Thể</span>
-          </h4>
+        {/* Summary Banner from docx */}
+        {activePillar.summary && (
           <div
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: '1.2rem'
+              padding: '1.2rem 1.6rem',
+              borderRadius: '14px',
+              background: isLight ? `${activePillar.color}12` : `${activePillar.color}16`,
+              borderLeft: `5px solid ${activePillar.color}`,
+              border: isLight ? '1px solid #cbd5e1' : `1px solid ${activePillar.color}35`,
+              borderLeftWidth: '5px',
+              borderLeftColor: activePillar.color,
+              marginBottom: '2.2rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.85rem'
             }}
           >
-            {activePillar.coreContents.map((content, idx) => (
+            <Quote size={22} color={activePillar.color} style={{ flexShrink: 0 }} />
+            <p
+              style={{
+                margin: 0,
+                fontSize: '1.02rem',
+                fontWeight: 600,
+                color: isLight ? '#0f172a' : '#fbf5e6',
+                lineHeight: 1.6
+              }}
+            >
+              {activePillar.summary}
+            </p>
+          </div>
+        )}
+
+        {/* 2-Column Grid: Goals vs Main Contents */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: '1.5rem',
+            marginBottom: '2.2rem'
+          }}
+        >
+          {/* Cột 1: Mục tiêu */}
+          <div
+            className="glass"
+            style={{
+              padding: '1.8rem 1.6rem',
+              borderRadius: '16px',
+              borderTop: `4px solid ${activePillar.color}`,
+              background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.02)',
+              border: isLight ? '1px solid #cbd5e1' : '1px solid rgba(217, 179, 107, 0.2)',
+              borderTopColor: activePillar.color,
+              display: 'flex',
+              flexDirection: 'column'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.2rem' }}>
               <div
-                key={idx}
                 style={{
-                  background: isLight ? '#f8fafc' : 'rgba(18, 16, 23, 0.8)',
-                  padding: '1.4rem',
-                  borderRadius: '12px',
-                  border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.16)',
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '10px',
+                  background: `${activePillar.color}20`,
+                  color: activePillar.color,
                   display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.5rem'
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <span
-                    style={{
-                      width: '24px',
-                      height: '24px',
-                      borderRadius: '50%',
-                      background: activePillar.color,
-                      color: '#ffffff',
-                      fontSize: '0.8rem',
-                      fontWeight: 800,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
-                  >
-                    {idx + 1}
-                  </span>
-                  <h5 style={{ fontSize: '0.98rem', fontWeight: 700, color: isLight ? '#0f172a' : '#f4e6c3' }}>
-                    {content.heading}
-                  </h5>
-                </div>
-                <p style={{ fontSize: '0.88rem', color: isLight ? '#334155' : '#ded6c5', lineHeight: 1.6, paddingLeft: '2rem' }}>
-                  {content.details}
-                </p>
+                <Target size={20} />
               </div>
-            ))}
+              <h4
+                className="display"
+                style={{
+                  fontSize: '1.18rem',
+                  fontWeight: 700,
+                  color: isLight ? '#0f172a' : '#fbf5e6',
+                  margin: 0
+                }}
+              >
+                Mục tiêu của liên minh
+              </h4>
+            </div>
+
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+              {activePillar.goals.map((goal, idx) => (
+                <li
+                  key={idx}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '0.65rem',
+                    fontSize: '0.93rem',
+                    lineHeight: 1.6,
+                    color: isLight ? '#334155' : '#ded6c5'
+                  }}
+                >
+                  <CheckCircle size={18} color={activePillar.color} style={{ flexShrink: 0, marginTop: '0.2rem' }} />
+                  <span>{goal}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Cột 2: Nội dung chủ yếu */}
+          <div
+            className="glass"
+            style={{
+              padding: '1.8rem 1.6rem',
+              borderRadius: '16px',
+              borderTop: `4px solid ${activePillar.color}`,
+              background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.02)',
+              border: isLight ? '1px solid #cbd5e1' : '1px solid rgba(217, 179, 107, 0.2)',
+              borderTopColor: activePillar.color,
+              display: 'flex',
+              flexDirection: 'column'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.2rem' }}>
+              <div
+                style={{
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '10px',
+                  background: `${activePillar.color}20`,
+                  color: activePillar.color,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <Layers size={20} />
+              </div>
+              <h4
+                className="display"
+                style={{
+                  fontSize: '1.18rem',
+                  fontWeight: 700,
+                  color: isLight ? '#0f172a' : '#fbf5e6',
+                  margin: 0
+                }}
+              >
+                Nội dung chủ yếu
+              </h4>
+            </div>
+
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {activePillar.mainContents.map((content, idx) => (
+                <li
+                  key={idx}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '0.65rem',
+                    fontSize: '0.93rem',
+                    lineHeight: 1.55,
+                    color: isLight ? '#334155' : '#ded6c5'
+                  }}
+                >
+                  <CheckCircle size={18} color={activePillar.color} style={{ flexShrink: 0, marginTop: '0.2rem' }} />
+                  <span>{content}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        {/* Practical Case Studies / Examples */}
+        {/* Key Takeaway Callout */}
         <div
           style={{
-            background: isLight ? '#f1f5f9' : 'rgba(255, 255, 255, 0.02)',
-            padding: '1.5rem 1.8rem',
-            borderRadius: '12px',
-            border: isLight ? '1px solid #cbd5e1' : '1px solid rgba(255, 255, 255, 0.08)',
-            marginBottom: '1.5rem'
+            padding: '1.4rem 1.6rem',
+            borderRadius: '14px',
+            background: isLight ? '#f1f5f9' : 'rgba(255, 255, 255, 0.03)',
+            border: isLight ? '1px solid #cbd5e1' : `1px solid ${activePillar.color}35`,
+            marginBottom: '2rem'
           }}
         >
-          <div style={{ fontSize: '0.82rem', fontWeight: 700, color: isLight ? '#b45309' : '#e6c98c', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.8rem' }}>
-            MINH CHỨNG THỰC TIỄN TẠI VIỆT NAM
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.6rem' }}>
+            <Lightbulb size={20} color={activePillar.color} />
+            <strong
+              style={{
+                fontSize: '1rem',
+                color: activePillar.color,
+                fontWeight: 700
+              }}
+            >
+              {activePillar.keyTakeaway.title}
+            </strong>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
-            {activePillar.practicalExamples.map((ex, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', fontSize: '0.9rem', color: isLight ? '#1e293b' : '#ded6c5' }}>
-                <CheckCircle size={18} color={activePillar.color} style={{ flexShrink: 0, marginTop: '0.15rem' }} />
-                <span>{ex}</span>
-              </div>
-            ))}
-          </div>
+          <p
+            style={{
+              fontSize: '0.94rem',
+              lineHeight: 1.65,
+              color: isLight ? '#1e293b' : '#ded6c5',
+              margin: activePillar.keyTakeaway.tags ? '0 0 1rem 0' : 0
+            }}
+          >
+            {activePillar.keyTakeaway.content}
+          </p>
+          {activePillar.keyTakeaway.tags && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem' }}>
+              {activePillar.keyTakeaway.tags.map((tag, i) => (
+                <span
+                  key={i}
+                  style={{
+                    padding: '0.4rem 1rem',
+                    borderRadius: '999px',
+                    fontSize: '0.85rem',
+                    fontWeight: 700,
+                    background: `${activePillar.color}20`,
+                    color: activePillar.color,
+                    border: `1px solid ${activePillar.color}45`
+                  }}
+                >
+                  ★ {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Documentary Photographs from Document */}
         {activePillar.images && activePillar.images.length > 0 && (
           <div
             style={{
-              marginBottom: '2rem',
               display: 'grid',
               gridTemplateColumns: activePillar.images.length > 1 ? 'repeat(auto-fit, minmax(300px, 1fr))' : '1fr',
               maxWidth: activePillar.images.length > 1 ? '920px' : '580px',
-              margin: '0 auto 2rem auto',
+              margin: '0 auto',
               gap: '1.2rem',
               width: '100%'
             }}

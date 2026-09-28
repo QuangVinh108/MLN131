@@ -15,7 +15,8 @@ import {
   GraduationCap,
   Briefcase,
   TrendingUp,
-  Award
+  Award,
+  Target
 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
@@ -260,90 +261,284 @@ export const DirectionsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Key Measures */}
-        <div style={{ marginBottom: '2.2rem' }}>
-          <h4
-            style={{
-              fontSize: '1.1rem',
-              fontWeight: 700,
-              color: isLight ? '#0f172a' : '#fbf5e6',
-              marginBottom: '1rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem'
-            }}
-          >
-            <CheckCircle2 size={19} color={activeDirection.color} />
-            <span>Nhiệm vụ & Biện pháp triển khai thực hiện:</span>
-          </h4>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: '1rem'
-            }}
-          >
-            {activeDirection.keyMeasures.map((measure, idx) => (
-              <div
-                key={idx}
-                style={{
-                  padding: '1.1rem 1.3rem',
-                  borderRadius: '12px',
-                  background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.02)',
-                  border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.12)',
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '0.75rem',
-                  fontSize: '0.92rem',
-                  lineHeight: 1.55,
-                  color: isLight ? '#334155' : '#ded6c5'
-                }}
-              >
+        {/* Target Groups Block (e.g. Phuong huong 2) */}
+        {activeDirection.targetGroups && activeDirection.targetGroups.length > 0 && (
+          <div style={{ marginBottom: '2rem' }}>
+            <h4
+              style={{
+                fontSize: '1.05rem',
+                fontWeight: 700,
+                color: isLight ? '#0f172a' : '#fbf5e6',
+                marginBottom: '0.9rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}
+            >
+              <Users size={19} color={activeDirection.color} />
+              <span>{activeDirection.targetGroupsHeading || 'Cần xây dựng chính sách cho từng giai cấp, tầng lớp:'}</span>
+            </h4>
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '0.75rem'
+              }}
+            >
+              {activeDirection.targetGroups.map((group, idx) => (
                 <div
+                  key={idx}
                   style={{
-                    width: '24px',
-                    height: '24px',
-                    borderRadius: '50%',
-                    background: `${activeDirection.color}25`,
-                    color: activeDirection.color,
+                    padding: '0.55rem 1.15rem',
+                    borderRadius: '30px',
+                    background: isLight ? '#ffffff' : 'rgba(255, 255, 255, 0.04)',
+                    border: isLight ? `1.5px solid ${activeDirection.color}60` : `1.5px solid ${activeDirection.color}60`,
+                    boxShadow: isLight ? '0 2px 8px rgba(0,0,0,0.04)' : 'none',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    fontWeight: 700,
-                    fontSize: '0.78rem',
-                    flexShrink: 0,
-                    marginTop: '0.1rem'
+                    gap: '0.55rem',
+                    fontSize: '0.92rem',
+                    fontWeight: 600,
+                    color: isLight ? '#0f172a' : '#f8fafc'
                   }}
                 >
-                  {idx + 1}
+                  <span
+                    style={{
+                      width: '8px',
+                      height: '8px',
+                      borderRadius: '50%',
+                      background: activeDirection.color,
+                      display: 'inline-block'
+                    }}
+                  />
+                  <span>{group}</span>
                 </div>
-                <span>{measure}</span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* Strategic Significance */}
-        <div
-          style={{
-            padding: '1.1rem 1.4rem',
-            borderRadius: '12px',
-            background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.02)',
-            border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.15)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.75rem',
-            fontSize: '0.92rem',
-            color: isLight ? '#334155' : '#ded6c5',
-            marginBottom: '1.5rem'
-          }}
-        >
-          <Award size={20} color={activeDirection.color} style={{ flexShrink: 0 }} />
-          <span>
-            <strong style={{ color: isLight ? '#0f172a' : '#fbf5e6' }}>Ý nghĩa chiến lược: </strong>
-            {activeDirection.significance}
-          </span>
-        </div>
+        {/* Requirements Block (Cần:) */}
+        {activeDirection.requirements && activeDirection.requirements.length > 0 && (
+          <div style={{ marginBottom: '2rem' }}>
+            <h4
+              style={{
+                fontSize: '1.08rem',
+                fontWeight: 700,
+                color: isLight ? '#0f172a' : '#fbf5e6',
+                marginBottom: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}
+            >
+              <CheckCircle2 size={19} color={activeDirection.color} />
+              <span>{activeDirection.requirementsHeading || 'Cần:'}</span>
+            </h4>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: '1rem'
+              }}
+            >
+              {activeDirection.requirements.map((req, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    padding: '1.1rem 1.3rem',
+                    borderRadius: '12px',
+                    background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.02)',
+                    border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.12)',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '0.75rem',
+                    fontSize: '0.92rem',
+                    lineHeight: 1.55,
+                    color: isLight ? '#334155' : '#ded6c5'
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '24px',
+                      height: '24px',
+                      borderRadius: '50%',
+                      background: `${activeDirection.color}25`,
+                      color: activeDirection.color,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontWeight: 700,
+                      fontSize: '0.78rem',
+                      flexShrink: 0,
+                      marginTop: '0.1rem'
+                    }}
+                  >
+                    {idx + 1}
+                  </div>
+                  <span>{req}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Goals Block (Mục tiêu:) */}
+        {activeDirection.goals && activeDirection.goals.length > 0 && (
+          <div style={{ marginBottom: '2rem' }}>
+            <h4
+              style={{
+                fontSize: '1.08rem',
+                fontWeight: 700,
+                color: isLight ? '#0f172a' : '#fbf5e6',
+                marginBottom: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}
+            >
+              <Target size={19} color={activeDirection.color} />
+              <span>{activeDirection.goalsHeading || 'Mục tiêu:'}</span>
+            </h4>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: '1rem'
+              }}
+            >
+              {activeDirection.goals.map((goal, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    padding: '1.1rem 1.3rem',
+                    borderRadius: '12px',
+                    background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.02)',
+                    border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.12)',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '0.75rem',
+                    fontSize: '0.92rem',
+                    lineHeight: 1.55,
+                    color: isLight ? '#334155' : '#ded6c5'
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '24px',
+                      height: '24px',
+                      borderRadius: '50%',
+                      background: `${activeDirection.color}25`,
+                      color: activeDirection.color,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontWeight: 700,
+                      fontSize: '0.78rem',
+                      flexShrink: 0,
+                      marginTop: '0.1rem'
+                    }}
+                  >
+                    {idx + 1}
+                  </div>
+                  <span>{goal}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Simultaneous Actions Block (Đồng thời phải:) */}
+        {activeDirection.simultaneousActions && activeDirection.simultaneousActions.length > 0 && (
+          <div style={{ marginBottom: '2rem' }}>
+            <h4
+              style={{
+                fontSize: '1.08rem',
+                fontWeight: 700,
+                color: isLight ? '#0f172a' : '#fbf5e6',
+                marginBottom: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}
+            >
+              <TrendingUp size={19} color={activeDirection.color} />
+              <span>{activeDirection.simultaneousHeading || 'Đồng thời phải:'}</span>
+            </h4>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: '1rem'
+              }}
+            >
+              {activeDirection.simultaneousActions.map((action, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    padding: '1.1rem 1.3rem',
+                    borderRadius: '12px',
+                    background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.02)',
+                    border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.12)',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '0.75rem',
+                    fontSize: '0.92rem',
+                    lineHeight: 1.55,
+                    color: isLight ? '#334155' : '#ded6c5'
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '24px',
+                      height: '24px',
+                      borderRadius: '50%',
+                      background: `${activeDirection.color}25`,
+                      color: activeDirection.color,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontWeight: 700,
+                      fontSize: '0.78rem',
+                      flexShrink: 0,
+                      marginTop: '0.1rem'
+                    }}
+                  >
+                    {idx + 1}
+                  </div>
+                  <span>{action}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Takeaway / Key Note */}
+        {activeDirection.takeaway && (
+          <div
+            style={{
+              padding: '1.15rem 1.4rem',
+              borderRadius: '12px',
+              background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.03)',
+              border: isLight ? `1px solid ${activeDirection.color}40` : `1px solid ${activeDirection.color}40`,
+              borderLeft: `4px solid ${activeDirection.color}`,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.85rem',
+              fontSize: '0.95rem',
+              color: isLight ? '#334155' : '#ded6c5',
+              marginBottom: '2rem'
+            }}
+          >
+            <Sparkles size={20} color={activeDirection.color} style={{ flexShrink: 0 }} />
+            <span>
+              <strong style={{ color: isLight ? '#0f172a' : '#fbf5e6', marginRight: '0.45rem' }}>
+                {activeDirection.takeaway.label}
+              </strong>
+              {activeDirection.takeaway.content}
+            </span>
+          </div>
+        )}
 
         {/* Documentary Photograph for Direction */}
         {activeDirection.imageUrl && (

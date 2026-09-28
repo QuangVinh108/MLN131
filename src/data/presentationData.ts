@@ -47,18 +47,20 @@ export interface AlliancePillar {
   id: string;
   title: string;
   nature: string; // Bản chất / Vị trí
+  badge: string;
   color: string;
   summary: string;
-  coreContents: {
-    heading: string;
-    details: string;
-  }[];
-  practicalExplanation?: string;
-  practicalExamples: string[];
+  goals: string[];
+  mainContents: string[];
+  keyTakeaway: {
+    title: string;
+    content: string;
+    tags?: string[];
+  };
   sourceLabel?: string;
   sourceUrl?: string;
   images?: { url: string; caption: string }[];
-  scriptNote: string;
+  scriptNote?: string;
 }
 
 export interface TimelineMilestone {
@@ -94,15 +96,18 @@ export interface DirectionItem {
   badge: string;
   iconName: string;
   color: string;
-  pagesRef?: string;
-  coreContent: string;
-  keyMeasures: string[];
-  groupPolicies?: {
-    group: string;
-    icon: string;
-    policy: string;
-  }[];
-  significance: string;
+  requirementsHeading?: string;
+  requirements?: string[];
+  targetGroupsHeading?: string;
+  targetGroups?: string[];
+  goalsHeading?: string;
+  goals?: string[];
+  simultaneousHeading?: string;
+  simultaneousActions?: string[];
+  takeaway?: {
+    label: string;
+    content: string;
+  };
   sourceLabel?: string;
   sourceUrl?: string;
   imageUrl?: string;
@@ -136,7 +141,7 @@ export const TEAM_MEMBERS = [
     name: 'Lê Hoàng C',
     studentId: 'B21DCCN003',
     role: 'Thành viên · Thuyết trình Bản chất & 3 Nội dung Liên minh',
-    parts: 'Bản chất liên minh & 3 Nội dung Liên minh: Kinh tế (quyết định nhất), Chính trị, Văn hóa - Xã hội'
+    parts: 'Liên minh giai cấp & 3 Nội dung Liên minh: Kinh tế (quyết định nhất), Chính trị, Văn hóa - Xã hội'
   },
   {
     name: 'Phạm Minh D',
@@ -149,7 +154,7 @@ export const TEAM_MEMBERS = [
 export const NAV_ITEMS = [
   { id: 'tong-quan', label: 'Bối cảnh' },
   { id: 'giai-tang', label: 'Cơ cấu giai cấp' },
-  { id: 'lien-minh', label: 'Bản chất Liên minh' },
+  { id: 'lien-minh', label: 'Liên minh giai cấp' },
   { id: 'tam-giac', label: 'Nội dung' },
   { id: 'phuong-huong', label: 'Phương hướng' },
   { id: 'quiz', label: 'Trắc nghiệm' },
@@ -332,29 +337,27 @@ export const ALLIANCE_PILLARS: AlliancePillar[] = [
     id: 'kinh-te',
     title: 'Nội dung Kinh tế',
     nature: 'Nội dung CƠ BẢN, QUYẾT ĐỊNH NHẤT',
+    badge: 'QUYẾT ĐỊNH NHẤT',
     color: '#d9b36b',
-    summary: 'Đây là nội dung cơ bản và có ý nghĩa quyết định nhất. Mục tiêu nhằm tạo cơ sở vật chất - kỹ thuật cho CNXH, bảo đảm lợi ích kinh tế của các giai cấp, tầng lớp, tạo sự gắn bó lâu dài.',
-    coreContents: [
-      {
-        heading: 'Mục tiêu kinh tế của liên minh',
-        details: 'Tạo cơ sở vật chất - kỹ thuật cho CNXH; bảo đảm lợi ích kinh tế của các giai cấp, tầng lớp; tạo sự gắn bó lâu dài giữa công nhân, nông dân, trí thức và các lực lượng khác.'
-      },
-      {
-        heading: 'Đẩy mạnh CNH, HĐH & Chuyển dịch cơ cấu kinh tế',
-        details: 'Đẩy mạnh công nghiệp hóa, hiện đại hóa; phát triển sản xuất; chuyển dịch cơ cấu kinh tế; phát triển nông nghiệp, nông thôn gắn với khoa học - công nghệ; nâng cao năng suất lao động.'
-      },
-      {
-        heading: 'Mở rộng hợp tác & Hài hòa lợi ích',
-        details: 'Mở rộng hợp tác giữa công nghiệp - nông nghiệp - khoa học, công nghệ - dịch vụ; bảo đảm hài hòa lợi ích giữa các giai cấp, tầng lớp trong xã hội.'
-      }
+    summary: 'Đây là nội dung cơ bản và có ý nghĩa quyết định.',
+    goals: [
+      'Tạo cơ sở vật chất - kỹ thuật cho chủ nghĩa xã hội;',
+      'Bảo đảm lợi ích kinh tế của các giai cấp, tầng lớp;',
+      'Tạo sự gắn bó lâu dài giữa công nhân, nông dân, trí thức và các lực lượng khác.'
     ],
-    practicalExplanation: 'Có thể hiểu đơn giản: công nhân tạo ra sản phẩm công nghiệp, nông dân tạo ra sản phẩm nông nghiệp, trí thức cung cấp tri thức và công nghệ; khi ba lực lượng này phối hợp hiệu quả thì nền kinh tế phát triển bền vững hơn.',
-    practicalExamples: [
-      'Chuỗi liên kết công nghiệp chế biến nông sản xuất khẩu chất lượng cao (gạo, cà phê, thủy sản).',
-      'Ứng dụng phần mềm IoT, cảm biến, máy bay không người lái trong quản lý đồng ruộng thông minh.',
-      'Khắc phục bệnh quan liêu, hình thức trong phát triển hợp tác xã kiểu mới theo định hướng của Chính phủ.'
+    mainContents: [
+      'Đẩy mạnh công nghiệp hóa, hiện đại hóa;',
+      'Phát triển sản xuất;',
+      'Chuyển dịch cơ cấu kinh tế;',
+      'Phát triển nông nghiệp, nông thôn gắn với khoa học - công nghệ;',
+      'Nâng cao năng suất lao động;',
+      'Mở rộng hợp tác giữa công nghiệp - nông nghiệp - khoa học, công nghệ - dịch vụ;',
+      'Hài hòa lợi ích giữa các giai cấp, tầng lớp.'
     ],
-    sourceLabel: 'Tư tưởng Hồ Chí Minh về phát triển kinh tế thời kỳ quá độ',
+    keyTakeaway: {
+      title: 'Có thể hiểu đơn giản:',
+      content: 'Công nhân tạo ra sản phẩm công nghiệp, nông dân tạo ra sản phẩm nông nghiệp, trí thức cung cấp tri thức và công nghệ; khi ba lực lượng này phối hợp hiệu quả thì nền kinh tế phát triển bền vững hơn.'
+    },
     images: [
       { url: '/images/docx/image3.png', caption: 'Bác Hồ thăm nhà máy sản xuất - Tư tưởng Hồ Chí Minh về phát triển kinh tế thời kỳ quá độ' },
       { url: '/images/docx/image10.png', caption: 'Khảo sát và phát triển chuỗi giá trị nông sản an toàn của Hợp tác xã' }
@@ -365,29 +368,26 @@ export const ALLIANCE_PILLARS: AlliancePillar[] = [
     id: 'chinh-tri',
     title: 'Nội dung Chính trị',
     nature: 'Nội dung ĐỊNH HƯỚNG & BẢO ĐẢM VỮNG CHẮC',
+    badge: 'ĐỊNH HƯỚNG',
     color: '#b5403a',
-    summary: 'Mục tiêu chính là giữ vững ổn định chính trị, củng cố vai trò lãnh đạo của Đảng, phát huy quyền làm chủ của nhân dân và tăng cường khối đại đoàn kết toàn dân.',
-    coreContents: [
-      {
-        heading: 'Mục tiêu chính trị cốt lõi',
-        details: 'Giữ vững ổn định chính trị; củng cố vai trò lãnh đạo của Đảng; phát huy quyền làm chủ của nhân dân; tăng cường khối đại đoàn kết toàn dân.'
-      },
-      {
-        heading: 'Phát huy dân chủ XHCN & Xây dựng Nhà nước pháp quyền',
-        details: 'Phát huy dân chủ XHCN; bảo đảm quyền và lợi ích chính đáng của các giai cấp, tầng lớp; xây dựng Nhà nước pháp quyền XHCN của Nhân dân, do Nhân dân, vì Nhân dân.'
-      },
-      {
-        heading: 'Tăng cường đồng thuận & Đấu tranh chống chia rẽ',
-        details: 'Tăng cường đồng thuận xã hội; kiên quyết đấu tranh chống những biểu hiện chia rẽ, phá hoại khối đại đoàn kết toàn dân tộc của các thế lực thù địch.'
-      }
+    summary: '',
+    goals: [
+      'Giữ vững ổn định chính trị;',
+      'Củng cố vai trò lãnh đạo của Đảng;',
+      'Phát huy quyền làm chủ của nhân dân;',
+      'Tăng cường khối đại đoàn kết toàn dân.'
     ],
-    practicalExplanation: 'Giáo trình nhấn mạnh liên minh phải gắn chặt với việc củng cố nền tảng chính trị - xã hội của chế độ XHCN dưới sự lãnh đạo duy nhất của Đảng Cộng sản Việt Nam.',
-    practicalExamples: [
-      'Đại hội đại biểu toàn quốc Mặt trận Tổ quốc Việt Nam củng cố khối đại đoàn kết dân tộc.',
-      'Thực hiện phương châm: Dân biết, dân bàn, dân làm, dân kiểm tra, dân giám sát, dân thụ hưởng.',
-      'Phát huy vai trò phản biện xã hội của Công đoàn, Hội Nông dân, Đoàn Thanh niên, Hội Phụ nữ.'
+    mainContents: [
+      'Phát huy dân chủ XHCN;',
+      'Bảo đảm quyền và lợi ích chính đáng của các giai cấp, tầng lớp;',
+      'Xây dựng Nhà nước pháp quyền XHCN;',
+      'Tăng cường đồng thuận xã hội;',
+      'Đấu tranh chống những biểu hiện chia rẽ, phá hoại khối đại đoàn kết.'
     ],
-    sourceLabel: 'Đại hội MTTQ Việt Nam',
+    keyTakeaway: {
+      title: 'Giáo trình nhấn mạnh:',
+      content: 'Liên minh giai cấp, tầng lớp phải gắn liền với việc củng cố nền tảng chính trị - xã hội của chế độ XHCN dưới sự lãnh đạo của Đảng.'
+    },
     images: [
       { url: '/images/docx/image4.png', caption: 'Khai mạc trọng thể Đại hội đại biểu toàn quốc Mặt trận Tổ quốc Việt Nam - Củng cố nền tảng khối đại đoàn kết' }
     ],
@@ -397,31 +397,32 @@ export const ALLIANCE_PILLARS: AlliancePillar[] = [
     id: 'van-hoa-xa-hoi',
     title: 'Nội dung Văn hóa - Xã hội',
     nature: 'Nội dung MỤC TIÊU & CHẤT LƯỢNG ĐỜI SỐNG',
-    color: '#4aa3a0',
-    summary: 'Mục tiêu nâng cao đời sống vật chất và tinh thần, phát triển con người, thu hẹp khoảng cách xã hội, xây dựng đời sống văn hóa tiến bộ gắn với: Dân tộc – Nhân văn – Dân chủ – Khoa học.',
-    coreContents: [
-      {
-        heading: 'Mục tiêu văn hóa - xã hội',
-        details: 'Nâng cao đời sống vật chất và tinh thần; phát triển con người; thu hẹp khoảng cách xã hội; xây dựng đời sống văn hóa tiến bộ.'
-      },
-      {
-        heading: 'Các nội dung xã hội trọng tâm',
-        details: 'Phát triển giáo dục; chăm sóc sức khỏe; giải quyết việc làm; giảm nghèo bền vững; thực hiện chính sách an sinh xã hội; nâng cao đời sống văn hóa; thực hiện công bằng xã hội; xây dựng con người Việt Nam phát triển toàn diện.'
-      },
-      {
-        heading: '4 Giá trị văn hóa cốt lõi theo Giáo trình',
-        details: 'Giáo trình nhấn mạnh phát triển văn hóa phải gắn liền với 4 giá trị rường cột: Dân tộc – Nhân văn – Dân chủ – Khoa học.'
-      }
+    badge: 'MỤC TIÊU',
+    color: '#34d399',
+    summary: '',
+    goals: [
+      'Nâng cao đời sống vật chất và tinh thần;',
+      'Phát triển con người;',
+      'Thu hẹp khoảng cách xã hội;',
+      'Xây dựng đời sống văn hóa tiến bộ.'
     ],
-    practicalExplanation: 'Phát triển văn hóa và bảo đảm an sinh xã hội là mục tiêu tối thượng nhằm mang lại hạnh phúc thực sự cho mọi giai cấp, tầng lớp nhân dân trong xã hội.',
-    practicalExamples: [
-      'Hướng dẫn tổ chức Ngày hội Đại đoàn kết toàn dân tộc tại các khu dân cư trên toàn quốc.',
-      'Chính sách bao phủ bảo hiểm y tế toàn dân, cấp thẻ BHYT miễn phí cho hộ nghèo, cận nghèo.',
-      'Phát triển mạng lưới trường học, trạm y tế, thiết chế văn hóa cơ sở tại nông thôn và khu công nghiệp.'
+    mainContents: [
+      'Phát triển giáo dục;',
+      'Chăm sóc sức khỏe;',
+      'Giải quyết việc làm;',
+      'Giảm nghèo;',
+      'Thực hiện chính sách an sinh xã hội;',
+      'Nâng cao đời sống văn hóa;',
+      'Thực hiện công bằng xã hội;',
+      'Xây dựng con người Việt Nam phát triển toàn diện.'
     ],
-    sourceLabel: 'Ủy ban Trung ương Mặt trận Tổ quốc Việt Nam',
+    keyTakeaway: {
+      title: 'Giáo trình nhấn mạnh phát triển văn hóa phải gắn với:',
+      content: 'Bảo tồn bản sắc văn hóa dân tộc, đề cao giá trị nhân văn, phát huy dân chủ và ứng dụng khoa học hiện đại.',
+      tags: ['Dân tộc', 'Nhân văn', 'Dân chủ', 'Khoa học']
+    },
     images: [
-      { url: '/images/docx/image1.png', caption: 'Giao lưu văn hóa nghệ thuật các dân tộc tại Ngày hội Đại đoàn kết: Thấm nhuần 4 giá trị Dân tộc - Nhân văn - Dân chủ - Khoa học' }
+      { url: '/images/docx/image1.png', caption: 'Ngày hội Đại đoàn kết toàn dân tộc tại khu dân cư: Thấm nhuần 4 giá trị Dân tộc - Nhân văn - Dân chủ - Khoa học' }
     ],
     scriptNote: 'Văn hóa - xã hội thể hiện bản chất nhân văn ưu việt của CNXH: phát triển kinh tế vì con người, không để ai bị bỏ lại phía sau.'
   }
@@ -483,14 +484,17 @@ export const DIRECTIONS_DATA: DirectionItem[] = [
     badge: 'Nhiệm vụ Trung tâm',
     iconName: 'Factory',
     color: '#b5403a',
-    coreContent: 'Phát triển lực lượng sản xuất; gắn tăng trưởng kinh tế với tiến bộ, công bằng xã hội; tạo môi trường để các giai cấp, tầng lớp phát triển; tạo cơ sở kinh tế cho liên minh giai cấp, tầng lớp.',
-    keyMeasures: [
-      'Phát triển mạnh mẽ lực lượng sản xuất và khoa học công nghệ.',
-      'Gắn tăng trưởng kinh tế với bảo đảm tiến bộ, công bằng xã hội trong từng bước phát triển.',
-      'Tạo môi trường thuận lợi để các giai cấp, tầng lớp phát huy tối đa năng lực.',
-      'Tạo lập cơ sở kinh tế vững chắc cho khối liên minh giai cấp, tầng lớp.'
+    requirementsHeading: 'Cần:',
+    requirements: [
+      'Phát triển lực lượng sản xuất;',
+      'Gắn tăng trưởng kinh tế với tiến bộ, công bằng xã hội;',
+      'Tạo môi trường để các giai cấp, tầng lớp phát triển;',
+      'Tạo cơ sở kinh tế cho liên minh giai cấp, tầng lớp.'
     ],
-    significance: 'Kinh tế phát triển thì mới có điều kiện nâng cao đời sống và tạo sự gắn kết lợi ích giữa các lực lượng xã hội.',
+    takeaway: {
+      label: 'Ý chính:',
+      content: 'Kinh tế phát triển thì mới có điều kiện nâng cao đời sống và tạo sự gắn kết lợi ích giữa các lực lượng xã hội.'
+    },
     sourceLabel: 'Đẩy mạnh CNH, HĐH đất nước',
     imageUrl: '/images/docx/image8.png',
     imageCaption: 'Dây chuyền sản xuất tự động hóa công nghệ cao: Đẩy mạnh công nghiệp hóa, hiện đại hóa'
@@ -503,46 +507,20 @@ export const DIRECTIONS_DATA: DirectionItem[] = [
     badge: 'Đòn bẩy Trực tiếp',
     iconName: 'Users',
     color: '#d9b36b',
-    coreContent: 'Xây dựng chính sách cho từng giai cấp, tầng lớp: công nhân, nông dân, trí thức, doanh nhân, phụ nữ, thanh niên nhằm bảo đảm quyền lợi chính đáng, tạo cơ hội phát triển, giảm chênh lệch và phân hóa giàu nghèo.',
-    keyMeasures: [
-      'Bảo đảm quyền lợi chính đáng và tạo cơ hội phát triển đồng đều cho mọi công dân.',
-      'Giảm chênh lệch xã hội, hạn chế phân hóa giàu nghèo giữa các giai tầng và vùng miền.',
-      'Tăng khả năng tiếp cận giáo dục, y tế, việc làm, nhà ở và các chế độ phúc lợi an sinh xã hội.',
-      'Thực hiện chính sách bảo hiểm y tế toàn dân, hỗ trợ mua và cấp thẻ BHYT miễn phí cho hộ nghèo.'
+    targetGroupsHeading: 'Cần xây dựng chính sách cho từng giai cấp, tầng lớp:',
+    targetGroups: ['Công nhân', 'Nông dân', 'Trí thức', 'Doanh nhân', 'Phụ nữ', 'Thanh niên'],
+    goalsHeading: 'Mục tiêu:',
+    goals: [
+      'Bảo đảm quyền lợi chính đáng;',
+      'Tạo cơ hội phát triển;',
+      'Giảm chênh lệch xã hội;',
+      'Hạn chế phân hóa giàu nghèo;',
+      'Tăng khả năng tiếp cận giáo dục, y tế, việc làm và phúc lợi.'
     ],
-    groupPolicies: [
-      {
-        group: 'Giai cấp Công nhân',
-        icon: 'Hammer',
-        policy: 'Quan tâm đào tạo, bồi dưỡng nâng cao trình độ văn hóa, chuyên môn, kỹ năng nghề; giải quyết việc làm, nhà ở xã hội, bệnh viện, trường học tại các khu công nghiệp; xây dựng giai cấp công nhân hiện đại, lớn mạnh.'
-      },
-      {
-        group: 'Giai cấp Nông dân',
-        icon: 'Wheat',
-        policy: 'Phát huy vai trò chủ thể trong phát triển nông nghiệp, kinh tế nông thôn và xây dựng nông thôn mới; hỗ trợ vốn ưu đãi, chuyển giao KH-CN, đào tạo nghề chuyển đổi sinh kế và bảo hiểm nông nghiệp.'
-      },
-      {
-        group: 'Đội ngũ Trí thức',
-        icon: 'GraduationCap',
-        policy: 'Xây dựng đội ngũ trí thức ngày càng lớn mạnh, chất lượng cao; thực hiện chính sách trọng dụng, đãi ngộ xứng đáng nhân tài; bảo vệ quyền sở hữu trí tuệ và tạo môi trường tự do học thuật, sáng tạo.'
-      },
-      {
-        group: 'Đội ngũ Doanh nhân',
-        icon: 'Briefcase',
-        policy: 'Tạo môi trường kinh doanh minh bạch, bình đẳng, an toàn; khuyến khích tinh thần khởi nghiệp sáng tạo, làm giàu hợp pháp; tôn vinh doanh nhân cống hiến vì cộng đồng và phụng sự Tổ quốc.'
-      },
-      {
-        group: 'Tầng lớp Phụ nữ',
-        icon: 'Sparkles',
-        policy: 'Nâng cao trình độ mọi mặt và đời sống vật chất, tinh thần; thực hiện tốt bình đẳng giới thực chất; tạo điều kiện cho phụ nữ phát triển tài năng, tham gia lãnh đạo quản lý và bảo vệ quyền lợi bà mẹ, trẻ em.'
-      },
-      {
-        group: 'Thế hệ trẻ / Thanh niên',
-        icon: 'TrendingUp',
-        policy: 'Giáo dục lý tưởng cách mạng, đạo đức lối sống văn hóa; đổi mới căn bản giáo dục và đào tạo; tạo môi trường khởi nghiệp, lập nghiệp, phát huy tinh thần xung kích trong chuyển đổi số và bảo vệ Tổ quốc.'
-      }
-    ],
-    significance: 'Giáo trình nhấn mạnh chính sách phải phù hợp với đặc điểm, vị trí và vai trò của từng nhóm xã hội.',
+    takeaway: {
+      label: 'Nhấn mạnh:',
+      content: 'Chính sách phải phù hợp với đặc điểm, vị trí và vai trò của từng nhóm xã hội.'
+    },
     sourceLabel: 'Chính sách cấp thẻ BHYT cho hộ nghèo',
     imageUrl: '/images/docx/image2.png',
     imageCaption: 'Chương trình cấp phát thẻ BHYT và an sinh xã hội cho hộ nghèo, phụ nữ và người yếu thế'
@@ -555,14 +533,18 @@ export const DIRECTIONS_DATA: DirectionItem[] = [
     badge: 'Nguồn lực Sức mạnh',
     iconName: 'HeartHandshake',
     color: '#34d399',
-    coreContent: 'Nâng cao nhận thức về vai trò của liên minh giai cấp, tầng lớp; phát huy vai trò của từng thành viên trong xã hội; giải quyết hài hòa lợi ích, hạn chế mâu thuẫn xã hội, tăng cường sự đồng thuận.',
-    keyMeasures: [
-      'Nâng cao nhận thức của toàn xã hội về vị trí chiến lược của khối liên minh giai cấp, tầng lớp.',
-      'Phát huy vai trò, năng lực sáng tạo của từng thành viên trong cộng đồng xã hội.',
-      'Giải quyết hài hòa quan hệ lợi ích, hạn chế mâu thuẫn xã hội nảy sinh.',
-      'Tăng cường sự đồng thuận xã hội trên nền tảng mục tiêu chung: Dân giàu, nước mạnh, dân chủ, công bằng, văn minh.'
+    requirementsHeading: 'Cần:',
+    requirements: [
+      'Nâng cao nhận thức về vai trò của liên minh giai cấp, tầng lớp;',
+      'Phát huy vai trò của từng thành viên trong xã hội;',
+      'Giải quyết hài hòa lợi ích;',
+      'Hạn chế mâu thuẫn xã hội;',
+      'Tăng cường sự đồng thuận.'
     ],
-    significance: 'Mục tiêu cuối cùng là tạo thành sức mạnh tổng hợp của toàn xã hội trong sự nghiệp xây dựng và bảo vệ vững chắc Tổ quốc.',
+    takeaway: {
+      label: 'Mục tiêu cuối cùng là:',
+      content: 'Tạo thành sức mạnh tổng hợp của toàn xã hội.'
+    },
     sourceLabel: 'Phát huy đại đoàn kết toàn dân tộc',
     imageUrl: '/images/docx/image14.png',
     imageCaption: 'Ngày hội Đại đoàn kết toàn dân tộc tại khu dân cư: Tạo sự đồng thuận và sức mạnh tổng hợp'
@@ -571,18 +553,24 @@ export const DIRECTIONS_DATA: DirectionItem[] = [
     id: 'phuong-huong-4',
     number: 4,
     title: 'Hoàn thiện thể chế kinh tế thị trường định hướng XHCN',
-    shortTitle: 'Thể chế KTTT & Đổi mới sáng tạo',
+    shortTitle: 'Thể chế KTTT',
     badge: 'Động lực Kinh tế',
     iconName: 'Layers',
     color: '#38bdf8',
-    coreContent: 'Hoàn thiện cơ chế, chính sách; tạo môi trường thuận lợi cho sản xuất, kinh doanh; phát huy vai trò của khoa học - công nghệ; khuyến khích đổi mới sáng tạo; bảo đảm hài hòa lợi ích và tăng cường liên kết 4 lực lượng.',
-    keyMeasures: [
-      'Hoàn thiện cơ chế, chính sách, tạo môi trường thuận lợi cho sản xuất, kinh doanh phát triển.',
-      'Phát huy vai trò của khoa học - công nghệ, khuyến khích chuyển đổi số và đổi mới sáng tạo.',
-      'Tạo điều kiện thuận lợi để mọi giai cấp, tầng lớp tham gia và thụ hưởng thành quả phát triển kinh tế.',
-      'Bảo đảm hài hòa lợi ích; nâng cao trình độ lực lượng lao động; tăng cường liên kết giữa công nhân, nông dân, trí thức và doanh nhân.'
+    requirementsHeading: 'Cần:',
+    requirements: [
+      'Hoàn thiện cơ chế, chính sách;',
+      'Tạo môi trường thuận lợi cho sản xuất, kinh doanh;',
+      'Phát huy vai trò của khoa học - công nghệ;',
+      'Khuyến khích đổi mới sáng tạo;',
+      'Tạo điều kiện để các giai cấp, tầng lớp tham gia phát triển kinh tế.'
     ],
-    significance: 'Giải phóng triệt để sức sản xuất xã hội, tạo hành lang pháp lý thông thoáng để các chủ thể liên minh hợp tác cùng phát triển bền vững.',
+    simultaneousHeading: 'Đồng thời phải:',
+    simultaneousActions: [
+      'Bảo đảm hài hòa lợi ích;',
+      'Nâng cao trình độ lực lượng lao động;',
+      'Tăng cường liên kết giữa công nhân, nông dân, trí thức và doanh nhân.'
+    ],
     sourceLabel: 'Đổi mới công nghệ cao thúc đẩy kinh tế',
     imageUrl: '/images/docx/image16.png',
     imageCaption: 'Chuyên gia vận hành trung tâm gia công CNC hiện đại: Hoàn thiện thể chế KTTT & liên kết công nghệ cao'
@@ -591,18 +579,24 @@ export const DIRECTIONS_DATA: DirectionItem[] = [
     id: 'phuong-huong-5',
     number: 5,
     title: 'Đổi mới hoạt động của Đảng, Nhà nước, Mặt trận Tổ quốc và các tổ chức chính trị - xã hội',
-    shortTitle: 'Đổi mới hệ thống chính trị & Đoàn thể',
+    shortTitle: 'Đổi mới HTCT & Đoàn thể',
     badge: 'Nhân tố Quyết định',
     iconName: 'ShieldCheck',
     color: '#a855f7',
-    coreContent: 'Nâng cao hiệu quả lãnh đạo của Đảng; nâng cao hiệu lực quản lý của Nhà nước; phát huy vai trò của Mặt trận Tổ quốc; tăng cường hoạt động của Công đoàn, Hội Nông dân, Đoàn Thanh niên, Hội Phụ nữ và các tổ chức xã hội.',
-    keyMeasures: [
-      'Nâng cao năng lực và hiệu quả lãnh đạo của Đảng đối với toàn xã hội.',
-      'Nâng cao hiệu lực, hiệu quả quản lý, điều hành của Nhà nước pháp quyền XHCN.',
-      'Phát huy mạnh mẽ vai trò tập hợp khối đại đoàn kết của Mặt trận Tổ quốc Việt Nam.',
-      'Tăng cường hoạt động thiết thực của Công đoàn, Hội Nông dân, Đoàn Thanh niên, Hội Phụ nữ trong việc đại diện và bảo vệ quyền lợi chính đáng của đoàn viên, hội viên.'
+    requirementsHeading: 'Cần:',
+    requirements: [
+      'Nâng cao hiệu quả lãnh đạo của Đảng;',
+      'Nâng cao hiệu lực quản lý của Nhà nước;',
+      'Phát huy vai trò của Mặt trận Tổ quốc;',
+      'Tăng cường hoạt động của Công đoàn, Hội Nông dân, Đoàn Thanh niên, Hội Phụ nữ và các tổ chức xã hội.'
     ],
-    significance: 'Tập hợp các lực lượng xã hội; bảo vệ quyền lợi chính đáng; củng cố khối đại đoàn kết; tăng cường liên minh giữa các giai cấp và tầng lớp.',
+    goalsHeading: 'Mục tiêu:',
+    goals: [
+      'Tập hợp các lực lượng xã hội;',
+      'Bảo vệ quyền lợi chính đáng;',
+      'Củng cố khối đại đoàn kết;',
+      'Tăng cường liên minh giữa các giai cấp và tầng lớp.'
+    ],
     sourceLabel: 'Đại hội Công đoàn Xây dựng giai cấp công nhân vững mạnh',
     imageUrl: '/images/docx/image11.png',
     imageCaption: 'Đại hội XIII Công đoàn Việt Nam: Đổi mới hoạt động các tổ chức chính trị - xã hội, bảo vệ người lao động'
@@ -904,9 +898,9 @@ export const PRESENTATION_SLIDES: Slide[] = [
   {
     id: 'slide-6',
     sectionId: 'lien-minh',
-    sectionTitle: 'Bản chất Liên minh',
+    sectionTitle: 'Liên minh giai cấp',
     slideNumber: 6,
-    title: 'Bản Chất & Tính Tất Yếu Của Khối Liên Minh Giai Cấp, Tầng Lớp',
+    title: 'Liên Minh Giai Cấp, Tầng Lớp Trong Thời Kỳ Quá Độ Lên CNXH',
     subtitle: 'Nền tảng chính trị - xã hội vững chắc dưới sự lãnh đạo của Đảng Cộng sản Việt Nam',
     speaker: 'Lê Hoàng C',
     speakerRole: 'Thành viên Nhóm',
