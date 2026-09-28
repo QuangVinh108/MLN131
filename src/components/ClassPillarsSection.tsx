@@ -175,7 +175,7 @@ export const ClassPillarsSection: React.FC = () => {
           style={{
             display: 'flex',
             flexWrap: 'wrap',
-            alignItems: 'flex-start',
+            alignItems: 'center',
             justifyContent: 'space-between',
             gap: '1.5rem',
             marginBottom: '2rem',
@@ -221,22 +221,6 @@ export const ClassPillarsSection: React.FC = () => {
                 {selectedPillar.name}
               </h3>
             </div>
-          </div>
-
-          <div
-            style={{
-              maxWidth: '480px',
-              fontSize: '0.92rem',
-              color: isLight ? '#334155' : '#ded6c5',
-              lineHeight: 1.6,
-              background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.03)',
-              padding: '0.85rem 1.2rem',
-              borderRadius: '10px',
-              border: isLight ? '1px solid #e2e8f0' : undefined,
-              borderLeft: `3px solid ${selectedPillar.accentColor}`
-            }}
-          >
-            <strong>Vị trí, vai trò:</strong> {selectedPillar.position}
           </div>
         </div>
 
@@ -325,7 +309,7 @@ export const ClassPillarsSection: React.FC = () => {
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', color: isLight ? '#b45309' : '#d9b36b' }}>
               <TrendingUp size={18} color="#d9b36b" />
-              <h4 style={{ fontSize: '1rem', fontWeight: 700, color: isLight ? '#0f172a' : '#f4e6c3' }}>Xu Hướng Biến Đổi 4.0</h4>
+              <h4 style={{ fontSize: '1rem', fontWeight: 700, color: isLight ? '#0f172a' : '#f4e6c3' }}>Xu Hướng Biến Đổi</h4>
             </div>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {selectedPillar.trends.map((tr, i) => (

@@ -142,19 +142,36 @@ export const OverviewSection: React.FC = () => {
             boxShadow: isLight ? '0 4px 20px -2px rgba(0,0,0,0.06)' : undefined
           }}
         >
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', alignItems: 'flex-start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', alignItems: 'stretch' }}>
             {/* Cột Trái: Khái niệm */}
-            <div>
-              <div className="eyebrow" style={{ color: isLight ? '#b45309' : '#d9b36b', marginBottom: '0.5rem' }}>
-                ĐỊNH NGHĨA KHOA HỌC
+            <div style={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between', paddingBottom: '2rem' }}>
+              <div>
+                <div className="eyebrow" style={{ color: isLight ? '#b45309' : '#d9b36b', marginBottom: '0.5rem' }}>
+                  ĐỊNH NGHĨA KHOA HỌC
+                </div>
+                <h3 className="display" style={{ fontSize: '1.55rem', color: isLight ? '#0f172a' : '#f4e6c3', marginBottom: '1rem' }}>
+                  Khái Niệm Cơ Cấu Xã Hội - Giai Cấp
+                </h3>
+                <p style={{ color: isLight ? '#334155' : '#ded6c5', lineHeight: 1.7, fontSize: '0.96rem', marginBottom: '1.2rem' }}>
+                  Cơ cấu xã hội – giai cấp là <strong>hệ thống các giai cấp, tầng lớp xã hội tồn tại khách quan</strong> trong một chế độ xã hội nhất định,
+                  được thể hiện qua các mối quan hệ về <em>sở hữu tư liệu sản xuất, tổ chức – quản lý sản xuất và địa vị chính trị – xã hội</em>.
+                </p>
+
+                <div
+                  style={{
+                    background: isLight ? 'rgba(217, 179, 107, 0.12)' : 'rgba(217, 179, 107, 0.08)',
+                    padding: '1rem 1.2rem',
+                    borderRadius: '12px',
+                    borderLeft: '4px solid #d9b36b',
+                    fontSize: '0.9rem',
+                    color: isLight ? '#854d0e' : '#f4e6c3',
+                    lineHeight: 1.6,
+                    marginBottom: '1.2rem'
+                  }}
+                >
+                  👉 <strong>Trong thời kỳ quá độ lên CNXH:</strong> Cơ cấu này gồm nhiều giai cấp, tầng lớp cùng tồn tại, có quan hệ vừa khác biệt về lợi ích, vừa liên hệ, hợp tác mật thiết với nhau.
+                </div>
               </div>
-              <h3 className="display" style={{ fontSize: '1.55rem', color: isLight ? '#0f172a' : '#f4e6c3', marginBottom: '1rem' }}>
-                Khái Niệm Cơ Cấu Xã Hội - Giai Cấp
-              </h3>
-              <p style={{ color: isLight ? '#334155' : '#ded6c5', lineHeight: 1.7, fontSize: '0.96rem', marginBottom: '1.2rem' }}>
-                Cơ cấu xã hội – giai cấp là <strong>hệ thống các giai cấp, tầng lớp xã hội tồn tại khách quan</strong> trong một chế độ xã hội nhất định,
-                được thể hiện qua các mối quan hệ về <em>sở hữu tư liệu sản xuất, tổ chức – quản lý sản xuất và địa vị chính trị – xã hội</em>.
-              </p>
 
               {/* Image 13: Lenin */}
               <div
@@ -162,13 +179,13 @@ export const OverviewSection: React.FC = () => {
                   borderRadius: '12px',
                   overflow: 'hidden',
                   border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.25)',
-                  marginBottom: '1.2rem',
-                  background: isLight ? '#f1f5f9' : 'rgba(0,0,0,0.3)'
+                  background: isLight ? '#f1f5f9' : 'rgba(0,0,0,0.3)',
+                  marginTop: 'auto'
                 }}
               >
                 <div
                   style={{
-                    height: '210px',
+                    height: '185px',
                     overflow: 'hidden',
                     position: 'relative',
                     background: isLight ? '#0f172a' : '#08070b',
@@ -212,8 +229,8 @@ export const OverviewSection: React.FC = () => {
                 </div>
                 <div
                   style={{
-                    padding: '0.6rem 0.9rem',
-                    fontSize: '0.8rem',
+                    padding: '0.5rem 0.8rem',
+                    fontSize: '0.78rem',
                     color: isLight ? '#64748b' : '#b8b0a0',
                     background: isLight ? '#f8fafc' : 'rgba(20, 18, 27, 0.75)',
                     borderTop: isLight ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,0.06)',
@@ -223,20 +240,6 @@ export const OverviewSection: React.FC = () => {
                   📷 V.I. Lênin diễn thuyết trước quần chúng: Định nghĩa kinh điển về phân chia giai cấp
                 </div>
               </div>
-
-              <div
-                style={{
-                  background: isLight ? 'rgba(217, 179, 107, 0.12)' : 'rgba(217, 179, 107, 0.08)',
-                  padding: '1rem 1.2rem',
-                  borderRadius: '12px',
-                  borderLeft: '4px solid #d9b36b',
-                  fontSize: '0.9rem',
-                  color: isLight ? '#854d0e' : '#f4e6c3',
-                  lineHeight: 1.6
-                }}
-              >
-                👉 <strong>Trong thời kỳ quá độ lên CNXH:</strong> Cơ cấu này gồm nhiều giai cấp, tầng lớp cùng tồn tại, có quan hệ vừa khác biệt về lợi ích, vừa liên hệ, hợp tác mật thiết với nhau.
-              </div>
             </div>
 
             {/* Cột Phải: Cơ sở hình thành và biến đổi ở Việt Nam */}
@@ -245,7 +248,10 @@ export const OverviewSection: React.FC = () => {
                 background: isLight ? '#f8fafc' : 'linear-gradient(135deg, rgba(20, 18, 27, 0.9), rgba(30, 26, 38, 0.7))',
                 borderRadius: '16px',
                 padding: '2rem',
-                border: isLight ? '1px solid #cbd5e1' : '1px solid rgba(217, 179, 107, 0.25)'
+                border: isLight ? '1px solid #cbd5e1' : '1px solid rgba(217, 179, 107, 0.25)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between'
               }}
             >
               <div className="eyebrow" style={{ color: isLight ? '#b45309' : '#e6c98c', marginBottom: '1rem' }}>
@@ -293,17 +299,18 @@ export const OverviewSection: React.FC = () => {
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {/* Image 19: CNH, HĐH & KH-CN */}
-                <div
-                  style={{
-                    borderRadius: '12px',
-                    overflow: 'hidden',
-                    border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.25)',
-                    marginTop: '0.6rem',
-                    background: isLight ? '#f1f5f9' : 'rgba(0,0,0,0.3)'
-                  }}
-                >
+              {/* Image 19: CNH, HĐH & KH-CN */}
+              <div
+                style={{
+                  borderRadius: '12px',
+                  overflow: 'hidden',
+                  border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.25)',
+                  marginTop: '1.2rem',
+                  background: isLight ? '#f1f5f9' : 'rgba(0,0,0,0.3)'
+                }}
+              >
                   <div
                     style={{
                       height: '185px',
@@ -364,8 +371,7 @@ export const OverviewSection: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
       {/* Tab 2: 3 Đặc điểm của cơ cấu xã hội – giai cấp */}
       {activeTab === 'quy-luat' && (

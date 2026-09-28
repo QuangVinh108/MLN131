@@ -260,23 +260,6 @@ export const DirectionsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Core Content Box */}
-        <div
-          style={{
-            padding: '1.4rem 1.6rem',
-            borderRadius: '14px',
-            background: isLight ? 'rgba(217, 179, 107, 0.1)' : 'rgba(217, 179, 107, 0.08)',
-            borderLeft: `4px solid ${activeDirection.color}`,
-            marginBottom: '2rem',
-            fontSize: '1.02rem',
-            lineHeight: 1.65,
-            color: isLight ? '#1e293b' : '#f4e6c3'
-          }}
-        >
-          <strong style={{ color: activeDirection.color }}>Nội dung trọng tâm: </strong>
-          {activeDirection.coreContent}
-        </div>
-
         {/* Key Measures */}
         <div style={{ marginBottom: '2.2rem' }}>
           <h4
@@ -339,90 +322,6 @@ export const DirectionsSection: React.FC = () => {
             ))}
           </div>
         </div>
-
-        {/* If Direction 2: Display Specific Group Policies (Công nhân, Nông dân, Trí thức, Doanh nhân, Phụ nữ, Thanh niên) */}
-        {activeDirection.groupPolicies && (
-          <div
-            style={{
-              marginBottom: '2.2rem',
-              padding: '1.6rem',
-              borderRadius: '16px',
-              background: isLight ? '#f1f5f9' : 'rgba(0, 0, 0, 0.25)',
-              border: isLight ? '1px solid #cbd5e1' : '1px solid rgba(217, 179, 107, 0.2)'
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.2rem' }}>
-              <Users size={20} color={activeDirection.color} />
-              <h4
-                style={{
-                  fontSize: '1.15rem',
-                  fontWeight: 700,
-                  color: isLight ? '#0f172a' : '#fbf5e6',
-                  margin: 0
-                }}
-              >
-                Hệ Thống Chính Sách Xã Hội Cụ Thể Cho Từng Giai Cấp & Tầng Lớp
-              </h4>
-            </div>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                gap: '1.1rem'
-              }}
-            >
-              {activeDirection.groupPolicies.map((gp, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    padding: '1.2rem',
-                    borderRadius: '12px',
-                    background: isLight ? '#ffffff' : 'rgba(255, 255, 255, 0.03)',
-                    border: isLight ? '1px solid #e2e8f0' : '1px solid rgba(217, 179, 107, 0.15)',
-                    boxShadow: isLight ? '0 2px 8px rgba(0,0,0,0.03)' : 'none'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.6rem' }}>
-                    <div
-                      style={{
-                        width: '32px',
-                        height: '32px',
-                        borderRadius: '8px',
-                        background: isLight ? 'rgba(181, 64, 58, 0.1)' : 'rgba(217, 179, 107, 0.15)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: isLight ? '#b91c1c' : '#d9b36b'
-                      }}
-                    >
-                      {renderIcon(gp.icon, 18, isLight ? '#b91c1c' : '#d9b36b')}
-                    </div>
-                    <span
-                      style={{
-                        fontWeight: 700,
-                        fontSize: '0.95rem',
-                        color: isLight ? '#0f172a' : '#f4e6c3'
-                      }}
-                    >
-                      {gp.group}
-                    </span>
-                  </div>
-                  <p
-                    style={{
-                      fontSize: '0.88rem',
-                      lineHeight: 1.55,
-                      color: isLight ? '#475569' : '#b8b0a0',
-                      margin: 0
-                    }}
-                  >
-                    {gp.policy}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* Strategic Significance */}
         <div

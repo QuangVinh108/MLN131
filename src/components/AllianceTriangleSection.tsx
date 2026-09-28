@@ -144,42 +144,6 @@ export const AllianceTriangleSection: React.FC = () => {
           position: 'relative'
         }}
       >
-        {/* Top summary badge */}
-        <div
-          style={{
-            background: isLight ? '#f8fafc' : 'rgba(255, 255, 255, 0.03)',
-            padding: '1.2rem 1.6rem',
-            borderRadius: '12px',
-            border: isLight ? '1px solid #e2e8f0' : undefined,
-            borderLeft: `4px solid ${activePillar.color}`,
-            marginBottom: '2.5rem'
-          }}
-        >
-          <div style={{ fontSize: '0.75rem', fontWeight: 700, color: activePillar.color, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.3rem' }}>
-            LUẬN ĐIỂM CHỦ ĐẠO
-          </div>
-          <div style={{ fontSize: '1.05rem', color: isLight ? '#1e293b' : '#f4e6c3', lineHeight: 1.6 }}>
-            {activePillar.summary}
-          </div>
-        </div>
-
-        {/* Practical Simple Explanation Callout from MLN131.docx */}
-        {activePillar.practicalExplanation && (
-          <div
-            style={{
-              background: isLight ? 'rgba(217, 179, 107, 0.12)' : 'rgba(217, 179, 107, 0.08)',
-              padding: '1.1rem 1.6rem',
-              borderRadius: '12px',
-              borderLeft: `4px solid ${activePillar.color}`,
-              marginBottom: '2rem'
-            }}
-          >
-            <div style={{ fontSize: '0.94rem', color: isLight ? '#854d0e' : '#f4e6c3', lineHeight: 1.6 }}>
-              💡 <strong>Diễn giải thực tế (Dễ hiểu):</strong> {activePillar.practicalExplanation}
-            </div>
-          </div>
-        )}
-
         {/* 4 Core Focus Areas Grid */}
         <div style={{ marginBottom: '2.5rem' }}>
           <h4

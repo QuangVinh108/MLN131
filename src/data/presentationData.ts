@@ -171,15 +171,15 @@ export const CLASS_PILLARS: ClassPillar[] = [
       { label: 'Tỷ lệ qua đào tạo', value: '~ 28 - 30%', trend: 'Cần nâng cao trình độ tay nghề công nghệ cao' }
     ],
     characteristics: [
-      'Là giai cấp lãnh đạo cách mạng thông qua đội tiền phong là Đảng Cộng sản Việt Nam.',
-      'Đại diện cho phương thức sản xuất tiên tiến, gắn liền với nền công nghiệp hiện đại.',
-      'Giữ vai trò tiên phong trong công nghiệp hóa, hiện đại hóa đất nước.',
+      'Là giai cấp lãnh đạo cách mạng thông qua Đảng Cộng sản Việt Nam.',
+      'Đại diện cho phương thức sản xuất tiên tiến.',
+      'Giữ vai trò tiên phong trong công nghiệp hóa, hiện đại hóa.',
       'Là lực lượng nòng cốt trong liên minh công nhân – nông dân – trí thức.'
     ],
     trends: [
-      'Tăng nhanh về cả số lượng và chất lượng.',
-      'Cơ cấu nghề nghiệp ngày càng đa dạng, gắn với các ngành công nghiệp hiện đại và dịch vụ công nghệ cao.',
-      'Bộ phận công nhân trí thức ngày càng phát triển, làm chủ kỹ thuật và chuyển đổi số.'
+      'Tăng về số lượng và chất lượng.',
+      'Cơ cấu nghề nghiệp ngày càng đa dạng.',
+      'Bộ phận công nhân trí thức ngày càng phát triển.'
     ],
     challenges: [
       'Nguy cơ bị thay thế bởi robot và tự động hoá nếu không kịp chuyển đổi số kỹ năng nghề.',
@@ -206,13 +206,12 @@ export const CLASS_PILLARS: ClassPillar[] = [
       { label: 'Xuất khẩu nông sản', value: '> 53 tỷ USD', trend: 'Top đầu thế giới về gạo, cà phê, sầu riêng' }
     ],
     characteristics: [
-      'Gắn bó máu thịt với nông nghiệp, nông thôn, có truyền thống yêu nước, cần cù, chịu thương chịu khó.',
       'Có vị trí quan trọng trong phát triển nông nghiệp, nông thôn và xây dựng nông thôn mới.',
-      'Góp phần bảo đảm an ninh lương thực quốc gia, ổn định chính trị - xã hội và phát triển đất nước.'
+      'Góp phần bảo đảm ổn định xã hội và phát triển đất nước.'
     ],
     trends: [
-      'Cơ cấu ngày càng đa dạng theo hướng sản xuất nông nghiệp hàng hóa lớn, chuỗi giá trị.',
-      'Tỷ lệ lao động nông nghiệp có xu hướng giảm dần trong cơ cấu lao động xã hội.',
+      'Cơ cấu ngày càng đa dạng.',
+      'Tỷ lệ lao động nông nghiệp có xu hướng giảm.',
       'Một bộ phận chuyển sang công nghiệp và dịch vụ, trở thành công nhân hoặc lao động ở các lĩnh vực khác.'
     ],
     challenges: [
@@ -240,14 +239,13 @@ export const CLASS_PILLARS: ClassPillar[] = [
       { label: 'Công bố quốc tế', value: 'Tăng 15%/năm', trend: 'Nhiều bằng sáng chế công nghệ cao' }
     ],
     characteristics: [
-      'Là lực lượng lao động sáng tạo đặc biệt quan trọng của đất nước.',
-      'Có vai trò quyết định trong công nghiệp hóa, hiện đại hóa, kinh tế tri thức, khoa học – công nghệ và phát triển văn hóa.',
-      'Là bộ phận cấu thành nền tảng của liên minh công nhân – nông dân – trí thức dưới sự lãnh đạo của Đảng.'
+      'Là lực lượng lao động sáng tạo đặc biệt quan trọng.',
+      'Có vai trò trong công nghiệp hóa, hiện đại hóa, kinh tế tri thức, khoa học – công nghệ và phát triển văn hóa.',
+      'Là một bộ phận quan trọng của liên minh công nhân – nông dân – trí thức.'
     ],
     trends: [
-      'Tăng nhanh về cả số lượng và chất lượng chuyên môn.',
-      'Ngày càng giữ vai trò lớn trong nghiên cứu khoa học – công nghệ, đổi mới sáng tạo và kinh tế tri thức.',
-      'Đội ngũ trí thức trẻ và trí thức người Việt ở nước ngoài tích cực đóng góp cho công cuộc chuyển đổi số quốc gia.'
+      'Tăng về số lượng và chất lượng.',
+      'Ngày càng giữ vai trò lớn trong khoa học – công nghệ, đổi mới sáng tạo và kinh tế tri thức.'
     ],
     challenges: [
       'Chảy máu chất xám (Brain drain) sang khu vực tư nhân hoặc các quốc gia phát triển.',
@@ -276,12 +274,11 @@ export const CLASS_PILLARS: ClassPillar[] = [
       { label: 'Tạo việc làm mới', value: '> 85%', trend: 'Giải quyết việc làm cho lực lượng lao động xã hội' }
     ],
     characteristics: [
-      'Phát triển nhanh về số lượng và quy mô trong thời kỳ Đổi mới.',
-      'Đóng góp tích cực vào phát triển kinh tế, tạo việc làm và thực hiện an sinh xã hội.',
-      'Năng động, sáng tạo, dám nghĩ, dám làm, thích ứng linh hoạt với kinh tế thị trường.'
+      'Là tầng lớp phát triển nhanh về số lượng và quy mô trong thời kỳ đổi mới.',
+      'Đóng góp vào phát triển kinh tế, tạo việc làm và thực hiện an sinh xã hội.'
     ],
     trends: [
-      'Tiếp tục phát triển cả về số lượng và chất lượng, hình thành nhiều tập đoàn lớn vươn tầm quốc tế.',
+      'Tiếp tục phát triển cả về số lượng và chất lượng.',
       'Yêu cầu ngày càng cao về năng lực quản trị, đạo đức kinh doanh, trách nhiệm xã hội và khả năng cạnh tranh.',
       'Định hướng xây dựng đội ngũ doanh nhân có tinh thần cống hiến cho dân tộc, chuẩn mực văn hóa và trình độ quản trị, kinh doanh tốt.'
     ],
@@ -481,7 +478,7 @@ export const DIRECTIONS_DATA: DirectionItem[] = [
   {
     id: 'phuong-huong-1',
     number: 1,
-    title: 'Một là, đẩy mạnh công nghiệp hóa, hiện đại hóa',
+    title: 'Đẩy mạnh công nghiệp hóa, hiện đại hóa',
     shortTitle: 'Đẩy mạnh CNH, HĐH',
     badge: 'Nhiệm vụ Trung tâm',
     iconName: 'Factory',
@@ -501,7 +498,7 @@ export const DIRECTIONS_DATA: DirectionItem[] = [
   {
     id: 'phuong-huong-2',
     number: 2,
-    title: 'Hai là, xây dựng và thực hiện hệ thống chính sách xã hội phù hợp',
+    title: 'Xây dựng và thực hiện hệ thống chính sách xã hội phù hợp',
     shortTitle: 'Chính sách xã hội phù hợp',
     badge: 'Đòn bẩy Trực tiếp',
     iconName: 'Users',
@@ -553,7 +550,7 @@ export const DIRECTIONS_DATA: DirectionItem[] = [
   {
     id: 'phuong-huong-3',
     number: 3,
-    title: 'Ba là, tạo sự đồng thuận và phát huy đại đoàn kết toàn dân',
+    title: 'Tạo sự đồng thuận và phát huy đại đoàn kết toàn dân',
     shortTitle: 'Đồng thuận & Đại đoàn kết',
     badge: 'Nguồn lực Sức mạnh',
     iconName: 'HeartHandshake',
@@ -573,7 +570,7 @@ export const DIRECTIONS_DATA: DirectionItem[] = [
   {
     id: 'phuong-huong-4',
     number: 4,
-    title: 'Bốn là, hoàn thiện thể chế kinh tế thị trường định hướng XHCN',
+    title: 'Hoàn thiện thể chế kinh tế thị trường định hướng XHCN',
     shortTitle: 'Thể chế KTTT & Đổi mới sáng tạo',
     badge: 'Động lực Kinh tế',
     iconName: 'Layers',
@@ -593,7 +590,7 @@ export const DIRECTIONS_DATA: DirectionItem[] = [
   {
     id: 'phuong-huong-5',
     number: 5,
-    title: 'Năm là, đổi mới hoạt động của Đảng, Nhà nước, Mặt trận Tổ quốc và các tổ chức chính trị - xã hội',
+    title: 'Đổi mới hoạt động của Đảng, Nhà nước, Mặt trận Tổ quốc và các tổ chức chính trị - xã hội',
     shortTitle: 'Đổi mới hệ thống chính trị & Đoàn thể',
     badge: 'Nhân tố Quyết định',
     iconName: 'ShieldCheck',
@@ -973,11 +970,11 @@ export const PRESENTATION_SLIDES: Slide[] = [
     duration: '4 phút',
     script: 'Kính thưa Thầy Cô và các bạn, em là Phạm Minh D. Để hiện thực hóa mục tiêu trên, chuyên đề xác định 5 phương hướng cơ bản: Một là, đẩy mạnh CNH, HĐH đất nước; Hai là, xây dựng và thực hiện hệ thống chính sách xã hội phù hợp cho 6 nhóm: công nhân, nông dân, trí thức, doanh nhân, phụ nữ, thanh niên; Ba là, tạo sự đồng thuận và phát huy đại đoàn kết toàn dân; Bốn là, hoàn thiện thể chế kinh tế thị trường định hướng XHCN & liên kết các lực lượng; Năm là, đổi mới hoạt động của Đảng, Nhà nước, Mặt trận Tổ quốc và các đoàn thể!',
     keyPoints: [
-      'Một là: Đẩy mạnh CNH, HĐH; kinh tế phát triển mới nâng cao đời sống và gắn kết lợi ích.',
-      'Hai là: Chính sách xã hội phù hợp cho từng nhóm: công nhân, nông dân, trí thức, doanh nhân, phụ nữ, thanh niên.',
-      'Ba là: Tạo sự đồng thuận, giải quyết hài hòa lợi ích và phát huy sức mạnh khối đại đoàn kết toàn dân.',
-      'Bốn là: Hoàn thiện thể chế KTTT định hướng XHCN, phát triển KH-CN và tăng cường liên kết các lực lượng.',
-      'Năm là: Đổi mới hoạt động Đảng, Nhà nước, MTTQ và các tổ chức chính trị - xã hội.'
+      'Phương hướng 1: Đẩy mạnh CNH, HĐH; kinh tế phát triển mới nâng cao đời sống và gắn kết lợi ích.',
+      'Phương hướng 2: Chính sách xã hội phù hợp cho từng nhóm: công nhân, nông dân, trí thức, doanh nhân, phụ nữ, thanh niên.',
+      'Phương hướng 3: Tạo sự đồng thuận, giải quyết hài hòa lợi ích và phát huy sức mạnh khối đại đoàn kết toàn dân.',
+      'Phương hướng 4: Hoàn thiện thể chế KTTT định hướng XHCN, phát triển KH-CN và tăng cường liên kết các lực lượng.',
+      'Phương hướng 5: Đổi mới hoạt động Đảng, Nhà nước, MTTQ và các tổ chức chính trị - xã hội.'
     ]
   },
   {
