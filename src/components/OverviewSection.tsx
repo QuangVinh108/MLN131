@@ -166,18 +166,47 @@ export const OverviewSection: React.FC = () => {
                   background: isLight ? '#f1f5f9' : 'rgba(0,0,0,0.3)'
                 }}
               >
-                <div style={{ height: '220px', overflow: 'hidden' }}>
+                <div
+                  style={{
+                    height: '210px',
+                    overflow: 'hidden',
+                    position: 'relative',
+                    background: isLight ? '#0f172a' : '#08070b',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <img
+                    src="/images/docx/image13.png"
+                    alt=""
+                    aria-hidden="true"
+                    style={{
+                      position: 'absolute',
+                      inset: '-20px',
+                      width: 'calc(100% + 40px)',
+                      height: 'calc(100% + 40px)',
+                      objectFit: 'cover',
+                      filter: 'blur(16px) brightness(0.35)',
+                      opacity: 0.7,
+                      pointerEvents: 'none'
+                    }}
+                  />
                   <img
                     src="/images/docx/image13.png"
                     alt="V.I. Lênin diễn thuyết trước quần chúng"
                     style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
+                      position: 'relative',
+                      maxWidth: '100%',
+                      maxHeight: '100%',
+                      width: 'auto',
+                      height: 'auto',
+                      objectFit: 'contain',
                       display: 'block',
+                      zIndex: 1,
                       transition: 'transform 0.4s ease'
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.04)')}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.02)')}
                     onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                   />
                 </div>
@@ -275,18 +304,47 @@ export const OverviewSection: React.FC = () => {
                     background: isLight ? '#f1f5f9' : 'rgba(0,0,0,0.3)'
                   }}
                 >
-                  <div style={{ height: '180px', overflow: 'hidden' }}>
+                  <div
+                    style={{
+                      height: '185px',
+                      overflow: 'hidden',
+                      position: 'relative',
+                      background: isLight ? '#0f172a' : '#08070b',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <img
+                      src="/images/docx/image19.png"
+                      alt=""
+                      aria-hidden="true"
+                      style={{
+                        position: 'absolute',
+                        inset: '-20px',
+                        width: 'calc(100% + 40px)',
+                        height: 'calc(100% + 40px)',
+                        objectFit: 'cover',
+                        filter: 'blur(16px) brightness(0.35)',
+                        opacity: 0.7,
+                        pointerEvents: 'none'
+                      }}
+                    />
                     <img
                       src="/images/docx/image19.png"
                       alt="Đẩy mạnh công nghiệp hóa, hiện đại hóa và ứng dụng khoa học công nghệ"
                       style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
+                        position: 'relative',
+                        maxWidth: '100%',
+                        maxHeight: '100%',
+                        width: 'auto',
+                        height: 'auto',
+                        objectFit: 'contain',
                         display: 'block',
+                        zIndex: 1,
                         transition: 'transform 0.4s ease'
                       }}
-                      onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.04)')}
+                      onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.02)')}
                       onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                     />
                   </div>
@@ -369,18 +427,47 @@ export const OverviewSection: React.FC = () => {
                   background: isLight ? '#f1f5f9' : 'rgba(0,0,0,0.3)'
                 }}
               >
-                <div style={{ height: '175px', overflow: 'hidden' }}>
+                <div
+                  style={{
+                    height: '185px',
+                    overflow: 'hidden',
+                    position: 'relative',
+                    background: isLight ? '#0f172a' : '#08070b',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <img
+                    src="/images/docx/image7.png"
+                    alt=""
+                    aria-hidden="true"
+                    style={{
+                      position: 'absolute',
+                      inset: '-20px',
+                      width: 'calc(100% + 40px)',
+                      height: 'calc(100% + 40px)',
+                      objectFit: 'cover',
+                      filter: 'blur(16px) brightness(0.35)',
+                      opacity: 0.7,
+                      pointerEvents: 'none'
+                    }}
+                  />
                   <img
                     src="/images/docx/image7.png"
                     alt="Tranh cổ động các tầng lớp nhân dân đoàn kết dưới ngọn cờ Đảng và Bác Hồ"
                     style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
+                      position: 'relative',
+                      maxWidth: '100%',
+                      maxHeight: '100%',
+                      width: 'auto',
+                      height: 'auto',
+                      objectFit: 'contain',
                       display: 'block',
+                      zIndex: 1,
                       transition: 'transform 0.4s ease'
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.02)')}
                     onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                   />
                 </div>
@@ -464,18 +551,47 @@ export const OverviewSection: React.FC = () => {
                   background: isLight ? '#f1f5f9' : 'rgba(0,0,0,0.3)'
                 }}
               >
-                <div style={{ height: '175px', overflow: 'hidden' }}>
+                <div
+                  style={{
+                    height: '185px',
+                    overflow: 'hidden',
+                    position: 'relative',
+                    background: isLight ? '#0f172a' : '#08070b',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <img
+                    src="/images/docx/image15.png"
+                    alt=""
+                    aria-hidden="true"
+                    style={{
+                      position: 'absolute',
+                      inset: '-20px',
+                      width: 'calc(100% + 40px)',
+                      height: 'calc(100% + 40px)',
+                      objectFit: 'cover',
+                      filter: 'blur(16px) brightness(0.35)',
+                      opacity: 0.7,
+                      pointerEvents: 'none'
+                    }}
+                  />
                   <img
                     src="/images/docx/image15.png"
                     alt="Đại đoàn kết toàn dân tộc phát huy sức mạnh thời đại mới"
                     style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
+                      position: 'relative',
+                      maxWidth: '100%',
+                      maxHeight: '100%',
+                      width: 'auto',
+                      height: 'auto',
+                      objectFit: 'contain',
                       display: 'block',
+                      zIndex: 1,
                       transition: 'transform 0.4s ease'
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.02)')}
                     onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                   />
                 </div>
@@ -559,18 +675,47 @@ export const OverviewSection: React.FC = () => {
                   background: isLight ? '#f1f5f9' : 'rgba(0,0,0,0.3)'
                 }}
               >
-                <div style={{ height: '175px', overflow: 'hidden' }}>
+                <div
+                  style={{
+                    height: '185px',
+                    overflow: 'hidden',
+                    position: 'relative',
+                    background: isLight ? '#0f172a' : '#08070b',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <img
+                    src="/images/docx/image18.png"
+                    alt=""
+                    aria-hidden="true"
+                    style={{
+                      position: 'absolute',
+                      inset: '-20px',
+                      width: 'calc(100% + 40px)',
+                      height: 'calc(100% + 40px)',
+                      objectFit: 'cover',
+                      filter: 'blur(16px) brightness(0.35)',
+                      opacity: 0.7,
+                      pointerEvents: 'none'
+                    }}
+                  />
                   <img
                     src="/images/docx/image18.png"
                     alt="Khối đại đoàn kết toàn dân tộc trong kỷ nguyên mới"
                     style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
+                      position: 'relative',
+                      maxWidth: '100%',
+                      maxHeight: '100%',
+                      width: 'auto',
+                      height: 'auto',
+                      objectFit: 'contain',
                       display: 'block',
+                      zIndex: 1,
                       transition: 'transform 0.4s ease'
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.02)')}
                     onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                   />
                 </div>

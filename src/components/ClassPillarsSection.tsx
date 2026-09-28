@@ -393,10 +393,13 @@ export const ClassPillarsSection: React.FC = () => {
         {selectedPillar.imageUrl && (
           <div
             style={{
-              marginTop: '1.5rem',
+              marginTop: '2rem',
               display: 'grid',
-              gridTemplateColumns: selectedPillar.secondaryImageUrl ? 'repeat(auto-fit, minmax(280px, 1fr))' : '1fr',
-              gap: '1.2rem'
+              gridTemplateColumns: selectedPillar.secondaryImageUrl ? 'repeat(auto-fit, minmax(300px, 1fr))' : '1fr',
+              maxWidth: selectedPillar.secondaryImageUrl ? '920px' : '580px',
+              margin: '2rem auto 0 auto',
+              gap: '1.2rem',
+              width: '100%'
             }}
           >
             <div
@@ -405,23 +408,55 @@ export const ClassPillarsSection: React.FC = () => {
                 overflow: 'hidden',
                 border: isLight ? '1px solid #cbd5e1' : `1px solid ${selectedPillar.accentColor}40`,
                 background: isLight ? '#f8fafc' : 'rgba(0,0,0,0.3)',
-                boxShadow: isLight ? '0 4px 15px rgba(0,0,0,0.06)' : '0 10px 25px rgba(0,0,0,0.4)'
+                boxShadow: isLight ? '0 4px 15px rgba(0,0,0,0.06)' : '0 10px 25px rgba(0,0,0,0.4)',
+                display: 'flex',
+                flexDirection: 'column'
               }}
             >
-              <div style={{ maxHeight: '340px', overflow: 'hidden', position: 'relative' }}>
+              <div
+                style={{
+                  height: '310px',
+                  overflow: 'hidden',
+                  position: 'relative',
+                  background: isLight ? '#0f172a' : '#08070b',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                {/* Ambient blur background to fill letterbox/pillarbox smoothly */}
+                <img
+                  src={selectedPillar.imageUrl}
+                  alt=""
+                  aria-hidden="true"
+                  style={{
+                    position: 'absolute',
+                    inset: '-20px',
+                    width: 'calc(100% + 40px)',
+                    height: 'calc(100% + 40px)',
+                    objectFit: 'cover',
+                    filter: 'blur(16px) brightness(0.35)',
+                    opacity: 0.7,
+                    pointerEvents: 'none'
+                  }}
+                />
+                {/* Main sharp image preserving full content */}
                 <img
                   src={selectedPillar.imageUrl}
                   alt={selectedPillar.imageCaption || selectedPillar.name}
                   style={{
-                    width: '100%',
-                    height: '100%',
-                    maxHeight: '340px',
-                    objectFit: 'cover',
+                    position: 'relative',
+                    maxWidth: '100%',
+                    maxHeight: '100%',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'contain',
                     display: 'block',
+                    zIndex: 1,
                     transition: 'transform 0.4s ease'
                   }}
                   onMouseEnter={e => {
-                    e.currentTarget.style.transform = 'scale(1.03)';
+                    e.currentTarget.style.transform = 'scale(1.02)';
                   }}
                   onMouseLeave={e => {
                     e.currentTarget.style.transform = 'scale(1)';
@@ -439,7 +474,8 @@ export const ClassPillarsSection: React.FC = () => {
                     color: '#ffffff',
                     fontSize: '0.72rem',
                     fontWeight: 700,
-                    letterSpacing: '0.04em'
+                    letterSpacing: '0.04em',
+                    zIndex: 2
                   }}
                 >
                   📷 HÌNH ẢNH TƯ LIỆU THỰC TẾ
@@ -453,7 +489,8 @@ export const ClassPillarsSection: React.FC = () => {
                     color: isLight ? '#475569' : '#ded6c5',
                     fontStyle: 'italic',
                     borderTop: isLight ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,0.08)',
-                    background: isLight ? '#f1f5f9' : 'rgba(18, 16, 23, 0.8)'
+                    background: isLight ? '#f1f5f9' : 'rgba(18, 16, 23, 0.8)',
+                    lineHeight: 1.5
                   }}
                 >
                   {selectedPillar.imageCaption}
@@ -468,23 +505,55 @@ export const ClassPillarsSection: React.FC = () => {
                   overflow: 'hidden',
                   border: isLight ? '1px solid #cbd5e1' : `1px solid ${selectedPillar.accentColor}40`,
                   background: isLight ? '#f8fafc' : 'rgba(0,0,0,0.3)',
-                  boxShadow: isLight ? '0 4px 15px rgba(0,0,0,0.06)' : '0 10px 25px rgba(0,0,0,0.4)'
+                  boxShadow: isLight ? '0 4px 15px rgba(0,0,0,0.06)' : '0 10px 25px rgba(0,0,0,0.4)',
+                  display: 'flex',
+                  flexDirection: 'column'
                 }}
               >
-                <div style={{ maxHeight: '340px', overflow: 'hidden', position: 'relative' }}>
+                <div
+                  style={{
+                    height: '310px',
+                    overflow: 'hidden',
+                    position: 'relative',
+                    background: isLight ? '#0f172a' : '#08070b',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  {/* Ambient blur background */}
+                  <img
+                    src={selectedPillar.secondaryImageUrl}
+                    alt=""
+                    aria-hidden="true"
+                    style={{
+                      position: 'absolute',
+                      inset: '-20px',
+                      width: 'calc(100% + 40px)',
+                      height: 'calc(100% + 40px)',
+                      objectFit: 'cover',
+                      filter: 'blur(16px) brightness(0.35)',
+                      opacity: 0.7,
+                      pointerEvents: 'none'
+                    }}
+                  />
+                  {/* Main sharp image preserving full content */}
                   <img
                     src={selectedPillar.secondaryImageUrl}
                     alt={selectedPillar.secondaryImageCaption || selectedPillar.name}
                     style={{
-                      width: '100%',
-                      height: '100%',
-                      maxHeight: '340px',
-                      objectFit: 'cover',
+                      position: 'relative',
+                      maxWidth: '100%',
+                      maxHeight: '100%',
+                      width: 'auto',
+                      height: 'auto',
+                      objectFit: 'contain',
                       display: 'block',
+                      zIndex: 1,
                       transition: 'transform 0.4s ease'
                     }}
                     onMouseEnter={e => {
-                      e.currentTarget.style.transform = 'scale(1.03)';
+                      e.currentTarget.style.transform = 'scale(1.02)';
                     }}
                     onMouseLeave={e => {
                       e.currentTarget.style.transform = 'scale(1)';
@@ -502,7 +571,8 @@ export const ClassPillarsSection: React.FC = () => {
                       color: '#ffffff',
                       fontSize: '0.72rem',
                       fontWeight: 700,
-                      letterSpacing: '0.04em'
+                      letterSpacing: '0.04em',
+                      zIndex: 2
                     }}
                   >
                     📷 THỜI KỲ HIỆN ĐẠI & HỘI NHẬP
@@ -516,7 +586,8 @@ export const ClassPillarsSection: React.FC = () => {
                       color: isLight ? '#475569' : '#ded6c5',
                       fontStyle: 'italic',
                       borderTop: isLight ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,0.08)',
-                      background: isLight ? '#f1f5f9' : 'rgba(18, 16, 23, 0.8)'
+                      background: isLight ? '#f1f5f9' : 'rgba(18, 16, 23, 0.8)',
+                      lineHeight: 1.5
                     }}
                   >
                     {selectedPillar.secondaryImageCaption}
